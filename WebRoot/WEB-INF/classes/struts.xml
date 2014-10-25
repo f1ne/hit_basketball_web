@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<include file="struts-default.xml"/>
+<package name="com.hit.cs.basketball" extends="struts-default" namespace="/">
+  
+  <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
+      <result name="success">/Recording.jsp</result>
+  </action>
+  
+</package>
+</struts>    
