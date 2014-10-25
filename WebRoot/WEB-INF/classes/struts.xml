@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<include file="struts-default.xml"></include>
+<package name="Team" extends="struts-default">
+<action name="index" >
+<result>index.jsp</result>
+</action>
+<action name="AddTeam">
+<result>AddTeam.jsp</result>
+</action>
+<action name="AddTeamBegin" class="Team.TeamAction" method="AddTeam" >
+<result>addResult.jsp</result>
+</action>
+<action name="returnMyJsp">
+<result>index.jsp</result>
+</action>
+</package>
+
+
+<package name="Manager" extends="struts-default">
+<action name="AddManagerBegin" class="Manager.ManagerAction" method="AddManager" >
+<result>addResult.jsp</result>
+</action>
+<action name="AddManager">
+<result>AddManager.jsp</result>
+</action>
+</package>
+
+<package name="Player" extends="struts-default">
+<action name="AddPlayerBegin" class="Player.PlayerAction" method="AddPlayer" >
+<result>addResult.jsp</result>
+</action>
+<action name="AddPlayer">
+<result>AddPlayer.jsp</result>
+</action>
+</package>
+
+<package name="Login" extends="struts-default">
+<action name="LoginBegin" class="Login.LoginAction" method="Login" >
+<result name="success">ManageLoginSuccess.jsp</result>
+<result name="error">LoginError.jsp</result>
+</action>
+<action name="Login">
+<result>Login.jsp</result>
+</action>
+</package>
+</struts>    
