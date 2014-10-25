@@ -13,6 +13,16 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- Record配置开始 -->
+  <servlet>
+  		<servlet-name>Record</servlet-name>
+  		<servlet-class>com.hit.cs.basketball.Record</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>Record</servlet-name>
+  		<url-pattern>/Record</url-pattern>
+  </servlet-mapping>
+  <!-- Record配置结束 -->
   <welcome-file-list>
   	<welcome-file>EnterRecording.jsp</welcome-file>
   </welcome-file-list>

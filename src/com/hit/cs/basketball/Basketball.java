@@ -2,7 +2,10 @@ package com.hit.cs.basketball;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +15,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class Basketball extends ActionSupport{
 	
+	
+	private static final long serialVersionUID = 7140505626097926600L;
 	private int TeamID1;
 	private int TeamID2;
 	public void setTeamID1(int teamID1){
@@ -27,7 +32,7 @@ public class Basketball extends ActionSupport{
 	public int getTeamID2(){
 		return this.TeamID2;
 	}
-	
+	//进入现场记录模式
 	public String enterRecording(){
 		HttpServletRequest request;
 		request=ServletActionContext.getRequest();
@@ -68,7 +73,13 @@ public class Basketball extends ActionSupport{
 		request.setAttribute("listTeam1", listTeam1);
 		request.setAttribute("listTeam2", listTeam2);
 		//建立比赛表
-		System.out.println(DataBaseBean.isMatchRecordTableExist("2014-10-25", 1, 2));
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
+		String timeStr=sdf.format(new Date());
+		if (DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2)==false){
+			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);
+			
+		}
+		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2));
 		return "success";
 	}
 }

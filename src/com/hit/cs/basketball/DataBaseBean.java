@@ -54,7 +54,7 @@ public class DataBaseBean {
 	public static boolean isMatchRecordTableExist(String date,int homeTeamID,int awayTeamID){
 		Connection conn=null;
 		ResultSet rs=null;
-		String tableName=String.format("%s-%d-%d",date,homeTeamID,awayTeamID);
+		String tableName=String.format("GAMETABLE%s_%d_%d",date,homeTeamID,awayTeamID);
 		try{
 			conn=getConnection();
 			DatabaseMetaData md=conn.getMetaData();
@@ -72,19 +72,10 @@ public class DataBaseBean {
 	}
 	//建立比赛表
 	public static void createMatchRecordTable(String date,int homeTeamID,int awayTeamID){
-		Connection conn=null;
-		String sql=String.format("create table %s-%s-%s("
-				+"PlayerID INT NULL,"
-				+"Event VARCHAR(45) NULL,"
-				+"Time DATETIME NULL"
-				+ ")",date,homeTeamID,awayTeamID);
-		Statement stmt=null;
-		try{
-			conn=getConnection();
-			stmt=conn.createStatement();
-			stmt.executeUpdate(sql);
-		}catch(Exception e){
-			System.out.println("添加比赛表出错"+e);
-		}
+		String sql=String.format("create table GAMETABLE%s_%d_%d"
+				+"(PlayerID INTEGER,"
+				+"Event VARCHAR(45),"
+				+"Time DATETIME)",date,homeTeamID,awayTeamID);
+		update(sql);
 	}
 }

@@ -27,6 +27,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	h1{margin-bottom:0}
 	h2{margin-bottom:0;font-size:14px}
 	</style>
+	<script language="javascript">
+	var xmlHttp;
+	/*创建XMLHttpRequest对象*/
+	function createXmlHttp(){
+		if(windows.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}else{
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	}
+	/*处理服务器响应结果*/
+	function processReponse(){
+		if (xmlHttp.readyState==4){
+			if (xmlHttp.status==200){
+			}
+		}
+	}
+	/*发送客户端的请求*/
+	function sendRequest(url){
+		createXmlHttp();
+		xmlHttp.open("Get",url,true);
+		xmlHttp.onreadystatechange=processResponse;
+		xmlHttp.send(null);
+	}
+	/*增加得分*/
+	function score(playerID){
+	    //当前页面的数据自加1
+	    var preScore=parseInt(document.getElementById(playerID+"score").innerText);
+	    document.getElementById(playerID+"score").innerText=preScore+1;
+	    var url="Record?playerID="+playerID+"&event=score";
+	    console.log(url);
+	    sendRequest(url);
+	    
+	}
+	/*增加犯规*/
+	function foul(playerID){
+		//当前页面的犯规数据自动加1
+		var prefoul=parseInt(document.getElementById(playerID+"foul").innerText);
+	    document.getElementById(playerID+"foul").innerText=prefoul+1;
+	    var url="Record?playerID="+playerID+"&event=reb";
+	    console.log(url);
+	    sendRequest(url);
+	}
+	</script>
   </head>
   
   <body>
@@ -56,12 +100,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><%=aPlayer.getName() %></td>
 					<td>
 					<form id="score" method="post" action=<%=path %>/addscore>
-					    <input type="submit" value="得分+1">
+						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
+					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>)">
 					</form>
 					</td>
 					<td>
 					<form id="fouls" method="post" action=<%=path %>/addfoul>
-					    <input type="submit" value="犯规+1">
+						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>)">
 					</form>
                     </td>
 				</tr>
@@ -89,12 +135,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><%=aPlayer.getName() %></td>
 					<td>
 					<form id="score" method="post" action=<%=path %>/addscore>
-					    <input type="submit" value="得分+1">
+						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
+					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>)">
 					</form>
 					</td>
 					<td>
 					<form id="fouls" method="post" action=<%=path %>/addfoul>
-					    <input type="submit" value="犯规+1">
+						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>)">
 					</form>
                     </td>
 				</tr>
