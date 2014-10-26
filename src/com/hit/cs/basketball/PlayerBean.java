@@ -9,8 +9,18 @@ public class PlayerBean {
 	private int NumberOfMatches;
 	private int Fouls;
 	private int Number;
+	PlayerBean(){
+		this.PlayerID=-1;
+		this.TeamID=-1;
+		this.Name="null";
+		this.StudentID="null";
+		this.Score=-1;
+		this.NumberOfMatches=-1;
+		this.Fouls=-1;
+		this.Number=-1;
+	}
 	PlayerBean(int playerID,int teamID,String name,String studentID,int score,
-			int numberOfMatches,int fouls,int number){
+		int numberOfMatches,int fouls,int number){
 		this.PlayerID=playerID;
 		this.TeamID=teamID;
 		this.Name=name;

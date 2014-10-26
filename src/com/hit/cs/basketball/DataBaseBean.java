@@ -6,6 +6,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DataBaseBean {
 	//建立数据连接
@@ -70,12 +76,91 @@ public class DataBaseBean {
 		return false;
 		
 	}
-	//建立比赛表
-	public static void createMatchRecordTable(String date,int homeTeamID,int awayTeamID){
+	//建立比赛表并在比赛表中添加
+	public static void createMatchRecordTable(String datestr,int homeTeamID,int awayTeamID){
 		String sql=String.format("create table GAMETABLE%s_%d_%d"
 				+"(PlayerID INTEGER,"
 				+"Event VARCHAR(45),"
-				+"Time DATETIME)",date,homeTeamID,awayTeamID);
+				+"Time DATETIME)",datestr,homeTeamID,awayTeamID);
 		update(sql);
+		//将日期格式从yyyyMMdd转换为yyyy-MM-dd，记录到数据库中与SQL的date类型匹配
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
+		try {
+			Date date = sdf.parse(datestr);
+			sdf=new SimpleDateFormat("yyyy-MM-dd",Locale.SIMPLIFIED_CHINESE); 
+			String datestr2=sdf.format(date);
+			sql=String.format("INSERT INTO allgametable (HomeTeamID, AwayTeamID, Date) VALUES (%d, %d, %s)",
+					homeTeamID,awayTeamID,datestr2);
+			DataBaseBean.update(sql);
+		} catch (ParseException e) {
+			System.out.println("日期转换出错");
+		}
+		
 	}
+    //通过球员名字查询球员信息
+	public static ArrayList<PlayerBean> queryPlayerByName(String name){
+		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+		ResultSet rs=null;
+		String sql=String.format("select * from players where Name='%s'",name);
+		rs=query(sql);
+		try {
+			while (rs.next()){
+				int PlayerID=rs.getInt("PlayerID");
+				int TeamID=rs.getInt("TeamID");
+				String Name=rs.getString("Name");
+				String StudentID=rs.getString("StudentID");
+				int Score=rs.getInt("Score");
+				int NumberOfMatches=rs.getInt("NumberOfMatches");
+				int Fouls=rs.getInt("Fouls");
+				int Number=rs.getInt("Number");
+				list.add(new PlayerBean(PlayerID,TeamID,Name,StudentID,Score,NumberOfMatches,Fouls,Number));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("查询出错"+e);
+		}
+		return list;
+	}
+	//通过date和TeamID来获得比赛信息
+	public static ArrayList<TeamBean> queryGameTableNameByDateAndTeamID(String datestr,int TeamID){
+		ArrayList<TeamBean> list=new ArrayList<TeamBean>();
+		ResultSet rs=null;
+		String sql=String.format("select * from allgametable where Date='%s' and (HomeTeamID='%d' or AwayTeamID='%d')",
+				                 datestr,TeamID,TeamID);
+		rs=query(sql);
+		try {
+			while (rs.next()){
+				int GameID=rs.getInt("GameID");
+				int HomeTeamID=rs.getInt("HomeTeamID");
+				int AwayTeamID=rs.getInt("AwayTeamID");
+				String Date=(rs.getDate("Date")).toString();
+				list.add(new TeamBean(GameID,HomeTeamID,AwayTeamID,Date));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("查询出错"+e);
+		}
+		return list;
+	}
+
+	//通过一个日期和主队客队id来查找比赛表返回比赛记录
+	public static ArrayList<RecordBean> queryGameRecord(String date,int homeTeamID,int awayTeamID){
+		ArrayList<RecordBean> list=new ArrayList<RecordBean>();
+		ResultSet rs=null;
+		String sql=String.format("select * from gametable%s_%d_%d",date,homeTeamID,awayTeamID);
+		rs=query(sql);
+		try {
+			while (rs.next()){
+				int PlayerID=rs.getInt("PlayerID");
+				String Event=rs.getString("Event");
+				Timestamp Time=rs.getTimestamp("Time");
+				list.add(new RecordBean(PlayerID,Event,Time));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("查询出错"+e);
+		}
+		return list;
+	}
+    
 }

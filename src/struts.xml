@@ -5,8 +5,7 @@
 <package name="com.hit.cs.basketball" extends="struts-default" namespace="/">
   
   <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
-      <result name="success">/Recording.jsp</result>
+      <result name="success">/Record.jsp</result>
   </action>
-  
 </package>
 </struts>    

@@ -20,7 +20,7 @@
   </servlet>
   <servlet-mapping>
   		<servlet-name>Record</servlet-name>
-  		<url-pattern>/Record</url-pattern>
+  		<url-pattern>/Record.servlet</url-pattern>
   </servlet-mapping>
   <!-- Record配置结束 -->
   <welcome-file-list>

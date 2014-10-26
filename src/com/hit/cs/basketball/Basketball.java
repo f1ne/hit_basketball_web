@@ -80,6 +80,55 @@ public class Basketball extends ActionSupport{
 			
 		}
 		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2));
+		//测试函数
+		test();
+		//
 		return "success";
+	}
+	
+	/*
+	 * 球员名字、日期查询球员当天球赛的表现，可能会出现重名的情况
+	 * 会用过request类返回
+	 * date 的形式是yyyyMMdd
+	 * 第一次迭代暂时不支持重名球员
+	 * 重复使用PlayerBean中的内容，当返回的时候，其中个项代表的是统计后的结果
+	 */
+	public PlayerBean checkPlayerDataWithDate(String playerName,String date){
+		ArrayList list=DataBaseBean.queryPlayerByName(playerName);
+		PlayerBean player=new PlayerBean();
+		TeamBean team;
+		if (list.size()>0){
+			player=(PlayerBean)list.get(0);		
+			list=DataBaseBean.queryGameTableNameByDateAndTeamID(date, player.getTeamID());
+			team=(TeamBean)list.get(0);
+			list=DataBaseBean.queryGameRecord(date, team.getHomeTeamID(), team.getAwayTeamID());
+			//将技术统计清零
+			player.setFouls(0);
+			player.setScore(0);
+			//统计
+			for (int i=0;i<list.size();i++){
+				RecordBean record=(RecordBean)list.get(i);
+				if (record.getPlayerID()==player.getPlayerID()){
+					String scorestr="score";
+					String foulstr="foul";
+					if (scorestr.equals(record.getEvent())){
+						int tempscore=player.getScore();
+						player.setScore(tempscore+1);
+					}
+					if (foulstr.equals(record.getEvent())){
+						int tempfoul=player.getFouls();
+						player.setFouls(tempfoul+1);
+					}
+				}
+			}
+		}
+		return player;
+	}
+	/*
+	 * 测试函数
+	 */
+	public void test(){
+		PlayerBean player=checkPlayerDataWithDate("Lin","20141026");
+		System.out.println(player.getFouls()+","+player.getScore());
 	}
 }
