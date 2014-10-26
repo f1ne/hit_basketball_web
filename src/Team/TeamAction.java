@@ -44,8 +44,8 @@ public class TeamAction extends ActionSupport {
 		}
 		}catch (Exception e) {
 			// TODO: handle exception
-			setJspTitle("fail in AddTeam");
-			System.out.println("fail in AddTeam");
+			setJspTitle("·¢Éú´íÎó");
+			//System.out.println("fail in AddTeam");
 		}
 		return SUCCESS;
 	}

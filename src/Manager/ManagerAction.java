@@ -28,8 +28,8 @@ public class ManagerAction extends ActionSupport{
 		ResultSet rs=jokePreparedStatement.executeQuery();
 		System.out.println("prepare succeed");
 		if(rs.next()){
-			setJspTitle("ID already exist");
-			System.out.println("ID already exist");
+			setJspTitle("管理员ID冲突");
+			//System.out.println("ID already exist");
 		}
 		else {
 			addManagerPreparedStatement.setString(1, newManager.getId());
@@ -37,13 +37,13 @@ public class ManagerAction extends ActionSupport{
 			addManagerPreparedStatement.setString(3, newManager.getPasscode());
 			addManagerPreparedStatement.setString(4, newManager.getPrivilgeLevel());
 			addManagerPreparedStatement.executeUpdate();
-			System.out.println("Add succeed");
-			setJspTitle("Add Succeed");
+			//System.out.println("Add succeed");
+			setJspTitle("添加成功");
 		}
 		}catch (Exception e) {
 			// TODO: handle exception
-			setJspTitle("fail in AddManager");
-			System.out.println("fail in AddManager");
+			setJspTitle("发生错误");
+			//System.out.println("fail in AddManager");
 		}
 		return SUCCESS;
 	}

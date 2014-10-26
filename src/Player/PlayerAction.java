@@ -27,8 +27,8 @@ public class PlayerAction extends ActionSupport{
 		ResultSet rs=jokePreparedStatement.executeQuery();
 		System.out.println("prepare succeed");
 		if(rs.next()){
-			setJspTitle("Player already exist");
-			System.out.println("Player already exist");
+			setJspTitle("该球员已经存在");
+			//System.out.println("Player already exist");
 		}
 		else {
 			addPlayerPreparedStatement.setString(1, newPlayer.getName());
@@ -37,13 +37,13 @@ public class PlayerAction extends ActionSupport{
 			addPlayerPreparedStatement.setString(4, newPlayer.getSex());
 			addPlayerPreparedStatement.setString(5, newPlayer.getTeam());
 			addPlayerPreparedStatement.executeUpdate();
-			System.out.println("Add succeed");
-			setJspTitle("Add Succeed");
+			//System.out.println("Add succeed");
+			setJspTitle("添加球员成功");
 		}
 		}catch (Exception e) {
 			// TODO: handle exception
-			setJspTitle("fail in AddPlayer");
-			System.out.println("fail in AddPlayer");
+			setJspTitle("发生错误");
+			//System.out.println("fail in AddPlayer");
 		}
 		return SUCCESS;
 	}
