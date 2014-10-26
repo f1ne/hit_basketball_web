@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="Basketball"
-  id="myeclipse.1414231618187"
-  context-root="/Basketball"
+  name="Basket"
+  id="myeclipse.1413978753005"
+  context-root="/Basket"
   j2ee-spec="5.0"
-  archive="Basketball.war">
+  archive="Basket.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

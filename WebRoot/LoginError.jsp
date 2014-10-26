@@ -21,7 +21,31 @@ response.setContentType("text/html;charset=utf-8");%>
 	-->
 
   </head>
+   <style type="text/css"> 
+<!-- 
+a:link { 
+font-size: 12px; 
+color: #FFFFFF; 
+text-decoration: none; 
+} 
+a:visited { 
+font-size: 12px; 
+color: #FFFFFF; 
+text-decoration: none; 
+} 
+a:hover { 
+font-size: 12px; 
+color: #999999; 
+text-decoration: underline; 
+} 
+--> 
+</style> 
   
+    <style>
+body {
+	background-color: #668866;
+}
+</style>
   <body>
    <center>
     <br><br><br><br>

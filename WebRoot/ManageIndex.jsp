@@ -70,15 +70,11 @@ body {
     </tbody></table>
   </div>
 <hr>
-
-   <center>
-    <br><br><br>
-    <table border="0" cellpadding="0" style="margin-left:0px;">
+<table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-    <td><h1><span style="color:lightblue;">身份：<%=name %><br>
-   <b><s:property value="jspTitle"/></b></span></h1></td>
-  	</tr>
-  	</tbody></table></center>
-  	
+    <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/ball.png" width="620px;" height="356px;"/> </td> 
+     </tr>
+    </tbody></table>
+   <br>
   </body>
 </html>

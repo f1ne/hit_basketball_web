@@ -61,24 +61,20 @@ body {
     <hr>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>        
     </tr>
     </tbody></table>
   </div>
 <hr>
-
-   <center>
-    <br><br><br>
-    <table border="0" cellpadding="0" style="margin-left:0px;">
+<table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-    <td><h1><span style="color:lightblue;">身份：<%=name %><br>
-   <b><s:property value="jspTitle"/></b></span></h1></td>
-  	</tr>
-  	</tbody></table></center>
-  	
+    <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/ball.png" width="620px;" height="356px;"/> </td> 
+     </tr>
+    </tbody></table>
+   <br>
   </body>
 </html>

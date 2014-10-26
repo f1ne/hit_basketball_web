@@ -3,15 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ page import="Login.LoginAction" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
- <% request.setCharacterEncoding("utf-8");
-response.setContentType("text/html;charset=utf-8");%>
   <head>
     <base href="<%=basePath%>">
-    <title>Add Author page</title>
+    
+    <title>AddResult page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -22,7 +21,7 @@ response.setContentType("text/html;charset=utf-8");%>
 	-->
 
   </head>
-<style type="text/css"> 
+  <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -47,7 +46,7 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <body>
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -70,15 +69,8 @@ body {
     </tbody></table>
   </div>
 <hr>
-
-   <center>
-    <br><br><br>
-    <table border="0" cellpadding="0" style="margin-left:0px;">
-    <tbody><tr>
-    <td><h1><span style="color:lightblue;">身份：<%=name %><br>
-   <b><s:property value="jspTitle"/></b></span></h1></td>
-  	</tr>
-  	</tbody></table></center>
-  	
+  <br><br><br><br>
+   <center><h1><b><s:property value="jspTitle"/></b></h1></center>
+   <s:form align="CENTER" action="AddManager.action" ><s:submit value="返回"/></s:form>
   </body>
 </html>

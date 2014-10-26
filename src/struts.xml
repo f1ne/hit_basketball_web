@@ -20,25 +20,32 @@
 
 <package name="Manager" extends="struts-default">
 <action name="AddManagerBegin" class="Manager.ManagerAction" method="AddManager" >
-<result>addResult.jsp</result>
+<result>addResultM.jsp</result>
 </action>
 <action name="AddManager">
 <result>AddManager.jsp</result>
+</action>
+<action name="returnMyJspM">
+<result>ManageIndex.jsp</result>
 </action>
 </package>
 
 <package name="Player" extends="struts-default">
 <action name="AddPlayerBegin" class="Player.PlayerAction" method="AddPlayer" >
-<result>addResult.jsp</result>
+<result>addResultP.jsp</result>
 </action>
 <action name="AddPlayer">
 <result>AddPlayer.jsp</result>
+</action>
+<action name="returnMyJspT">
+<result>TeamIndex.jsp</result>
 </action>
 </package>
 
 <package name="Login" extends="struts-default">
 <action name="LoginBegin" class="Login.LoginAction" method="Login" >
 <result name="success">ManageLoginSuccess.jsp</result>
+<result name="input">TeamLoginSuccess.jsp</result>
 <result name="error">LoginError.jsp</result>
 </action>
 <action name="Login">

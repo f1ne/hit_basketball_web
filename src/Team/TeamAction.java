@@ -30,8 +30,8 @@ public class TeamAction extends ActionSupport {
 		ResultSet rs=jokePreparedStatement.executeQuery();
 		System.out.println("prepare succeed");
 		if(rs.next()){
-			setJspTitle("ID already exist");
-			System.out.println("ID already exist");
+			setJspTitle("该实验室ID已被注册，请与管理员联系");
+			//System.out.println("ID already exist");
 		}
 		else {
 			addTeamPreparedStatement.setString(1, newTeam.getId());
@@ -39,8 +39,8 @@ public class TeamAction extends ActionSupport {
 			addTeamPreparedStatement.setString(3, newTeam.getPasscode());
 			addTeamPreparedStatement.setString(4, newTeam.getLab());
 			addTeamPreparedStatement.executeUpdate();
-			System.out.println("Add succeed");
-			setJspTitle("Add Succeed");
+			//System.out.println("Add succeed");
+			setJspTitle("添加成功，返回主页登录");
 		}
 		}catch (Exception e) {
 			// TODO: handle exception

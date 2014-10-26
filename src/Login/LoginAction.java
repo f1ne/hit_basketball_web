@@ -51,6 +51,7 @@ public class LoginAction extends ActionSupport{
 					sss.setAttribute("logintype",logintype);
 				    sss.setAttribute("user",user);
 				    sss.setAttribute("psw",psw);
+				    return SUCCESS;
 					//System.out.println("mmm");
 					}
 					else{
@@ -81,6 +82,7 @@ public class LoginAction extends ActionSupport{
 					jspTitle="µÇÂ¼³É¹¦";
 					teamLogin="1";
 					managerLogin="0";
+					return INPUT;
 					//System.out.println("ttt");
 					}
 					else{
@@ -103,7 +105,7 @@ public class LoginAction extends ActionSupport{
 					managerLogin="0";
 					return ERROR;
 				}
-		return SUCCESS;
+			return ERROR;
 	}
 
 	public String getJspTitle() {

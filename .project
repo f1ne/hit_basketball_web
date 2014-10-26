@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Basketball</name>
+	<name>Basket</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -56,4 +56,11 @@
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>com.genuitec.eclipse.cross.easystruts.eclipse.easystrutsnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebRoot/image</name>
+			<type>2</type>
+			<location>D:/workspace/Basket/WebRoot/image</location>
+		</link>
+	</linkedResources>
 </projectDescription>

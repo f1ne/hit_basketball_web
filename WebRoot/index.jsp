@@ -23,12 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 
 a:link { 
 font-size: 12px; 
-color: #00AAFF; 
+color: #FFFFFF; 
 text-decoration: none; 
 } 
 a:visited { 
 font-size: 12px; 
-color: #00AAFF; 
+color: #FFFFFF; 
 text-decoration: none; 
 } 
 a:hover { 
@@ -41,7 +41,7 @@ text-decoration: underline;
   
     <style>
 body {
-	background-color: #666666;
+	background-color: #668866;
 }
 </style>
   <body background="2image/background.jpg">
@@ -61,9 +61,7 @@ body {
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="returnMyJsp.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="returnMyJsp.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJsp.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="returnMyJsp.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
     </tr>
     </tbody></table>
   </div>

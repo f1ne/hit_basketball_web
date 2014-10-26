@@ -21,13 +21,55 @@ response.setContentType("text/html;charset=utf-8");%>
 	-->
 
   </head>
+  <style type="text/css"> 
+<!-- 
+a:link { 
+font-size: 12px; 
+color: #FFFFFF; 
+} 
+a:visited { 
+font-size: 12px; 
+color: #FFFFFF; 
+text-decoration: none; 
+} 
+a:hover { 
+font-size: 12px; 
+color: #999999; 
+text-decoration: underline; 
+} 
+--> 
+</style> 
   
+    <style>
+body {
+	background-color: #668866;
+}
+</style>
   <body>
-   <center>
-    <h1><b>队伍注册</b></h1>
+  <div id="menu">
+   <table border="0" cellpadding="0" style="margin-left:0px;">
+   <tbody><tr>
+      <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
+      <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
+      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %></span> </td>
+      <td><a href="returnMyJsp.action" style="font-size:14px;"><br>&nbsp;&nbsp;&nbsp;登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </tbody>
+    </table>
     <hr>
-    <br>
-    注：
+    <table border="0" cellpadding="0" style="margin-left:0px;">
+    <tbody><tr>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    </tr>
+    </tbody></table>
+  </div>
+   <center>
+    <hr>
+    <h1><b>管理员注册</b></h1>
     <br>
     <s:form action="AddManagerBegin.action">
     
@@ -49,12 +91,10 @@ response.setContentType("text/html;charset=utf-8");%>
 																			</select></div>
 								</div></li> <br>
     <br>	                  
-   	<hr>
    	<s:submit align="CENTER" value="提交"/>
     </s:form>
-  	<s:form action="returnMyJsp.action" ><s:submit  align="right" value="返回"/></s:form>
   	</center>
-  	
+   	<hr>	
   	
   </body>
 </html>
