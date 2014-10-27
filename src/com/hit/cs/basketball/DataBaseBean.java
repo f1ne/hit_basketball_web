@@ -20,7 +20,7 @@ public class DataBaseBean {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			con=(Connection) DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/db","root","1234");
+					"jdbc:mysql://localhost:3306/db","root","csm0212");
 			
 		}catch(Exception e){
 			System.out.println("数据库连接失败:"+e);
