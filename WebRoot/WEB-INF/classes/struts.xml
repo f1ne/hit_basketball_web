@@ -57,6 +57,9 @@
   <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
       <result name="success">/Record.jsp</result>
   </action>
+  <action name="enterLive" class="com.hit.cs.basketball.Basketball" method="enterLive">
+      <result name="success">/Live.jsp</result>
+  </action>
 </package>
    
 

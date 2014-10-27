@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <font size=8>输入两个对阵球队ID</font> 
-     <form id="teamid" method="post" action="<%=path%>/enterRecording.action">
+     <form id="teamid" method="post" action="<%=path%>/enterLive.action">
         <font size=6>主队(Home)</font>
      	<input type="text" id="TeamID1" name="TeamID1">
      	<br/>

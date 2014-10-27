@@ -41,38 +41,8 @@ public class Basketball extends ActionSupport{
 		request=ServletActionContext.getRequest();
 		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
 		ArrayList<PlayerBean> listTeam2=new ArrayList<PlayerBean>();
-		String sql="select * from players where TeamID='"+TeamID1+"'";
-		ResultSet rs=DataBaseBean.query(sql);
-		try {
-			while (rs.next()){
-				listTeam1.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
-						                     (Integer)rs.getInt("TeamID"),
-						                     (String)rs.getString("Name"),
-						                     (String)rs.getString("StudentID"),
-						                     (Integer)rs.getInt("Score"),
-						                     (Integer)rs.getInt("NumberOfMatches"),
-						                     (Integer)rs.getInt("Fouls"),
-						                     (Integer)rs.getInt("Number")));
-			}
-		} catch (SQLException e) {
-			System.out.println(e);
-		}
-		sql="select * from players where TeamID='"+TeamID2+"'";
-		rs=DataBaseBean.query(sql);
-		try {
-			while (rs.next()){
-				listTeam2.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
-						                     (Integer)rs.getInt("TeamID"),
-						                     (String)rs.getString("Name"),
-						                     (String)rs.getString("StudentID"),
-						                     (Integer)rs.getInt("Score"),
-						                     (Integer)rs.getInt("NumberOfMatches"),
-						                     (Integer)rs.getInt("Fouls"),
-						                     (Integer)rs.getInt("Number")));
-			}
-		} catch (SQLException e) {
-			System.out.println(e);
-		}
+		listTeam1=DataBaseBean.queryPlayerByTeamID(TeamID1);
+		listTeam2=DataBaseBean.queryPlayerByTeamID(TeamID2);
 		request.setAttribute("listTeam1", listTeam1);
 		request.setAttribute("listTeam2", listTeam2);
 		//建立比赛表
@@ -84,11 +54,27 @@ public class Basketball extends ActionSupport{
 		}
 		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2));
 		//测试函数
-		//test();
+		int playerid=1;
+		String str="20141027";
+		PlayerBean p=checkPlayerDataByIDAndDate(playerid,str);
+		System.out.println(p.getFouls()+" "+p.getScore());
 		//
 		return "success";
 	}
-	
+	/*
+	 * 功能:进入数据实时直播
+	 */
+	public String enterLive(){
+		HttpServletRequest request;
+		request=ServletActionContext.getRequest();
+		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
+		ArrayList<PlayerBean> listTeam2=new ArrayList<PlayerBean>();
+		listTeam1=DataBaseBean.queryPlayerByTeamID(TeamID1);
+		listTeam2=DataBaseBean.queryPlayerByTeamID(TeamID2);
+		request.setAttribute("listTeam1", listTeam1);
+		request.setAttribute("listTeam2", listTeam2);
+		return "success";
+	}
 	/*
 	 * 球员名字、日期查询球员当天球赛的表现，可能会出现重名的情况
 	 * 会用过request类返回
@@ -96,14 +82,14 @@ public class Basketball extends ActionSupport{
 	 * 第一次迭代暂时不支持重名球员
 	 * 重复使用PlayerBean中的内容，当返回的时候，其中个项代表的是统计后的结果
 	 */
-	public PlayerBean checkPlayerDataWithDate(String playerName,String date){
+	public static PlayerBean checkPlayerDataWithDate(String playerName,String date){
 		ArrayList list=DataBaseBean.queryPlayerByName(playerName);
 		PlayerBean player=new PlayerBean();
-		TeamBean team;
+		GameBean team;
 		if (list.size()>0){
 			player=(PlayerBean)list.get(0);		
 			list=DataBaseBean.queryGameTableNameByDateAndTeamID(date, player.getTeamID());
-			team=(TeamBean)list.get(0);
+			team=(GameBean)list.get(0);
 			list=DataBaseBean.queryGameRecord(date, team.getHomeTeamID(), team.getAwayTeamID());
 			//将技术统计清零
 			player.setFouls(0);
@@ -128,10 +114,36 @@ public class Basketball extends ActionSupport{
 		return player;
 	}
 	/*
-	 * 测试函数
+	 * 通过球员ID、比赛日期查询球员当天表现
 	 */
-	public void test(){
-		PlayerBean player=checkPlayerDataWithDate("Lin","20141026");
-		System.out.println(player.getFouls()+","+player.getScore());
+	public static PlayerBean checkPlayerDataByIDAndDate(int playerID,String date){
+		PlayerBean player=DataBaseBean.queryPlayerByID(playerID);
+		if (player!=null){
+			ArrayList list=new ArrayList();
+			list=DataBaseBean.queryGameTableNameByDateAndTeamID(date, player.getTeamID());
+			GameBean team=(GameBean)list.get(0);
+			list=DataBaseBean.queryGameRecord(date, team.getHomeTeamID(), team.getAwayTeamID());
+			//将技术统计清零
+			player.setFouls(0);
+			player.setScore(0);
+			//统计
+			for (int i=0;i<list.size();i++){
+				RecordBean record=(RecordBean)list.get(i);
+				if (record.getPlayerID()==player.getPlayerID()){
+					String scorestr="score";
+					String foulstr="foul";
+					if (scorestr.equals(record.getEvent())){
+						int tempscore=player.getScore();
+						player.setScore(tempscore+1);
+					}
+					if (foulstr.equals(record.getEvent())){
+						int tempfoul=player.getFouls();
+						player.setFouls(tempfoul+1);
+					}
+				}
+			}
+		}
+		return player;
 	}
+    
 }

@@ -89,7 +89,7 @@ public class DataBaseBean {
 			Date date = sdf.parse(datestr);
 			sdf=new SimpleDateFormat("yyyy-MM-dd",Locale.SIMPLIFIED_CHINESE); 
 			String datestr2=sdf.format(date);
-			sql=String.format("INSERT INTO allgametable (HomeTeamID, AwayTeamID, Date) VALUES (%d, %d, %s)",
+			sql=String.format("INSERT INTO allgametable (HomeTeamID, AwayTeamID, Date) VALUES ('%d', '%d', '%s')",
 					homeTeamID,awayTeamID,datestr2);
 			DataBaseBean.update(sql);
 		} catch (ParseException e) {
@@ -122,8 +122,8 @@ public class DataBaseBean {
 		return list;
 	}
 	//通过date和TeamID来获得比赛信息
-	public static ArrayList<TeamBean> queryGameTableNameByDateAndTeamID(String datestr,int TeamID){
-		ArrayList<TeamBean> list=new ArrayList<TeamBean>();
+	public static ArrayList<GameBean> queryGameTableNameByDateAndTeamID(String datestr,int TeamID){
+		ArrayList<GameBean> list=new ArrayList<GameBean>();
 		ResultSet rs=null;
 		String sql=String.format("select * from allgametable where Date='%s' and (HomeTeamID='%d' or AwayTeamID='%d')",
 				                 datestr,TeamID,TeamID);
@@ -134,7 +134,7 @@ public class DataBaseBean {
 				int HomeTeamID=rs.getInt("HomeTeamID");
 				int AwayTeamID=rs.getInt("AwayTeamID");
 				String Date=(rs.getDate("Date")).toString();
-				list.add(new TeamBean(GameID,HomeTeamID,AwayTeamID,Date));
+				list.add(new GameBean(GameID,HomeTeamID,AwayTeamID,Date));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -162,5 +162,55 @@ public class DataBaseBean {
 		}
 		return list;
 	}
-    
+ 
+	/*
+	 * 通过球员ID获得球员信息
+	 */
+	public static PlayerBean queryPlayerByID(int playerID){
+		PlayerBean player=null;
+		ResultSet rs=null;
+		String sql=String.format("select * from players where PlayerID='%d'",playerID);
+		rs=query(sql);
+		try {
+			while(rs.next()){
+				int PlayerID=rs.getInt("PlayerID");
+				int TeamID=rs.getInt("TeamID");
+				String Name=rs.getString("Name");
+				String StudentID=rs.getString("StudentID");
+				int Score=rs.getInt("Score");
+				int NumberOfMatches=rs.getInt("NumberOfMatches");
+				int Fouls=rs.getInt("Fouls");
+				int Number=rs.getInt("Number");
+				player=new PlayerBean(PlayerID,TeamID,Name,StudentID,Score,NumberOfMatches,Fouls,Number);
+			}
+		} catch (SQLException e) {
+			System.out.println("通过ID查询球员失败"+e);
+		}
+			
+		return player;
+	}
+	/*
+	 * 通过球队ID获得球员信息
+	 * 返回全队球员信息
+	 */
+	public static ArrayList<PlayerBean> queryPlayerByTeamID(int TeamID){
+		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+		String sql="select * from players where TeamID='"+TeamID+"'";
+		ResultSet rs=DataBaseBean.query(sql);
+		try {
+			while (rs.next()){
+				list.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
+						                     (Integer)rs.getInt("TeamID"),
+						                     (String)rs.getString("Name"),
+						                     (String)rs.getString("StudentID"),
+						                     (Integer)rs.getInt("Score"),
+						                     (Integer)rs.getInt("NumberOfMatches"),
+						                     (Integer)rs.getInt("Fouls"),
+						                     (Integer)rs.getInt("Number")));
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
 }
