@@ -52,12 +52,12 @@ body {
    <tbody><tr>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
-      <td><br><span style="color:lightblue;">你好,<%String name1 = (String)session.getAttribute("user");%><%=name1 %></span> </td>
+      <td><br><span style="color:lightblue;">你好,<%String teamID = (String)session.getAttribute("user");%><%=teamID %></span> </td>
       <td><a href="returnMyJsp.action" style="font-size:14px;"><br>&nbsp;&nbsp;&nbsp;登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody>
     </table>
-    <hr>
+    <hr><% String team=(String)session.getAttribute("team"); %>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -78,19 +78,20 @@ body {
     
 								
     <table >
-    <tr><td>名字:<s:textfield name="newPlayer.name"/></td></tr>
-    <tr><td>号码:<s:textfield name="newPlayer.num"/></td></tr>
+    <tr><td>名字:<s:textfield name="newPlayer.Name"/></td></tr>
+    <tr><td>学号:<s:textfield name="newPlayer.StudentID"/></td></tr>
+    <tr><td>号码:<s:textfield name="newPlayer.Number"/></td></tr>
    	</table> 
    	<br>
    	<li><div class="radio_panel">
-									<input type="radio" name="newPlayer.sex" id="sex_1" value="男" /><label for="sex_1">男</label>
-									<input type="radio" name="newPlayer.sex" id="sex_2" value="女" /><label for="sex_2">女</label>
-									<input type="radio" name="newPlayer.sex" id="sex_3" value="保密" checked /><label for="sex_3">保密</label>
+									<input type="radio" name="newPlayer.Sex" id="sex_1" value="男" /><label for="sex_1">男</label>
+									<input type="radio" name="newPlayer.Sex" id="sex_2" value="女" /><label for="sex_2">女</label>
+									<input type="radio" name="newPlayer.Sex" id="sex_3" value="保密" checked /><label for="sex_3">保密</label>
 								</div></li>
    	
    	<br>
    	<li><div class="select_panel">
-									<div class="addr_panel"><i class="addr"></i>位置：<select name="newPlayer.position" id="newPlayer.position">
+									<div class="addr_panel"><i class="addr"></i>位置：<select name="newPlayer.Position" id="newPlayer.position">
 																				<option value="SF小前锋" selected >小前锋(SF)</option>
 																				<option value="PF大前锋"  >大前锋(PF)</option>
 																				<option value="CC中锋"  >中锋(C)</option>
@@ -100,10 +101,15 @@ body {
 																			</select></div>
 								</div></li> <br>
 								<li><div class="select_panel">
-									<div class="addr_panel"><i class="addr"></i>队伍：<select name="newPlayer.team" id="newPlayer.team">
-																				<option value=<%=name1 %> selected ><%=name1 %></option>
+									<div class="addr_panel"><i class="addr"></i>队伍ID：<select name="newPlayer.TeamID" id="newPlayer.TeamID">
+																				<option value=<%=teamID %> selected ><%=teamID %></option>
 																			</select></div>
-								</div></li> <br>             
+								</div></li> <br>   
+								<li><div class="select_panel">
+									<div class="addr_panel"><i class="addr"></i>队伍名字：<select name="newPlayer.Team" id="newPlayer.Team">
+																				<option value=<%=team %> selected ><%=team %></option>
+																			</select></div>
+								</div></li> <br>          
    	<s:submit align="CENTER" value="提交"/>
     </s:form>
   	</center>

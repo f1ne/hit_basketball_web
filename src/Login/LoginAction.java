@@ -79,6 +79,8 @@ public class LoginAction extends ActionSupport{
 						sss.setAttribute("logintype",logintype);
 					    sss.setAttribute("user",user);
 					    sss.setAttribute("psw",psw);
+					    String team=rs.getString("Name");
+					    sss.setAttribute("team",team);
 					jspTitle="µÇÂ¼³É¹¦";
 					teamLogin="1";
 					managerLogin="0";

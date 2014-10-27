@@ -19,8 +19,8 @@ public class PlayerAction extends ActionSupport{
 		A.clear();
 		try{
 		Connection tempConnection=pConnection.getConnection();
-		String sqlString="select * from player where Name= ?";
-		String addPlayerString="insert into player (Name,Num,Position,Sex,Team) values (?,?,?,?,?)";
+		String sqlString="select * from players where Name= ?";
+		String addPlayerString="insert into players (TeamID,Team,Name,Sex,StudentID,Number,Position) values (?,?,?,?,?,?,?)";
 		PreparedStatement addPlayerPreparedStatement=tempConnection.prepareStatement(addPlayerString);
 		PreparedStatement jokePreparedStatement=tempConnection.prepareStatement(sqlString);
 		jokePreparedStatement.setString(1, newPlayer.getName());
@@ -31,11 +31,15 @@ public class PlayerAction extends ActionSupport{
 			//System.out.println("Player already exist");
 		}
 		else {
-			addPlayerPreparedStatement.setString(1, newPlayer.getName());
-			addPlayerPreparedStatement.setString(2, newPlayer.getNum());
-			addPlayerPreparedStatement.setString(3, newPlayer.getPosition());
+			addPlayerPreparedStatement.setInt(1, newPlayer.getTeamID());
+			addPlayerPreparedStatement.setString(2, newPlayer.getTeam());
+			addPlayerPreparedStatement.setString(3, newPlayer.getName());
 			addPlayerPreparedStatement.setString(4, newPlayer.getSex());
-			addPlayerPreparedStatement.setString(5, newPlayer.getTeam());
+			addPlayerPreparedStatement.setString(5, newPlayer.getStudentID());
+			addPlayerPreparedStatement.setInt(6, newPlayer.getNumber());
+			addPlayerPreparedStatement.setString(7, newPlayer.getPosition());
+			
+			
 			addPlayerPreparedStatement.executeUpdate();
 			//System.out.println("Add succeed");
 			setJspTitle("添加球员成功");
