@@ -1,10 +1,12 @@
-CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+﻿CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: db
 -- ------------------------------------------------------
--- Server version	5.6.20
+-- Server version	5.7.3-m13
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -62,7 +64,7 @@ CREATE TABLE `gametable20141027_1_2` (
 
 LOCK TABLES `gametable20141027_1_2` WRITE;
 /*!40000 ALTER TABLE `gametable20141027_1_2` DISABLE KEYS */;
-INSERT INTO `gametable20141027_1_2` VALUES (1,'score','2014-10-27 17:09:44'),(1,'foul','2014-10-27 17:09:46'),(2,'score','2014-10-27 17:09:47'),(6,'score','2014-10-27 17:09:48'),(6,'foul','2014-10-27 17:09:48'),(2,'foul','2014-10-27 17:09:49');
+INSERT INTO `gametable20141027_1_2` VALUES (1,'score','2014-10-27 17:09:44'),(1,'foul','2014-10-27 17:09:46'),(2,'score','2014-10-27 17:09:47'),(6,'score','2014-10-27 17:09:48'),(6,'foul','2014-10-27 17:09:48'),(2,'foul','2014-10-27 17:09:49'),(1,'score','2014-10-27 18:15:13'),(1,'foul','2014-10-27 18:15:14'),(1,'score','2014-10-27 18:15:15'),(1,'score','2014-10-27 18:15:15'),(1,'foul','2014-10-27 18:15:16'),(2,'score','2014-10-27 18:15:20'),(2,'foul','2014-10-27 18:15:20'),(6,'score','2014-10-27 18:15:21'),(6,'foul','2014-10-27 18:15:22'),(6,'foul','2014-10-27 18:15:22'),(6,'score','2014-10-27 18:15:23'),(6,'score','2014-10-27 18:15:25'),(2,'score','2014-10-27 18:15:26'),(2,'score','2014-10-27 18:15:28'),(2,'score','2014-10-27 18:15:29');
 /*!40000 ALTER TABLE `gametable20141027_1_2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,9 +77,9 @@ DROP TABLE IF EXISTS `manager`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `manager` (
   `ID` int(11) NOT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `PSW` varchar(45) DEFAULT NULL,
-  `NPL` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) NOT NULL,
+  `PSW` varchar(45) NOT NULL,
+  `NPL` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`),
   UNIQUE KEY `Name_UNIQUE` (`Name`)
@@ -105,14 +107,14 @@ CREATE TABLE `players` (
   `PlayerID` int(11) NOT NULL AUTO_INCREMENT,
   `TeamID` int(6) DEFAULT NULL,
   `Team` varchar(45) DEFAULT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `Sex` varchar(45) DEFAULT NULL,
-  `StudentID` varchar(45) DEFAULT NULL,
-  `Number` int(11) DEFAULT NULL,
-  `Position` varchar(45) DEFAULT NULL,
-  `Score` int(11) DEFAULT '0',
-  `NumberOfMatches` int(11) DEFAULT '0',
-  `Fouls` int(11) DEFAULT '0',
+  `Name` varchar(45) NOT NULL,
+  `Sex` varchar(45) NOT NULL,
+  `StudentID` varchar(45) NOT NULL,
+  `Number` int(11) NOT NULL,
+  `Position` varchar(45) NOT NULL,
+  `Score` int(11) NOT NULL DEFAULT '0',
+  `NumberOfMatches` int(11) NOT NULL DEFAULT '0',
+  `Fouls` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`PlayerID`),
   UNIQUE KEY `PlayerID_UNIQUE` (`PlayerID`),
   UNIQUE KEY `StudentID_UNIQUE` (`StudentID`)
@@ -138,9 +140,9 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
   `ID` varchar(6) NOT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `PSW` varchar(45) DEFAULT NULL,
-  `Lab` varchar(90) DEFAULT NULL,
+  `Name` varchar(45) NOT NULL,
+  `PSW` varchar(45) NOT NULL,
+  `Lab` varchar(90) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `TeamID_UNIQUE` (`ID`),
   UNIQUE KEY `Name_UNIQUE` (`Name`)
@@ -166,4 +168,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-27 17:16:20
+-- Dump completed on 2014-10-27 18:31:26
+

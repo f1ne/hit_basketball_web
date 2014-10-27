@@ -114,6 +114,7 @@ public class Basketball extends ActionSupport{
 		return player;
 	}
 	/*
+
 	 * 通过球员ID、比赛日期查询球员当天表现
 	 */
 	public static PlayerBean checkPlayerDataByIDAndDate(int playerID,String date){
@@ -146,4 +147,5 @@ public class Basketball extends ActionSupport{
 		return player;
 	}
     
+
 }

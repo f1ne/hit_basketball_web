@@ -162,7 +162,6 @@ public class DataBaseBean {
 		}
 		return list;
 	}
- 
 	/*
 	 * 通过球员ID获得球员信息
 	 */
