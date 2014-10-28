@@ -30,7 +30,7 @@ CREATE TABLE `allgametable` (
   `AwayTeamID` int(11) DEFAULT NULL,
   `Date` date DEFAULT NULL,
   PRIMARY KEY (`GameID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,17 +39,18 @@ CREATE TABLE `allgametable` (
 
 LOCK TABLES `allgametable` WRITE;
 /*!40000 ALTER TABLE `allgametable` DISABLE KEYS */;
+INSERT INTO `allgametable` VALUES (4,201201,201204,'2014-10-28'),(5,201204,201201,'2014-10-28');
 /*!40000 ALTER TABLE `allgametable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gametable20141027_1_2`
+-- Table structure for table `gametable20141028_201201_201204`
 --
 
-DROP TABLE IF EXISTS `gametable20141027_1_2`;
+DROP TABLE IF EXISTS `gametable20141028_201201_201204`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gametable20141027_1_2` (
+CREATE TABLE `gametable20141028_201201_201204` (
   `PlayerID` int(11) DEFAULT NULL,
   `Event` varchar(45) DEFAULT NULL,
   `Time` datetime DEFAULT NULL
@@ -57,23 +58,23 @@ CREATE TABLE `gametable20141027_1_2` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gametable20141027_1_2`
+-- Dumping data for table `gametable20141028_201201_201204`
 --
 
-LOCK TABLES `gametable20141027_1_2` WRITE;
-/*!40000 ALTER TABLE `gametable20141027_1_2` DISABLE KEYS */;
-INSERT INTO `gametable20141027_1_2` VALUES (1,'score','2014-10-27 17:09:44'),(1,'foul','2014-10-27 17:09:46'),(2,'score','2014-10-27 17:09:47'),(6,'score','2014-10-27 17:09:48'),(6,'foul','2014-10-27 17:09:48'),(2,'foul','2014-10-27 17:09:49'),(1,'score','2014-10-27 18:15:13'),(1,'foul','2014-10-27 18:15:14'),(1,'score','2014-10-27 18:15:15'),(1,'score','2014-10-27 18:15:15'),(1,'foul','2014-10-27 18:15:16'),(2,'score','2014-10-27 18:15:20'),(2,'foul','2014-10-27 18:15:20'),(6,'score','2014-10-27 18:15:21'),(6,'foul','2014-10-27 18:15:22'),(6,'foul','2014-10-27 18:15:22'),(6,'score','2014-10-27 18:15:23'),(6,'score','2014-10-27 18:15:25'),(2,'score','2014-10-27 18:15:26'),(2,'score','2014-10-27 18:15:28'),(2,'score','2014-10-27 18:15:29');
-/*!40000 ALTER TABLE `gametable20141027_1_2` ENABLE KEYS */;
+LOCK TABLES `gametable20141028_201201_201204` WRITE;
+/*!40000 ALTER TABLE `gametable20141028_201201_201204` DISABLE KEYS */;
+INSERT INTO `gametable20141028_201201_201204` VALUES (1,'score','2014-10-28 20:18:20'),(1,'score','2014-10-28 20:18:21'),(5,'score','2014-10-28 20:18:21'),(5,'score','2014-10-28 20:18:22'),(7,'score','2014-10-28 20:18:22'),(7,'score','2014-10-28 20:18:22'),(1,'foul','2014-10-28 20:18:23'),(5,'foul','2014-10-28 20:18:24'),(7,'foul','2014-10-28 20:18:24'),(2,'score','2014-10-28 20:18:25'),(2,'score','2014-10-28 20:18:25'),(6,'score','2014-10-28 20:18:26'),(6,'score','2014-10-28 20:18:26'),(2,'foul','2014-10-28 20:18:26'),(6,'foul','2014-10-28 20:18:27');
+/*!40000 ALTER TABLE `gametable20141028_201201_201204` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gametable20141028_1_2`
+-- Table structure for table `gametable20141028_201204_201201`
 --
 
-DROP TABLE IF EXISTS `gametable20141028_1_2`;
+DROP TABLE IF EXISTS `gametable20141028_201204_201201`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gametable20141028_1_2` (
+CREATE TABLE `gametable20141028_201204_201201` (
   `PlayerID` int(11) DEFAULT NULL,
   `Event` varchar(45) DEFAULT NULL,
   `Time` datetime DEFAULT NULL
@@ -81,12 +82,13 @@ CREATE TABLE `gametable20141028_1_2` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gametable20141028_1_2`
+-- Dumping data for table `gametable20141028_201204_201201`
 --
 
-LOCK TABLES `gametable20141028_1_2` WRITE;
-/*!40000 ALTER TABLE `gametable20141028_1_2` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gametable20141028_1_2` ENABLE KEYS */;
+LOCK TABLES `gametable20141028_201204_201201` WRITE;
+/*!40000 ALTER TABLE `gametable20141028_201204_201201` DISABLE KEYS */;
+INSERT INTO `gametable20141028_201204_201201` VALUES (2,'score','2014-10-28 20:19:31'),(6,'score','2014-10-28 20:19:31'),(2,'foul','2014-10-28 20:19:32'),(6,'foul','2014-10-28 20:19:32'),(1,'score','2014-10-28 20:19:33'),(5,'score','2014-10-28 20:19:33'),(7,'score','2014-10-28 20:19:33'),(7,'foul','2014-10-28 20:19:34'),(5,'foul','2014-10-28 20:19:34'),(1,'foul','2014-10-28 20:19:34');
+/*!40000 ALTER TABLE `gametable20141028_201204_201201` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -113,7 +115,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
-INSERT INTO `manager` VALUES (21,'21','21','1总管理员'),(33,'33','33','3裁判'),(65,'45','65','1总管理员'),(123,'123123','123123','1总管理员'),(321,'321','312','1总管理员'),(323,'2323','2323','1总管理员'),(1123,'123','123','2副管理员'),(2131,'21312','12312','3裁判'),(5435,'45345','345345','1总管理员'),(12312,'31','2134124','5待定'),(123321,'123321','123321','4队伍管理员'),(12312312,'3123','31231','1总管理员');
+INSERT INTO `manager` VALUES (123,'123','123','1总管理员'),(213,'213','213','3裁判'),(231,'231','231','4队伍管理员'),(321,'321','321','2副管理员'),(1120310701,'测试员1号','123','1总管理员');
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +141,7 @@ CREATE TABLE `players` (
   PRIMARY KEY (`PlayerID`),
   UNIQUE KEY `PlayerID_UNIQUE` (`PlayerID`),
   UNIQUE KEY `StudentID_UNIQUE` (`StudentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +150,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,1,NULL,'Lin','男','1123710501',17,'PG控球后卫',0,0,0),(2,2,NULL,'Kobe','男','1123710502',24,'SG得分后卫',0,0,0),(5,7,'7','陈晨','男','1120310707',21,'SF小前锋',0,0,0),(6,2,'二队','刘甜','女','1120311111',54,'SG得分后卫',0,0,0);
+INSERT INTO `players` VALUES (1,201201,'2','Lin','男','1123710501',17,'PG控球后卫',0,0,0),(2,201204,'猛','Kobe','男','1123710502',24,'SG得分后卫',0,0,0),(5,201201,'2','陈晨','男','1120310707',21,'SF小前锋',0,0,0),(6,201204,'猛','刘甜','女','1120311111',54,'SG得分后卫',0,0,0),(7,201201,'2','哈','男','1120111111',312,'SF小前锋',0,0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +178,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES ('','','','智能接口与人机交互研究中心'),('1','一队','111111','哈'),('1204','猛','123','计算机网络与信息安全技术研究中心'),('1212','1212','1212','智能接口与人机交互研究中心'),('1304','321','321','计算机网络与信息安全技术研究中心'),('2','二队','222222','工'),('2121','2121','2121','智能接口与人机交互研究中心'),('21312','123','12312','信息对抗技术研究所'),('3','三队','333333','大'),('33','3','3','模式识别研究中心'),('4','4','4','1'),('43','43','43','智能接口与人机交互研究中心'),('5','5','5','2'),('6','6','6','4'),('7','7','7','1');
+INSERT INTO `team` VALUES ('201201','2','1201','智能接口与人机交互研究中心'),('201204','猛','1204','计算机网络与信息安全技术研究中心'),('201209','大','1209','模式识别研究中心'),('201212','工','1212','信息对抗技术研究所'),('201301','哈','1301','智能接口与人机交互研究中心'),('201401','蓝','1401','智能接口与人机交互研究中心');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -189,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-28 16:41:15
+-- Dump completed on 2014-10-28 20:36:12

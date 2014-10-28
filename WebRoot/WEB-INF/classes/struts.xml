@@ -15,6 +15,15 @@
 <action name="returnMyJsp">
 <result>index.jsp</result>
 </action>
+<action name="SearchBegin">
+<result>Search.jsp</result>
+</action>
+<action name="SearchTBegin">
+<result>SearchT.jsp</result>
+</action>
+<action name="SearchMBegin">
+<result>SearchM.jsp</result>
+</action>
 </package>
 
 

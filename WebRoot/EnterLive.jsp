@@ -61,19 +61,19 @@ body {
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="returnMyJsp.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJsp.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
+    <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
     </tr>
     </tbody></table>
   </div>
 <hr>
-    <font size=8>输入两个对阵球队ID</font> 
+    <font size=5>输入两个对阵球队ID</font> 
      <form id="teamid" method="post" action="<%=path%>/enterLive.action">
-        <font size=6>主队(Home)</font>
+        <font size=3>主队(Home)</font>
      	<input type="text" id="TeamID1" name="TeamID1">
-     	<br/>
-     	<font size=6>客队(Away)</font>
+     	<br/><br>
+     	<font size=3>客队(Away)</font>
      	<input type="text" id="TeamID2" name="TeamID2">
-     	<br/>
+     	<br/><br>
      	<input type="submit" name="submit" value="进入现场记录">
      </form>
   </body>
