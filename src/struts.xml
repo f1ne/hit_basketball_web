@@ -15,6 +15,18 @@
 <action name="returnMyJsp">
 <result>index.jsp</result>
 </action>
+<<<<<<< HEAD
+=======
+<action name="SearchBegin">
+<result>Search.jsp</result>
+</action>
+<action name="SearchTBegin">
+<result>SearchT.jsp</result>
+</action>
+<action name="SearchMBegin">
+<result>SearchM.jsp</result>
+</action>
+>>>>>>> master
 </package>
 
 
@@ -52,4 +64,31 @@
 <result>Login.jsp</result>
 </action>
 </package>
+<<<<<<< HEAD
+=======
+<!-- Ye Zhe added -->
+<package name="com.hit.cs.basketball" extends="struts-default" namespace="/">  
+  <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
+      <result name="success">/Record.jsp</result>
+  </action>
+  <action name="enterRecordingBegin">
+  <result>EnterRecording.jsp</result>
+  </action>
+  <action name="enterLive" class="com.hit.cs.basketball.Basketball" method="enterLive">
+      <result name="success">/Live.jsp</result>
+  </action>
+  <action name="enterLiveBegin">
+  <result>EnterLive.jsp</result>
+  </action>
+  
+  <action name="enterLiveT" class="com.hit.cs.basketball.Basketball" method="enterLive">
+      <result name="success">/LiveT.jsp</result>
+  </action>
+  <action name="enterLiveBeginT">
+  <result>EnterLiveT.jsp</result>
+  </action>
+</package>
+   
+
+>>>>>>> master
 </struts>    

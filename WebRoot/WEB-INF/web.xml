@@ -17,4 +17,31 @@
   <filter-mapping>
   	<filter-name>struts2</filter-name>
   	<url-pattern>*.action</url-pattern>
+<<<<<<< HEAD
   </filter-mapping></web-app>
+=======
+  </filter-mapping>
+   <!-- Author:Ye Zhe 增加对Record.jsp的servlet的配置 -->
+   <!-- Record配置开始 -->
+  <servlet>
+  		<servlet-name>Record</servlet-name>
+  		<servlet-class>com.hit.cs.basketball.Record</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>Record</servlet-name>
+  		<url-pattern>/Record.servlet</url-pattern>
+  </servlet-mapping>
+  <!-- Record配置结束 -->
+  <!-- LiveRefresh配置开始 -->
+  <servlet>
+  		<servlet-name>LiveRefresh</servlet-name>
+  		<servlet-class>com.hit.cs.basketball.LiveRefresh</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>LiveRefresh</servlet-name>
+  		<url-pattern>/LiveRefresh.servlet</url-pattern>
+  </servlet-mapping>
+  <!-- LiveRefresh配置结束 -->
+ </web-app>
+  
+>>>>>>> master

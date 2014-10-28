@@ -52,8 +52,13 @@ body {
    <tbody><tr>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
+<<<<<<< HEAD
       <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %></span> </td>
       <td><a href="returnMyJsp.action" style="font-size:14px;"><br>&nbsp;&nbsp;&nbsp;登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+=======
+      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %>&nbsp;&nbsp;&nbsp;</span> </td>
+      <td><a href="returnMyJsp.action" style="font-size:14px;"><br>登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+>>>>>>> master
     </tr>
     </tbody>
     </table>
@@ -62,8 +67,13 @@ body {
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="returnMyJspT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<<<<<<< HEAD
     <td><a href="returnMyJspT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="returnMyJspT.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+=======
+    <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+>>>>>>> master
       <td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
     </tr>
     </tbody></table>
