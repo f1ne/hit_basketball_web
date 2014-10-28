@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	h2{margin-bottom:0;font-size:14px}
 	</style>
 	<script language="javascript"src="Record.js">
-	
+	<script language="javascript"src="Live.js">
 	</script>
   </head>
   <style type="text/css"> 

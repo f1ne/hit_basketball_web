@@ -53,12 +53,6 @@ public class Basketball extends ActionSupport{
 			
 		}
 		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2));
-		//²âÊÔº¯Êý
-		int playerid=1;
-		String str="20141027";
-		PlayerBean p=checkPlayerDataByIDAndDate(playerid,str);
-		System.out.println(p.getFouls()+" "+p.getScore());
-		//
 		return "success";
 	}
 	/*
