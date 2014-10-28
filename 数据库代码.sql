@@ -1,12 +1,10 @@
-﻿CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db`;
-
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: db
 -- ------------------------------------------------------
 -- Server version	5.7.3-m13
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -66,6 +64,29 @@ LOCK TABLES `gametable20141027_1_2` WRITE;
 /*!40000 ALTER TABLE `gametable20141027_1_2` DISABLE KEYS */;
 INSERT INTO `gametable20141027_1_2` VALUES (1,'score','2014-10-27 17:09:44'),(1,'foul','2014-10-27 17:09:46'),(2,'score','2014-10-27 17:09:47'),(6,'score','2014-10-27 17:09:48'),(6,'foul','2014-10-27 17:09:48'),(2,'foul','2014-10-27 17:09:49'),(1,'score','2014-10-27 18:15:13'),(1,'foul','2014-10-27 18:15:14'),(1,'score','2014-10-27 18:15:15'),(1,'score','2014-10-27 18:15:15'),(1,'foul','2014-10-27 18:15:16'),(2,'score','2014-10-27 18:15:20'),(2,'foul','2014-10-27 18:15:20'),(6,'score','2014-10-27 18:15:21'),(6,'foul','2014-10-27 18:15:22'),(6,'foul','2014-10-27 18:15:22'),(6,'score','2014-10-27 18:15:23'),(6,'score','2014-10-27 18:15:25'),(2,'score','2014-10-27 18:15:26'),(2,'score','2014-10-27 18:15:28'),(2,'score','2014-10-27 18:15:29');
 /*!40000 ALTER TABLE `gametable20141027_1_2` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gametable20141028_1_2`
+--
+
+DROP TABLE IF EXISTS `gametable20141028_1_2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gametable20141028_1_2` (
+  `PlayerID` int(11) DEFAULT NULL,
+  `Event` varchar(45) DEFAULT NULL,
+  `Time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gametable20141028_1_2`
+--
+
+LOCK TABLES `gametable20141028_1_2` WRITE;
+/*!40000 ALTER TABLE `gametable20141028_1_2` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gametable20141028_1_2` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -168,5 +189,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-27 18:31:26
-
+-- Dump completed on 2014-10-28 16:41:15

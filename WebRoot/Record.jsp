@@ -31,11 +31,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	</script>
   </head>
+  <style type="text/css"> 
+<!-- 
+a:link { 
+font-size: 12px; 
+color: #FFFFFF; 
+text-decoration: none; 
+} 
+a:visited { 
+font-size: 12px; 
+color: #FFFFFF; 
+text-decoration: none; 
+} 
+a:hover { 
+font-size: 12px; 
+color: #999999; 
+text-decoration: underline; 
+} 
+--> 
+</style> 
   
-  <body>
+    <style>
+body {
+	background-color: #668866;
+}
+</style>
+  <body background="2image/background.jpg">
+  <div id="menu">
+   <table border="0" cellpadding="0" style="margin-left:0px;">
+   <tbody><tr>
+      <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
+      <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
+      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %></span> </td>
+      <td><a href="returnMyJsp.action" style="font-size:14px;"><br>&nbsp;&nbsp;&nbsp;登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </tbody>
+    </table>
+    <hr>
+    <table border="0" cellpadding="0" style="margin-left:0px;">
+    <tbody><tr>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspM.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    </tr>
+    </tbody></table>
+  </div>
+<hr>
     <%
-        ArrayList<PlayerBean> listTeam1=(ArrayList)request.getAttribute("listTeam1");
-        ArrayList<PlayerBean> listTeam2=(ArrayList)request.getAttribute("listTeam2");
+        ArrayList<PlayerBean> listTeam1=(ArrayList<PlayerBean>)request.getAttribute("listTeam1");
+        ArrayList<PlayerBean> listTeam2=(ArrayList<PlayerBean>)request.getAttribute("listTeam2");
         int HomeTeamID=0;
         int AwayTeamID=0;
         if (listTeam1.size()>0){

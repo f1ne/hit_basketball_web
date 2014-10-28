@@ -1,17 +1,14 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.hit.cs.basketball.PlayerBean" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ page import="Login.LoginAction" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
- <% request.setCharacterEncoding("utf-8");
-response.setContentType("text/html;charset=utf-8");%>
   <head>
-    <base href="<%=basePath%>">
-    <title>Add Author page</title>
+    <base href="<%=basePath%>">    
+    <title>比赛现场实时技术统计</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -20,9 +17,20 @@ response.setContentType("text/html;charset=utf-8");%>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<style type="text/css">
+	div#container{width:1200px;align:center}
+	div#header{background-color:#99bbbb;text-align:center}
+	div#hometeam{background-color:#ffff99;height:600px;width:600px;float:left}
+	div#awayteam{background-color:#eeeeee;height:600px;width:600px;float:left}
+	div#footer{background-color:#99bbbb;clear:both;text-align:center}
+	h1{margin-bottom:0}
+	h2{margin-bottom:0;font-size:14px}
+	</style>
+	<script language="javascript"src="Live.js">
+	
+	</script>
   </head>
-<style type="text/css"> 
+  <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -61,20 +69,24 @@ body {
     <hr>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
     </tr>
     </tbody></table>
   </div>
 <hr>
-<table border="0" cellpadding="0" style="margin-left:0px;">
-    <tbody><tr>
-    <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/ball.png" width="620px;" height="356px;"/> </td> 
-     </tr>
-    </tbody></table>
-   <br>
+<font size=8>输入两个对阵球队ID</font> 
+     <form id="teamid" method="post" action="<%=path%>/enterLiveT.action">
+        <font size=6>主队(Home)</font>
+     	<input type="text" id="TeamID1" name="TeamID1">
+     	<br/>
+     	<font size=6>客队(Away)</font>
+     	<input type="text" id="TeamID2" name="TeamID2">
+     	<br/>
+     	<input type="submit" name="submit" value="进入现场记录">
+     </form>
   </body>
 </html>
