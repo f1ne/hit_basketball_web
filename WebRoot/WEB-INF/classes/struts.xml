@@ -26,6 +26,23 @@
 </action>
 </package>
 
+<package name="IndexNTable" extends="struts-default">
+<action name="GetSchedule" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>Schedule.jsp</result>
+</action>
+<action name="GetScheduleT" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>ScheduleT.jsp</result>
+</action>
+<action name="GetScheduleM" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>ScheduleM.jsp</result>
+</action>
+<action name="setScheduleBegin">
+<result>SetSchedule.jsp</result>
+</action>
+<action name="setSchedule" class="IndexNTable.IndexMessageAction" method="InsertMessage">
+ <result name="success" type="redirectAction">GetScheduleM</result>
+</action>
+</package>
 
 <package name="Manager" extends="struts-default">
 <action name="AddManagerBegin" class="Manager.ManagerAction" method="AddManager" >

@@ -70,7 +70,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJsp.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
     </tr>
@@ -92,7 +92,7 @@ body {
      %>
 	<div id="container">
 		<div id="header">
-			<h1><font size=14>比赛现场实时技术统计</font></h1>
+			<h1><font size=14>比赛现场实时技术统计</font></h1><br>注：点击刷新才能更新实时数据
 			<input type="button" value="刷新" onclick="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)">
 		</div>
 		<div id="hometeam">
