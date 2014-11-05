@@ -48,7 +48,7 @@ public class Basketball extends ActionSupport{
 		//建立比赛表
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
 		String timeStr=sdf.format(new Date());
-		if (DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2)==false){
+		if (DataBaseBean.isMatchRecordTableExist(timeStr, TeamID1, TeamID2)==false){
 			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);
 			
 		}

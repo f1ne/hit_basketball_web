@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	h2{margin-bottom:0;font-size:14px}
 	</style>
 	<script language="javascript"src="Record.js">
-	<script language="javascript"src="Live.js">
+	
 	</script>
   </head>
   <style type="text/css"> 
@@ -56,7 +56,20 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <%
+        ArrayList<PlayerBean> listTeam1=(ArrayList<PlayerBean>)request.getAttribute("listTeam1");
+        ArrayList<PlayerBean> listTeam2=(ArrayList<PlayerBean>)request.getAttribute("listTeam2");
+        int HomeTeamID=0;
+        int AwayTeamID=0;
+        if (listTeam1.size()>0){
+            HomeTeamID=((PlayerBean)listTeam1.get(0)).getTeamID();
+        }
+        if (listTeam2.size()>0){
+            AwayTeamID=((PlayerBean)listTeam2.get(0)).getTeamID();
+        }
+        PlayerBean aPlayer;
+     %>
+  <body onload="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)" background="2image/background.jpg">
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -79,24 +92,20 @@ body {
     </tbody></table>
   </div>
 <hr>
-    <%
-        ArrayList<PlayerBean> listTeam1=(ArrayList<PlayerBean>)request.getAttribute("listTeam1");
-        ArrayList<PlayerBean> listTeam2=(ArrayList<PlayerBean>)request.getAttribute("listTeam2");
-        int HomeTeamID=0;
-        int AwayTeamID=0;
-        if (listTeam1.size()>0){
-            HomeTeamID=((PlayerBean)listTeam1.get(0)).getTeamID();
-        }
-        if (listTeam2.size()>0){
-            AwayTeamID=((PlayerBean)listTeam2.get(0)).getTeamID();
-        }
-        PlayerBean aPlayer;
-     %>
+    
 	<div id="container">
-		<div id="header">
+		<div id="header">	    
 			<h1><font size=14>现场比赛记录</font></h1>
 		</div>
 		<div id="hometeam">
+		<table>
+		  <tr>
+		    <td>主队(HomeTeam)</td>
+		    <td><div id=hometeamid><%=HomeTeamID %></div></td>
+		    <td>得分：</td>
+		    <td><div id=hometeamscore>0</div></td>
+		  </tr>
+		</table>
 		<table>
 		 <tr>
 		    <td>号码</td>
@@ -130,6 +139,14 @@ body {
 		</div>
 		
 		<div id="awayteam">
+		<table>
+		  <tr>
+		    <td>客队(AwayTeam)</td>
+		    <td><div id=awayteamid><%=AwayTeamID %></div></td>
+		    <td>得分：</td>
+		    <td><div id=awayteamscore>0</div></td>
+		  </tr>
+		</table>
 		<table>
 		 <tr>
 		    <td>号码</td>

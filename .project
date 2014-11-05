@@ -62,5 +62,25 @@
 			<type>2</type>
 			<location>D:/workspace/Basket/WebRoot/image</location>
 		</link>
+		<link>
+			<name>WebRoot/image/background.jpg</name>
+			<type>1</type>
+			<location>E:/GitHub/hit_basketball_web/WebRoot/image/background.jpg</location>
+		</link>
+		<link>
+			<name>WebRoot/image/ball.png</name>
+			<type>1</type>
+			<location>E:/GitHub/hit_basketball_web/WebRoot/image/ball.png</location>
+		</link>
+		<link>
+			<name>WebRoot/image/logo.png</name>
+			<type>1</type>
+			<location>E:/GitHub/hit_basketball_web/WebRoot/image/logo.png</location>
+		</link>
+		<link>
+			<name>WebRoot/image/logo2.gif</name>
+			<type>1</type>
+			<location>E:/GitHub/hit_basketball_web/WebRoot/image/logo2.gif</location>
+		</link>
 	</linkedResources>
 </projectDescription>
