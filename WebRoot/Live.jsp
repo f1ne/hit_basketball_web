@@ -55,7 +55,20 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <%
+        ArrayList<PlayerBean> listTeam1=(ArrayList)request.getAttribute("listTeam1");
+        ArrayList<PlayerBean> listTeam2=(ArrayList)request.getAttribute("listTeam2");
+        int HomeTeamID=0;
+        int AwayTeamID=0;
+        if (listTeam1.size()>0){
+            HomeTeamID=((PlayerBean)listTeam1.get(0)).getTeamID();
+        }
+        if (listTeam2.size()>0){
+            AwayTeamID=((PlayerBean)listTeam2.get(0)).getTeamID();
+        }
+        PlayerBean aPlayer;
+     %>
+  <body onload="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)" background="2image/background.jpg">
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -77,25 +90,21 @@ body {
     </tbody></table>
   </div>
 <hr>
-    <%
-        ArrayList<PlayerBean> listTeam1=(ArrayList)request.getAttribute("listTeam1");
-        ArrayList<PlayerBean> listTeam2=(ArrayList)request.getAttribute("listTeam2");
-        int HomeTeamID=0;
-        int AwayTeamID=0;
-        if (listTeam1.size()>0){
-            HomeTeamID=((PlayerBean)listTeam1.get(0)).getTeamID();
-        }
-        if (listTeam2.size()>0){
-            AwayTeamID=((PlayerBean)listTeam2.get(0)).getTeamID();
-        }
-        PlayerBean aPlayer;
-     %>
+    
 	<div id="container">
 		<div id="header">
 			<h1><font size=14>比赛现场实时技术统计</font></h1><br>注：点击刷新才能更新实时数据
 			<input type="button" value="刷新" onclick="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)">
 		</div>
 		<div id="hometeam">
+		<table>
+		  <tr>
+		    <td>主队(HomeTeam)</td>
+		    <td><div id=hometeamid><%=HomeTeamID %></div></td>
+		    <td>得分：</td>
+		    <td><div id=hometeamscore>0</div></td>
+		  </tr>
+		</table>
 		<table>
 		 <tr>
 		    <td>号码</td>
@@ -125,6 +134,14 @@ body {
 		</div>
 		
 		<div id="awayteam">
+		<table>
+		  <tr>
+		    <td>客队(AwayTeam)</td>
+		    <td><div id=awayteamid><%=AwayTeamID %></div></td>
+		    <td>得分：</td>
+		    <td><div id=awayteamscore>0</div></td>
+		  </tr>
+		</table>
 		<table>
 		 <tr>
 		    <td>号码</td>

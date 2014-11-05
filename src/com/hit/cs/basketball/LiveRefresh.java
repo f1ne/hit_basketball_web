@@ -46,6 +46,7 @@ public class LiveRefresh extends HttpServlet{
 			output+="<PlayerID>"+HomeTeamList.get(i).getPlayerID()+"</PlayerID>";
 			output+="<Score>"+APlayer.getScore()+"</Score>";
 			output+="<Foul>"+APlayer.getFouls()+"</Foul>";
+			output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
 			output+="</PlayerData>";
 		}
 		for (int i=0;i<AwayTeamList.size();i++){
@@ -57,6 +58,7 @@ public class LiveRefresh extends HttpServlet{
 			output+="<PlayerID>"+AwayTeamList.get(i).getPlayerID()+"</PlayerID>";
 			output+="<Score>"+APlayer.getScore()+"</Score>";
 			output+="<Foul>"+APlayer.getFouls()+"</Foul>";
+			output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
 			output+="</PlayerData>";
 		}
 		output+="</response>";
