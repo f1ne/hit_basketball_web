@@ -52,7 +52,7 @@ public class Basketball extends ActionSupport{
 			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);
 			
 		}
-		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, 1, 2));
+		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, TeamID1, TeamID2));
 		return "success";
 	}
 	/*
