@@ -70,7 +70,7 @@ body {
   </div>
 <hr>
   <br><br><br><br>
-   <center><h1><b><s:property value="jspTitle"/></b></h1></center>
+   <center><h1><span style="color:white;"><b><s:property value="jspTitle"/></b></span></h1></center>
    <s:form align="CENTER" action="AddManager.action" ><s:submit value="返回"/></s:form>
   </body>
 </html>
