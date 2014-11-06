@@ -72,7 +72,7 @@ body {
     <h1><b>队伍注册</b></h1>
     <br>
     注：队伍ID为6位形如201201，代表的是2012级的智能接口与人机交互研究中心的队伍。请自行推算。
-    <br>
+    <br><br>
     <s:form action="AddTeamBegin.action">
     
     <li><div class="select_panel">

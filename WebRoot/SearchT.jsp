@@ -69,26 +69,26 @@ body {
     </tbody></table>
   </div>
 <hr>
-  <h1>结果查询</h1>
-  <p><em>你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</em></p>
+  <h1><span style="color:white;">结果查询</span></h1>
+  <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
 <form id="fomr1" name="input" method="get"action="<%=path %>/GetName">
-	<h3>按队员查询</h3>
-	 输入队员名称：
+	<h3><span style="color:white;">按队员查询</span></h3>
+	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" name="teamername" />
 
 </form>
 <form name="input"  method="get" action="<%=path %>/GetDate">
 
-	输入比赛日期：
+	<span style="color:white;">输入比赛日期：</span>
 	<input type="text" name="racedate" />
 	<input type="submit" value="提交" />
 </form>
-  <%out.println("结果"); %>
+  <!--  %out.println("结果"); %-->
      <br>
      <%
-   //  ArrayList list=(ArrayList)request.getAttribute("list");
-  //   PlayerBean Player;
-    // String Score=(String)request.getAttribute("Score");
+ // ArrayList list=(ArrayList)request.getAttribute("list");
+    // PlayerBean Player;
+   //  String Score=(String)request.getAttribute("Score");
    //  out.println("得分"+Score+"<br>");
      
       %>

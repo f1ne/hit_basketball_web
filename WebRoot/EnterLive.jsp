@@ -66,12 +66,12 @@ body {
     </tbody></table>
   </div>
 <hr>
-    <font size=5>输入两个对阵球队ID</font> 
+    <font size=5><span style="color:white;">输入两个对阵球队ID</span></font> 
      <form id="teamid" method="post" action="<%=path%>/enterLive.action">
-        <font size=3>主队(Home)</font>
+        <br><font size=3><span style="color:white;">主队(Home)</span></font>
      	<input type="text" id="TeamID1" name="TeamID1">
      	<br/><br>
-     	<font size=3>客队(Away)</font>
+     	<font size=3><span style="color:white;">客队(Away)</span></font>
      	<input type="text" id="TeamID2" name="TeamID2">
      	<br/><br>
      	<input type="submit" name="submit" value="进入现场记录">

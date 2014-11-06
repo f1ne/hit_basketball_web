@@ -73,7 +73,7 @@ body {
     <h1><b>添加球员</b></h1>
     <br>
     注：球员姓名不能重，如果有相关情况请在后面用1，2区分
-    <br>
+    <br><br>
     <s:form action="AddPlayerBegin.action">
     
 								
