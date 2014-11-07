@@ -99,7 +99,7 @@ body {
     <table >
     <tr><td>队伍ID:<s:textfield name="newTeam.id"/></td></tr>
     <tr><td>队伍名:<s:textfield name="newTeam.name"/></td></tr>
-    <tr><td>密码:<s:textfield name="newTeam.passcode"/></td></tr>
+    <tr><td>密码:<s:password name="newTeam.passcode"/></td></tr>
    	</table> 
    	
     <br>	                  

@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Basket</name>
+	<name>hit_basketball_web</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>org.eclipse.wst.common.project.facet.core.builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
 			<name>org.eclipse.wst.jsdt.core.javascriptValidator</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>com.genuitec.eclipse.j2eedt.core.WebClasspathBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -26,17 +16,17 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.genuitec.eclipse.j2eedt.core.J2EEProjectValidator</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>com.genuitec.eclipse.j2eedt.core.DeploymentDescriptorValidator</name>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.genuitec.eclipse.j2eedt.core.DeploymentDescriptorValidator</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -47,40 +37,10 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.genuitec.eclipse.ast.deploy.core.deploymentnature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
-		<nature>com.genuitec.eclipse.j2eedt.core.webnature</nature>
+		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
-		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
-		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
-		<nature>com.genuitec.eclipse.cross.easystruts.eclipse.easystrutsnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebRoot/image</name>
-			<type>2</type>
-			<location>D:/workspace/Basket/WebRoot/image</location>
-		</link>
-		<link>
-			<name>WebRoot/image/background.jpg</name>
-			<type>1</type>
-			<location>E:/GitHub/hit_basketball_web/WebRoot/image/background.jpg</location>
-		</link>
-		<link>
-			<name>WebRoot/image/ball.png</name>
-			<type>1</type>
-			<location>E:/GitHub/hit_basketball_web/WebRoot/image/ball.png</location>
-		</link>
-		<link>
-			<name>WebRoot/image/logo.png</name>
-			<type>1</type>
-			<location>E:/GitHub/hit_basketball_web/WebRoot/image/logo.png</location>
-		</link>
-		<link>
-			<name>WebRoot/image/logo2.gif</name>
-			<type>1</type>
-			<location>E:/GitHub/hit_basketball_web/WebRoot/image/logo2.gif</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -1,43 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <display-name></display-name>	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>
+    <filter-name>struts2</filter-name>
+    <filter-class>
   		org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
   	</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>struts2</filter-name>
-  	<url-pattern>*.action</url-pattern>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.action</url-pattern>
   </filter-mapping>
-   <!-- Author:Ye Zhe 增加对Record.jsp的servlet的配置 -->
-   <!-- Record配置开始 -->
   <servlet>
-  		<servlet-name>Record</servlet-name>
-  		<servlet-class>com.hit.cs.basketball.Record</servlet-class>
+    <servlet-name>Record</servlet-name>
+    <servlet-class>com.hit.cs.basketball.Record</servlet-class>
   </servlet>
   <servlet-mapping>
-  		<servlet-name>Record</servlet-name>
-  		<url-pattern>/Record.servlet</url-pattern>
+    <servlet-name>Record</servlet-name>
+    <url-pattern>/Record.servlet</url-pattern>
   </servlet-mapping>
-  <!-- Record配置结束 -->
-  <!-- LiveRefresh配置开始 -->
   <servlet>
-  		<servlet-name>LiveRefresh</servlet-name>
-  		<servlet-class>com.hit.cs.basketball.LiveRefresh</servlet-class>
+    <servlet-name>LiveRefresh</servlet-name>
+    <servlet-class>com.hit.cs.basketball.LiveRefresh</servlet-class>
   </servlet>
   <servlet-mapping>
-  		<servlet-name>LiveRefresh</servlet-name>
-  		<url-pattern>/LiveRefresh.servlet</url-pattern>
+    <servlet-name>LiveRefresh</servlet-name>
+    <url-pattern>/LiveRefresh.servlet</url-pattern>
   </servlet-mapping>
-  <!-- LiveRefresh配置结束 -->
- </web-app>
-  
+</web-app>
