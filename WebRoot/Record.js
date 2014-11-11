@@ -29,18 +29,18 @@
 	function score(playerID,homeTeamID,awayTeamID){
 		
 	    //当前页面的数据自加1
-	    var preScore=parseInt(document.getElementById(playerID+"score").innerText);
-	    var url="Record.servlet?playerID="+playerID+"&event=score"+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
-	    document.getElementById(playerID+"score").innerText=preScore+1;
+	    var score=parseInt(document.getElementById(playerID+"score").innerText)+1;
+	    var url="Record.servlet?playerID="+playerID+"&event=Score&amount="+score+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
+	    document.getElementById(playerID+"score").innerText=score;
 	    sendRequest(url);
 	    
 	}
 	/*增加犯规*/
 	function foul(playerID,homeTeamID,awayTeamID){
 		//当前页面的犯规数据自动加1
-		var prefoul=parseInt(document.getElementById(playerID+"foul").innerText);
-	    document.getElementById(playerID+"foul").innerText=prefoul+1;
-	    var url="Record.servlet?playerID="+playerID+"&event=foul"+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
+		var foul=parseInt(document.getElementById(playerID+"foul").innerText)+1;
+	    document.getElementById(playerID+"foul").innerText=foul;
+	    var url="Record.servlet?playerID="+playerID+"&event=Fouls&amount="+foul+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 	    sendRequest(url);
 	}
 	//刷新函数

@@ -56,7 +56,7 @@ public class DataBaseBean {
 		}
 		System.out.println("更新成功"+sql);
 	}
-    //检查比赛表是否建立
+    //检查比赛记录表是否建立
 	public static boolean isMatchRecordTableExist(String date,int homeTeamID,int awayTeamID){
 		Connection conn=null;
 		ResultSet rs=null;
@@ -76,7 +76,27 @@ public class DataBaseBean {
 		return false;
 		
 	}
-	//建立比赛表并在比赛表中添加
+	//检查球员记录表是否建立
+	public static boolean isPlayersRecordTableExist(String date,int homeTeamID,int awayTeamID){
+		Connection conn=null;
+		ResultSet rs=null;
+		String tableName=String.format("playerstable%s_%d_%d",date,homeTeamID,awayTeamID);
+		try{
+			conn=getConnection();
+			DatabaseMetaData md=conn.getMetaData();
+			rs=md.getTables(null, null,tableName, null);
+			if (rs.next()){
+				return true;
+			}else{
+				return false;
+			}
+		}catch(Exception e){
+			System.out.println("检查表存在出错"+e);
+		}
+		return false;
+		
+	}
+	//建立比赛记录表并在比赛表中添加
 	public static void createMatchRecordTable(String datestr,int homeTeamID,int awayTeamID){
 		String sql=String.format("create table gametable%s_%d_%d"
 				+"(PlayerID INTEGER,"
@@ -97,6 +117,13 @@ public class DataBaseBean {
 		}
 		
 	}
+	//建立球员记录表
+		public static void createPlayersRecordTable(String datestr,int homeTeamID,int awayTeamID){
+			String sql=String.format("create table playerstable%s_%d_%d select * from players "
+					+ "where TeamID='%d' or TeamID='%d'"
+					,datestr,homeTeamID,awayTeamID,homeTeamID,awayTeamID);
+			update(sql);
+		}
     //通过球员名字查询球员信息
 	public static ArrayList<PlayerBean> queryPlayerByName(String name){
 		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
@@ -212,4 +239,7 @@ public class DataBaseBean {
 		}
 		return list;
 	}
+	/*
+	 * 
+	 */
 }
