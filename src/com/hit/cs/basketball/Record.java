@@ -25,6 +25,7 @@ public class Record extends HttpServlet{
 		int playerID=Integer.parseInt(request.getParameter("playerID"));
 		int homeTeamID=Integer.parseInt(request.getParameter("homeTeamID"));
 		int awayTeamID=Integer.parseInt(request.getParameter("awayTeamID"));
+		int amount=Integer.parseInt(request.getParameter("amount"));
 		String event=request.getParameter("event");
 		System.out.println(playerID+event);
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
@@ -36,7 +37,10 @@ public class Record extends HttpServlet{
 				                 timeStr,homeTeamID,awayTeamID,playerID,event,datetime);
 		DataBaseBean.update(sql);
 		System.out.println(sql);
-				                 
+		//在球员数据统计表中更新数据
+		sql=String.format("update playerstable%s_%d_%d set %s='%d' where PlayerID='%d'",
+				timeStr,homeTeamID,awayTeamID,event,amount,playerID);
+		DataBaseBean.update(sql);
 	}
 }
 

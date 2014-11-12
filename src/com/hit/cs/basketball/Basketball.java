@@ -37,6 +37,7 @@ public class Basketball extends ActionSupport{
 	 * 功能:完成进入比赛记录Record.jsp界面的数据库工作，并且读取球员名单
 	 */
 	public String enterRecording(){
+		//建立request将从数据库查询到的球员信息发送到前端
 		HttpServletRequest request;
 		request=ServletActionContext.getRequest();
 		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
@@ -48,9 +49,13 @@ public class Basketball extends ActionSupport{
 		//建立比赛表
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
 		String timeStr=sdf.format(new Date());
+		//先查询比赛表记录表是否建立，否则建立
 		if (DataBaseBean.isMatchRecordTableExist(timeStr, TeamID1, TeamID2)==false){
-			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);
-			
+			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);			
+		}
+		//查询比赛表球员数据统计表是否建立，否则建立
+		if (DataBaseBean.isPlayersRecordTableExist(timeStr,TeamID1,TeamID2)==false){
+			DataBaseBean.createPlayersRecordTable(timeStr,TeamID1,TeamID2);
 		}
 		System.out.println(DataBaseBean.isMatchRecordTableExist(timeStr, TeamID1, TeamID2));
 		return "success";
@@ -59,6 +64,7 @@ public class Basketball extends ActionSupport{
 	 * 功能:进入数据实时直播
 	 */
 	public String enterLive(){
+		//建立request将从数据库查询的球员信息发送到前端
 		HttpServletRequest request;
 		request=ServletActionContext.getRequest();
 		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
@@ -92,8 +98,8 @@ public class Basketball extends ActionSupport{
 			for (int i=0;i<list.size();i++){
 				RecordBean record=(RecordBean)list.get(i);
 				if (record.getPlayerID()==player.getPlayerID()){
-					String scorestr="score";
-					String foulstr="foul";
+					String scorestr="Score";
+					String foulstr="Fouls";
 					if (scorestr.equals(record.getEvent())){
 						int tempscore=player.getScore();
 						player.setScore(tempscore+1);
@@ -124,8 +130,8 @@ public class Basketball extends ActionSupport{
 			for (int i=0;i<list.size();i++){
 				RecordBean record=(RecordBean)list.get(i);
 				if (record.getPlayerID()==player.getPlayerID()){
-					String scorestr="score";
-					String foulstr="foul";
+					String scorestr="Score";
+					String foulstr="Fouls";
 					if (scorestr.equals(record.getEvent())){
 						int tempscore=player.getScore();
 						player.setScore(tempscore+1);
