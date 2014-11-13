@@ -73,7 +73,7 @@ body {
 <%String Mess=(String)session.getAttribute("IndexMessage"); %>
 <h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
 <s:form action="setSchedule.action">
-<span style="color:white;">新赛事通告:</span><s:textfield name="newMess" style="font-size:12px;width:450px;height:100px;"></s:textfield>                  
+<span style="color:white;">新赛事通告:</span><s:textarea name="newMess" style="font-size:12px;width:450px;height:100px;border:0px;overflow-x:hidden"></s:textarea>                  
    	<s:submit align="right" value="提交"/>
     </s:form>
 </body></html>
