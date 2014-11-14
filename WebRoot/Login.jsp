@@ -65,19 +65,37 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<<<<<<< HEAD
     <td><a href="GetSchedule.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+=======
+    <td><a href="returnMyJsp.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<<<<<<< HEAD
+    <td><a href="returnMyJsp.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJsp.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+=======
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+>>>>>>> master
     </tr>
     </tbody></table>
   </div>
 <hr>
    	
    	<br>
+<<<<<<< HEAD
 <center>       <h2 ><span style="color:white">帐号登录</span> </h2 >  <s:form action="LoginBegin.action" style="color:white">
+=======
+<center>       <h2 >帐号登录 </h2 >  <s:form action="LoginBegin.action">
+<<<<<<< HEAD
+            用户名：<Input type = "text" name = "user" style= "width:150" ><br >
+            密码：<Input type = "password" name = "psw" style = "width:150">
+=======
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
             用户ID：<br><Input type = "text" name = "user" style= "width:150" ><br >
             密码：<br><Input type = "password" name = "psw" style = "width:150">
+>>>>>>> master
               <br>
               <br>
                <li><div class="radio_panel">

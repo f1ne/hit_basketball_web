@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
+<<<<<<< HEAD
+=======
   <runtime name="com.genuitec.runtime.generic.jee50"/>
+<<<<<<< HEAD
   <fixed facet="jst.web"/>
   <fixed facet="java"/>
+=======
+>>>>>>> master
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
   <fixed facet="wst.jsdt.web"/>
   <installed facet="java" version="1.6"/>
   <installed facet="jst.web" version="2.5"/>
+<<<<<<< HEAD
+=======
+  <installed facet="wst.jsdt.web" version="1.0"/>
+<<<<<<< HEAD
+=======
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
   <installed facet="jst.web.jstl" version="1.2"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="web.struts2" version="2.1"/>
+>>>>>>> master
 </faceted-project>

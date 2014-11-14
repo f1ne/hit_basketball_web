@@ -1,10 +1,29 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="hit_basketball_web">
+=======
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Basket">
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="/Basket"/>
+        <property name="java-output-path" value="/Basket/WebRoot/WEB-INF/classes"/>
+=======
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Basket">
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="java-output-path" value="/hit_basketball_web/WebRoot/WEB-INF/classes"/>
         <property name="context-root" value="hit_basketball_web"/>
         <property name="me-merge-utility-modules" value="true"/>
+<<<<<<< HEAD
+=======
+        <property name="me-struts-base-pkg"/>
+>>>>>>> master
+>>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
     </wb-module>
 </project-modules>
