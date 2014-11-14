@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ page import="Login.LoginAction" %>
+<%@ page import="Player.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -22,7 +22,7 @@ response.setContentType("text/html;charset=utf-8");%>
 	-->
 
   </head>
-<style type="text/css"> 
+  <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -47,40 +47,55 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <body>
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
-      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %>&nbsp;&nbsp;&nbsp;</span> </td>
+      <td><br><span style="color:lightblue;">你好,<%String teamID = (String)session.getAttribute("user");%><%=teamID %>&nbsp;&nbsp;&nbsp;</span> </td>
       <td><a href="returnMyJsp.action" style="font-size:14px;"><br>登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody>
     </table>
-    <hr>
+    <hr><% String team=(String)session.getAttribute("team"); %>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleT.action" style="font-size:14px;">赛事日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetScheduleT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="ShowPlayer.action" style="font-size:14px;">查看球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
     </tr>
     </tbody></table>
   </div>
-<hr>
+  <hr>
+ 
+  <h1 align="CENTER"><b><span style="color:white;"><s:property value="jspTitle" /></span></b></h1><h4 align="CENTER"><span style="color:white;">(当前共有 <%=(Integer)request.getAttribute("PlayerNum") %> 名球员)</span></h4>
+    <table border=1 align="CENTER" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>Name</td>
+		<td>Number</td>
+		<td>StudentID</td>
+		<td>Sex</td>
+		<td>Position</td>
 
-  <body>
-   <center>
-    <br><br><br>
-    <table border="0" cellpadding="0" style="margin-left:0px;">
-    <tbody><tr>
-    <td><h1><span style="color:white;">身份：<%=name %><br>
-   <b><s:property value="jspTitle"/></b></span></h1></td>
   	</tr>
-  	</tbody></table></center>
-  	
+	<s:iterator value="A" id="players" status="stuts">
+  	 <tr>
+  	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
+        <td><s:property value="#players.Name"/></td>
+		<td><s:property value="#players.Number"/></td>
+		<td><s:property value="#players.StudentID"/></td>
+		<td><s:property value="#players.Sex"/></td>
+		<td><s:property value="#players.Position"/></td>
+		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerName" value="#players.Name"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	<td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a></td></tr>
+	</table>
+  
   </body>
 </html>

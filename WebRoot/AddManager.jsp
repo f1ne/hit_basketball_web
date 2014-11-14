@@ -60,6 +60,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetScheduleM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -69,12 +70,12 @@ body {
   </div>
    <center>
     <hr>
-    <h1><b>管理员注册</b></h1>
+    <h1><b><span style="color:white">管理员注册</span></b></h1>
     <br>
-    <s:form action="AddManagerBegin.action">
+    <s:form action="AddManagerBegin.action" style="color:white">
     
 								
-    <table >
+    <table style="color:white">
     <tr><td>管理员ID:<s:textfield name="newManager.id"/></td></tr>
     <tr><td>名字:<s:textfield name="newManager.name"/></td></tr>
     <tr><td>密码:<s:textfield name="newManager.passcode"/></td></tr>

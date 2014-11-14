@@ -57,8 +57,16 @@
 </package>
 
 <package name="Player" extends="struts-default">
-<action name="AddPlayerBegin" class="Player.PlayerAction" method="AddPlayer" >
-<result>addResultP.jsp</result>
+<action name="AddPlayerBegin" class="Player.PlayerAction" method="addPlayer" >
+<result name="error">addResultP.jsp</result>
+ <result name="success" type="redirectAction">ShowPlayer</result>
+</action>
+<action name="DeletePlayer" class="Player.PlayerAction" method="deletePlayer" >
+ <result name="success" type="redirectAction">ShowPlayer</result>
+ <result name="error">addResultP.jsp</result>
+</action>
+<action name="ShowPlayer" class="Player.PlayerAction" method="showPlayer">
+<result>ShowPlayer.jsp</result>
 </action>
 <action name="AddPlayer">
 <result>AddPlayer.jsp</result>

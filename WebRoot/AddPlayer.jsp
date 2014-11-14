@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ page import="Player.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -61,23 +62,24 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetScheduleT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+      <td><a href="ShowPlayer.action" style="font-size:14px;">查看球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
     </tr>
     </tbody></table>
   </div>
   <hr>
    <center>
-    <h1><b>添加球员</b></h1>
+    <h1><b><span style="color:white">添加球员</span></b></h1>
     <br>
-    注：球员姓名不能重，如果有相关情况请在后面用1，2区分
+   <span style="color:white"> 注：球员姓名不能重，如果有相关情况请在后面用1，2区分</span>
     <br><br>
-    <s:form action="AddPlayerBegin.action">
+    <s:form action="AddPlayerBegin.action" style="color:white">
     
 								
-    <table >
+    <table style="color:white">
     <tr><td>名字:<s:textfield name="newPlayer.Name"/></td></tr>
     <tr><td>学号:<s:textfield name="newPlayer.StudentID"/></td></tr>
     <tr><td>号码:<s:textfield name="newPlayer.Number"/></td></tr>
