@@ -11,6 +11,7 @@ public class Player {
 	private int NumberOfMatches;
 	private int Fouls;
 	private int Number;
+	private int Age;
 	Player(){
 		this.PlayerID=-1;
 		this.TeamID=-1;
@@ -23,9 +24,10 @@ public class Player {
 		this.NumberOfMatches=-1;
 		this.Fouls=-1;
 		this.Number=-1;
+		this.Age=0;
 	}
 	Player(int playerID,int teamID,String name,String studentID,int score,
-		int numberOfMatches,int fouls,int number,String position,String team,String sex){
+		int numberOfMatches,int fouls,int number,String position,String team,String sex,int age){
 		this.PlayerID=playerID;
 		this.TeamID=teamID;
 		this.Name=name;
@@ -37,6 +39,7 @@ public class Player {
 		this.NumberOfMatches=numberOfMatches;
 		this.Fouls=fouls;
 		this.Number=number;
+		this.Age=age;
 	}
 	
 	public String getTeam() {
@@ -107,5 +110,11 @@ public class Player {
 	}
 	public void setNumber(int number){
 		this.Number=number;
+	}
+	public int getAge() {
+		return Age;
+	}
+	public void setAge(int age) {
+		Age = age;
 	}
 }

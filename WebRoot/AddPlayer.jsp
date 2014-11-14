@@ -86,22 +86,28 @@ body {
    	</table> 
    	<br>
    	<li><div class="radio_panel">
-									<input type="radio" name="newPlayer.Sex" id="sex_1" value="男" /><label for="sex_1">男</label>
+									<input type="radio" name="newPlayer.Sex" id="sex_1" value="男"  checked/><label for="sex_1">男</label>
 									<input type="radio" name="newPlayer.Sex" id="sex_2" value="女" /><label for="sex_2">女</label>
-									<input type="radio" name="newPlayer.Sex" id="sex_3" value="保密" checked /><label for="sex_3">保密</label>
 								</div></li>
    	
    	<br>
    	<li><div class="select_panel">
-									<div class="addr_panel"><i class="addr"></i>位置：<select name="newPlayer.Position" id="newPlayer.position">
-																				<option value="SF小前锋" selected >小前锋(SF)</option>
-																				<option value="PF大前锋"  >大前锋(PF)</option>
-																				<option value="CC中锋"  >中锋(C)</option>
-																				<option value="SG得分后卫"  >得分后卫(SG)</option>
-																				<option value="PG控球后卫"  >控球后卫(PG)</option>
-																				
+									<div class="addr_panel"><i class="addr"></i>参赛身份：<select name="newPlayer.Position" id="newPlayer.position">
+																				<option value="领队" selected >领队</option>
+																				<option value="教练"  >教练</option>
+																				<option value="在读本科生"  >在读本科生</option>
+																				<option value="在读硕士生"  >在读硕士生</option>
+																				<option value="在读博士生"  >在读博士生</option>
+																				<option value="教师"  >教师</option>
 																			</select></div>
 								</div></li> <br>
+								<li><div class="select_panel">
+									<div class="addr_panel"><i class="addr"></i>年龄段：<select name="newPlayer.Age" id="newPlayer.Age">
+																				<option value="20" selected ><%="<" %>45岁</option>
+																				<option value="45"  ><%=">=" %>45岁（1969年12月31日前出生）</option>
+																				<option value="55"  ><%=">=" %>55岁（1959年12月31日前出生）</option>
+																			</select></div>
+								</div></li> <br>   
 								<li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>队伍ID：<select name="newPlayer.TeamID" id="newPlayer.TeamID">
 																				<option value=<%=teamID %> selected ><%=teamID %></option>

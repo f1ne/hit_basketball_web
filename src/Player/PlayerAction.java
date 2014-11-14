@@ -44,7 +44,7 @@ public class PlayerAction extends ActionSupport{
 			int num=0;
 			jspTitle="队内成员:";
 			do{
-				Player tempPlayer=new Player(rs.getInt("PlayerID"),rs.getInt("TeamID"),rs.getString("Name"),rs.getString("StudentID"),rs.getInt("Score"),rs.getInt("NumberOfMatches"),rs.getInt("fouls"),rs.getInt("Number"),rs.getString("Position"),target,rs.getString("Sex"));
+				Player tempPlayer=new Player(rs.getInt("PlayerID"),rs.getInt("TeamID"),rs.getString("Name"),rs.getString("StudentID"),rs.getInt("Score"),rs.getInt("NumberOfMatches"),rs.getInt("fouls"),rs.getInt("Number"),rs.getString("Position"),target,rs.getString("Sex"),rs.getInt("Age"));
 				A.add(tempPlayer);
 				num++;
 			}while(rs.next());
@@ -95,7 +95,7 @@ public class PlayerAction extends ActionSupport{
 		try{
 		Connection tempConnection=pConnection.getConnection();
 		String sqlString="select * from players where Name= ?";
-		String addPlayerString="insert into players (TeamID,Team,Name,Sex,StudentID,Number,Position) values (?,?,?,?,?,?,?)";
+		String addPlayerString="insert into players (TeamID,Team,Name,Sex,StudentID,Number,Position,Age) values (?,?,?,?,?,?,?,?)";
 		PreparedStatement addPlayerPreparedStatement=tempConnection.prepareStatement(addPlayerString);
 		PreparedStatement jokePreparedStatement=tempConnection.prepareStatement(sqlString);
 		jokePreparedStatement.setString(1, newPlayer.getName());
@@ -114,6 +114,7 @@ public class PlayerAction extends ActionSupport{
 			addPlayerPreparedStatement.setString(5, newPlayer.getStudentID());
 			addPlayerPreparedStatement.setInt(6, newPlayer.getNumber());
 			addPlayerPreparedStatement.setString(7, newPlayer.getPosition());
+			addPlayerPreparedStatement.setInt(8, newPlayer.getAge());
 			addPlayerPreparedStatement.executeUpdate();
 			Connection NumConnection=pConnection.getConnection();
 			String sqlString2="update team set PlayerNum=PlayerNum+1 where ID= ?";
