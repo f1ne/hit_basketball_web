@@ -61,7 +61,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -72,6 +72,5 @@ body {
 <hr>
   <br><br><br><br>
    <center><h1><span style="color:white;"><b><s:property value="jspTitle"/></b></span></h1></center>
-   <s:form align="CENTER" action="AddManager.action" ><s:submit value="返回"/></s:form>
   </body>
 </html>

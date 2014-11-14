@@ -59,7 +59,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetSchedule.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotification.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
@@ -67,6 +67,26 @@ body {
     </tbody></table>
   </div>
 <hr>
-<%String Mess=(String)session.getAttribute("IndexMessage"); %>
-<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
-</body></html>
+    <h1 align="CENTER"><b><span style="color:white;"><s:property value="jspTitle" /></span></b></h1>
+    <table border=1 align="CENTER" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>Time</td>
+		<td>Place</td>
+		<td>HomeTeamID</td>
+		<td>AwayTeamID</td>
+
+  	</tr>
+	<s:iterator value="A" id="Games" status="stuts">
+  	 <tr>
+  	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
+        <td><s:property value="#Games.Time"/></td>
+		<td><s:property value="#Games.Place"/></td>
+		<td><s:property value="#Games.HomeTeamID"/></td>
+		<td><s:property value="#Games.AwayTeamID"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+  
+  </body>
+</html>

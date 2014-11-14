@@ -27,20 +27,41 @@
 </package>
 
 <package name="IndexNTable" extends="struts-default">
-<action name="GetSchedule" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>Schedule.jsp</result>
+<action name="GetNotification" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>Notification.jsp</result>
 </action>
-<action name="GetScheduleT" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>ScheduleT.jsp</result>
+<action name="GetNotificationT" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>NotificationT.jsp</result>
 </action>
-<action name="GetScheduleM" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>ScheduleM.jsp</result>
+<action name="GetNotificationM" class="IndexNTable.IndexMessageAction" method="GetMessage">
+<result>NotificationM.jsp</result>
 </action>
-<action name="setScheduleBegin">
+<action name="setNotificationBegin">
+<result>SetNotification.jsp</result>
+</action>
+<action name="setNotification" class="IndexNTable.IndexMessageAction" method="InsertMessage">
+ <result name="success" type="redirectAction">GetNotificationM</result>
+</action>
+
+
+ <action name="InsertSchedule" class="IndexNTable.IndexMessageAction" method="InsertSchedule">
+      <result name="success" type="redirectAction">GetScheduleM</result>
+  </action>
+  <action name="InsertScheduleBegin">
 <result>SetSchedule.jsp</result>
 </action>
-<action name="setSchedule" class="IndexNTable.IndexMessageAction" method="InsertMessage">
- <result name="success" type="redirectAction">GetScheduleM</result>
+<action name="GetSchedule" class="IndexNTable.IndexMessageAction" method="GetSchedule">
+<result>Schedule.jsp</result>
+</action>
+<action name="GetScheduleT" class="IndexNTable.IndexMessageAction" method="GetSchedule">
+<result>ScheduleT.jsp</result>
+</action>
+<action name="GetScheduleM" class="IndexNTable.IndexMessageAction" method="GetSchedule">
+<result>ScheduleM.jsp</result>
+</action>
+<action name="DeleteSchedule" class="IndexNTable.IndexMessageAction" method="DeleteSchedule">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
 </action>
 </package>
 

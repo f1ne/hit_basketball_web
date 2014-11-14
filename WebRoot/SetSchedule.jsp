@@ -62,7 +62,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -71,10 +71,19 @@ body {
     </tbody></table>
   </div>
 <hr> 
-<%String Mess=(String)session.getAttribute("IndexMessage"); %>
-<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
-<s:form action="setSchedule.action">
-<span style="color:white;">新赛事通告:</span><s:textarea name="newMess" style="font-size:12px;width:450px;height:100px;border:0px;overflow-x:hidden"></s:textarea>                  
-   	<s:submit align="right" value="提交"/>
-    </s:form>
+<font size=5><span style="color:white;">输入对阵信息(时间格式为yyyy-MM-dd hh:mm:ss)</span></font> 
+     <s:form action="InsertSchedule.action">
+        <br><font size=3><span style="color:white;">主队</span></font>
+     	<input type="text" id="newhomeTeamID" name="newhomeTeamID">
+     	<br/>
+     	<font size=3><span style="color:white;">客队</span></font>
+     	<input type="text" id="newawayTeamID" name="newawayTeamID">
+     	<br/>
+     	<font size=3><span style="color:white;">时间</span></font>
+     	<input type="text" id="datestr" name="datestr">
+     	<br/>
+     	<font size=3><span style="color:white;">地点</span></font>
+     	<input type="text" id="newplace" name="newplace">
+     	<br/>
+     	<s:submit align="CENTER" value="提交"/></s:form>
 </body></html>

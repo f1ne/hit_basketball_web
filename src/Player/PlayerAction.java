@@ -67,13 +67,11 @@ public class PlayerAction extends ActionSupport{
 		jokePreparedStatement.setString(1, DPlayerName);
 		ResultSet rs=jokePreparedStatement.executeQuery();
 		if(rs.next()){
-			System.out.println(DPlayerName+' '+rs.getString("Name")+" "+rs.getString("TeamID"));
 			Connection DConnection=pConnection.getConnection();
 			String sqlStringD="delete from players where players.Name= ?";
 			PreparedStatement DPreparedStatement=DConnection.prepareStatement(sqlStringD);
 			DPreparedStatement.setString(1,rs.getString("Name"));
 			DPreparedStatement.executeUpdate();
-			System.out.println("1");
 			Connection NumConnection=pConnection.getConnection();
 			String sqlString2="update team set PlayerNum=PlayerNum-1 where team.ID= ?";
 			PreparedStatement moPreparedStatement=NumConnection.prepareStatement(sqlString2);
