@@ -355,6 +355,33 @@ LOCK TABLES `gametable20141114_201201_201204` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `groupgame`
+--
+
+DROP TABLE IF EXISTS `groupgame`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupgame` (
+  `TeamID` varchar(6) NOT NULL,
+  `GroupID` varchar(1) NOT NULL,
+  `Win` int(11) NOT NULL DEFAULT '0',
+  `Lose` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`TeamID`),
+  UNIQUE KEY `TeamID_UNIQUE` (`TeamID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupgame`
+--
+
+LOCK TABLES `groupgame` WRITE;
+/*!40000 ALTER TABLE `groupgame` DISABLE KEYS */;
+INSERT INTO `groupgame` VALUES ('201201','A',2,2),('201202','A',1,3),('201204','A',2,2),('201601','B',1,1),('201602','C',1,1),('201701','A',3,1),('201702','D',1,1);
+/*!40000 ALTER TABLE `groupgame` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `manager`
 --
 
@@ -603,4 +630,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-15  0:05:11
+-- Dump completed on 2014-11-18 15:28:58
