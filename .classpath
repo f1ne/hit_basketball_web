@@ -4,6 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.33-bin.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jspsmartupload.jar"/>
 	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.generic_5.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>

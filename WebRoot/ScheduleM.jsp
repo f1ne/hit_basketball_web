@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ page import="Login.LoginAction" %>
+<%@ page import="indexNTable.*" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -81,7 +82,7 @@ body {
 		<td>AwayTeamID</td>
 
   	</tr>
-	<s:iterator value="A" id="Games" status="stuts">
+	<s:iterator value="S" id="Games" status="stuts">
   	 <tr>
   	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
         <td><s:property value="#Games.Time"/></td>
@@ -93,5 +94,104 @@ body {
 	</s:iterator>
 	<tr><td><a href="InsertScheduleBegin.action" style="font-size:14px;">添加比赛</a></td></tr>
 	</table>
+	<h1 align="CENTER"><b><span style="color:white;">A组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="A" id="GroupA" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupA.TeamID"/></td>
+        <td><s:property value="#GroupA.GroupID"/></td>
+        <td><s:property value="#GroupA.Win"/></td>
+        <td><s:property value="#GroupA.Lose"/></td>
+        <td><a href="<s:url action="addWin.action"><s:param name="DTeamID" value="#GroupA.TeamID"></s:param></s:url>">win+</a></td>
+        <td><a href="<s:url action="addLose.action"><s:param name="DTeamID" value="#GroupA.TeamID"></s:param></s:url>">lose+</a></td>
+		<td><a href="<s:url action="deleteGroup.action"><s:param name="DTeamID" value="#GroupA.TeamID"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">B组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="B" id="GroupB" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupB.TeamID"/></td>
+        <td><s:property value="#GroupB.GroupID"/></td>
+        <td><s:property value="#GroupB.Win"/></td>
+        <td><s:property value="#GroupB.Lose"/></td>
+        <td><a href="<s:url action="addWin.action"><s:param name="DTeamID" value="#GroupB.TeamID"></s:param></s:url>">win+</a></td>
+        <td><a href="<s:url action="addLose.action"><s:param name="DTeamID" value="#GroupB.TeamID"></s:param></s:url>">lose+</a></td>
+		<td><a href="<s:url action="deleteGroup.action"><s:param name="DTeamID" value="#GroupB.TeamID"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">C组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="C" id="GroupC" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupC.TeamID"/></td>
+        <td><s:property value="#GroupC.GroupID"/></td>
+        <td><s:property value="#GroupC.Win"/></td>
+        <td><s:property value="#GroupC.Lose"/></td>
+        <td><a href="<s:url action="addWin.action"><s:param name="DTeamID" value="#GroupC.TeamID"></s:param></s:url>">win+</a></td>
+        <td><a href="<s:url action="addLose.action"><s:param name="DTeamID" value="#GroupC.TeamID"></s:param></s:url>">lose+</a></td>
+		<td><a href="<s:url action="deleteGroup.action"><s:param name="DTeamID" value="#GroupC.TeamID"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">D组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="D" id="GroupD" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupD.TeamID"/></td>
+        <td><s:property value="#GroupD.GroupID"/></td>
+        <td><s:property value="#GroupD.Win"/></td>
+        <td><s:property value="#GroupD.Lose"/></td>
+        <td><a href="<s:url action="addWin.action"><s:param name="DTeamID" value="#GroupD.TeamID"></s:param></s:url>">win+</a></td>
+        <td><a href="<s:url action="addLose.action"><s:param name="DTeamID" value="#GroupD.TeamID"></s:param></s:url>">lose+</a></td>
+		<td><a href="<s:url action="deleteGroup.action"><s:param name="DTeamID" value="#GroupD.TeamID"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">将队伍加入小组</span></b></h1>
+	<center>
+	<s:form action="insertGroup.action">
+	<table border=1 align="CENTER" style="color:white; width: 200px">
+	<tr>
+	    <td>TeamID:</td><s:textfield name="newMember.TeamID"></s:textfield>
+        <td>GroupID:</td><s:textfield name="newMember.GroupID" />
+        <td>Win:</td><s:textfield name="0" />
+        <td>Lose:</td><s:textfield name="0" /></tr>
+	<s:submit type="submit" value="添加队伍"></s:submit></table></s:form>
+	</center>
   </body>
 </html>

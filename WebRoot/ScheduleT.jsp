@@ -81,16 +81,91 @@ body {
 		<td>AwayTeamID</td>
 
   	</tr>
-	<s:iterator value="A" id="Games" status="stuts">
+	<s:iterator value="S" id="Games" status="stuts">
   	 <tr>
   	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
         <td><s:property value="#Games.Time"/></td>
-		<td><s:property value="#Games.Place"/></td>
+		<td><s:property value="#Games.Place"/> </td>
 		<td><s:property value="#Games.HomeTeamID"/></td>
 		<td><s:property value="#Games.AwayTeamID"/></td>
   	 </tr>
 	</s:iterator>
 	</table>
-  
+  <h1 align="CENTER"><b><span style="color:white;">A组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="A" id="GroupA" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupA.TeamID"/></td>
+        <td><s:property value="#GroupA.GroupID"/></td>
+        <td><s:property value="#GroupA.Win"/></td>
+        <td><s:property value="#GroupA.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">B组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="B" id="GroupB" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupB.TeamID"/></td>
+        <td><s:property value="#GroupB.GroupID"/></td>
+        <td><s:property value="#GroupB.Win"/></td>
+        <td><s:property value="#GroupB.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">C组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="C" id="GroupC" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupC.TeamID"/></td>
+        <td><s:property value="#GroupC.GroupID"/></td>
+        <td><s:property value="#GroupC.Win"/></td>
+        <td><s:property value="#GroupC.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">D组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="D" id="GroupD" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupD.TeamID"/></td>
+        <td><s:property value="#GroupD.GroupID"/></td>
+        <td><s:property value="#GroupD.Win"/></td>
+        <td><s:property value="#GroupD.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
   </body>
 </html>

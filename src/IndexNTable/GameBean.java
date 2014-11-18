@@ -1,4 +1,4 @@
-package IndexNTable;
+package indexNTable;
 
 public class GameBean {
       private int GameID;
