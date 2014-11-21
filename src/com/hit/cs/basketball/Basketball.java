@@ -19,6 +19,7 @@ public class Basketball extends ActionSupport{
 	private static final long serialVersionUID = 7140505626097926600L;
 	private int TeamID1;
 	private int TeamID2;
+	private String PlayerName;
 	public void setTeamID1(int teamID1){
 		this.TeamID1=teamID1;
 	}
@@ -32,7 +33,12 @@ public class Basketball extends ActionSupport{
 	public int getTeamID2(){
 		return this.TeamID2;
 	}
-	
+	public void setPlayerName(String playerName){
+		this.PlayerName=playerName;
+	}
+	public String getPlayerName(){
+		return this.PlayerName;
+	}
 	/*
 	 * 功能:完成进入比赛记录Record.jsp界面的数据库工作，并且读取球员名单
 	 */

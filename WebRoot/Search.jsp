@@ -71,16 +71,12 @@ body {
 <hr>
   <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="fomr1" name="input" method="get"action="<%=path %>/GetName">
+<form id="fomr1" name="input" method="get"action="<%=path %>/GetPlayerDataByDate.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
-	<input type="text" name="teamername" />
-
-</form>
-<form name="input"  method="get" action="<%=path %>/GetDate">
-
+	<input type="text" id="PlayerName" name="PlayerName" />
 	<span style="color:white;">输入比赛日期：</span>
-	<input type="text" name="racedate" />
+	<input type="text" id="RaceDate" name="RaceDate" />
 	<input type="submit" value="提交" />
 </form>
   <!--  %out.println("结果"); %-->

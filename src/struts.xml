@@ -153,6 +153,9 @@
   <action name="enterLiveBeginT">
   <result>EnterLiveT.jsp</result>
   </action>
+  <action name="GetPlayerDataByDate" class="indexNTable.IndexMessageAction" method="GetMessage">
+<result>ShowPlayerData.jsp</result>
+</action>
 </package>
    
 
