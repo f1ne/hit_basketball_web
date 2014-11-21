@@ -39,7 +39,6 @@ public class TeamAction extends ActionSupport {
 			addTeamPreparedStatement.setString(3, newTeam.getPasscode());
 			addTeamPreparedStatement.setString(4, newTeam.getLab());
 			addTeamPreparedStatement.executeUpdate();
-			//System.out.println("Add succeed");
 			setJspTitle("添加成功，返回主页登录");
 		}
 		}catch (Exception e) {

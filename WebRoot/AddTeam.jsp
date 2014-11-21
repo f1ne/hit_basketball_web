@@ -61,6 +61,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotification.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
@@ -69,11 +70,11 @@ body {
   </div>
   <hr>
    <center>
-    <h1><b>队伍注册</b></h1>
+    <h1><b><span style="color:white">队伍注册</span></b></h1>
     <br>
-    注：队伍ID为6位形如201201，代表的是2012级的智能接口与人机交互研究中心的队伍。请自行推算。
+   <span style="color:white"> 注：队伍ID为6位形如201201，代表的是2012级的智能接口与人机交互研究中心的队伍。请自行推算。</span>
     <br><br>
-    <s:form action="AddTeamBegin.action">
+    <s:form action="AddTeamBegin.action" style="color:white">
     
     <li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>实验室：<select name="newTeam.lab" id="newTeam.lab">
@@ -96,7 +97,7 @@ body {
 																			</select></div>
 								</div></li> <br>
 								
-    <table >
+    <table style="color:white">
     <tr><td>队伍ID:<s:textfield name="newTeam.id"/></td></tr>
     <tr><td>队伍名:<s:textfield name="newTeam.name"/></td></tr>
     <tr><td>密码:<s:password name="newTeam.passcode"/></td></tr>

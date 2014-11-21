@@ -1,31 +1,25 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
- <% request.setCharacterEncoding("utf-8");
-response.setContentType("text/html;charset=utf-8");%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<base href="<%=basePath%>">
- <!--link rel="stylesheet" type="text/css" href="bootstrap.css" /-->
-<title>My JSP 'Login.jsp' starting page</title>
-
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>光熙杯篮球赛管理系统</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
-</head>
-<style type="text/css"> 
+  </head>
+  <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -68,24 +62,11 @@ body {
     <td><a href="GetNotification.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+    <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
     </tr>
     </tbody></table>
   </div>
 <hr>
-   	
-   	<br>
-<center>       <h2 ><span style="color:white">帐号登录</span> </h2 >  <s:form action="LoginBegin.action" style="color:white">
-            用户ID：<br><Input type = "text" name = "user" style= "width:150" ><br >
-            密码：<br><Input type = "password" name = "psw" style = "width:150">
-              <br>
-              <br>
-               <li><div class="radio_panel">
-									<input type="radio" name="logintype" id="user_1" value="Team" /><label for="user_1">队伍</label>
-									<input type="radio" name="logintype" id="user_2" value="Manager" checked /><label for="user_2">管理员</label>
-								</div></li>
-              	<s:submit align="CENTER" value="登录"/>
-
-</s:form><s:form action="returnMyJsp.action" ><s:submit  align="right" value="返回"/></s:form></center > 
-</body >
-</html>
+<%String Mess=(String)session.getAttribute("IndexMessage"); %>
+<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
+</body></html>

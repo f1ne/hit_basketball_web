@@ -1,14 +1,17 @@
-<%@ page language="java" import="java.util.*,com.hit.cs.basketball.PlayerBean" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ page import="Player.*"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+ <% request.setCharacterEncoding("utf-8");
+response.setContentType("text/html;charset=utf-8");%>
   <head>
-    <base href="<%=basePath%>">    
-    <title>比赛现场实时技术统计</title>
+    <base href="<%=basePath%>">
+    <title>Add Author page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -17,18 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<style type="text/css">
-	div#container{width:1200px;align:center}
-	div#header{background-color:#99bbbb;text-align:center}
-	div#hometeam{background-color:#ffff99;height:600px;width:600px;float:left}
-	div#awayteam{background-color:#eeeeee;height:600px;width:600px;float:left}
-	div#footer{background-color:#99bbbb;clear:both;text-align:center}
-	h1{margin-bottom:0}
-	h2{margin-bottom:0;font-size:14px}
-	</style>
-	<script language="javascript"src="Live.js">
-	
-	</script>
+
   </head>
   <style type="text/css"> 
 <!-- 
@@ -55,18 +47,18 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <body>
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
-      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %>&nbsp;&nbsp;&nbsp;</span> </td>
+      <td><br><span style="color:lightblue;">你好,<%String teamID = (String)session.getAttribute("user");%><%=teamID %>&nbsp;&nbsp;&nbsp;</span> </td>
       <td><a href="returnMyJsp.action" style="font-size:14px;"><br>登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody>
     </table>
-    <hr>
+    <hr><% String team=(String)session.getAttribute("team"); %>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -78,16 +70,34 @@ body {
     </tr>
     </tbody></table>
   </div>
-<hr>
-<font size=5><span style="color:white;">输入两个对阵球队ID</span></font> 
-     <form id="teamid" method="post" action="<%=path%>/enterLiveT.action">
-        <br><font size=3><span style="color:white;">主队(Home)</span></font>
-     	<input type="text" id="TeamID1" name="TeamID1">
-     	<br/><br>
-     	<font size=3><span style="color:white;">客队(Away)</span></font>
-     	<input type="text" id="TeamID2" name="TeamID2">
-     	<br/><br>
-     	<input type="submit" name="submit" value="进入现场记录">
-     </form>
+  <hr>
+ 
+  <h1 align="CENTER"><b><span style="color:white;"><s:property value="jspTitle" /></span></b></h1><h4 align="CENTER"><span style="color:white;">(当前共有 <%=(Integer)request.getAttribute("PlayerNum") %> 名球员)</span></h4>
+    <table border=1 align="CENTER" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>Name</td>
+		<td>Number</td>
+		<td>StudentID</td>
+		<td>Sex</td>
+		<td>Position</td>
+		<td>Age Group</td>
+
+  	</tr>
+	<s:iterator value="A" id="players" status="stuts">
+  	 <tr>
+  	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
+        <td><s:property value="#players.Name"/></td>
+		<td><s:property value="#players.Number"/></td>
+		<td><s:property value="#players.StudentID"/></td>
+		<td><s:property value="#players.Sex"/></td>
+		<td><s:property value="#players.Position"/></td>
+		<td><s:property value="#players.Age"/></td>
+		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerName" value="#players.Name"></s:param></s:url>">删除</a></td>
+  	 </tr>
+	</s:iterator>
+	<tr><td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a></td></tr>
+	</table>
+  
   </body>
 </html>
