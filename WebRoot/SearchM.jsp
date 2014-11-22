@@ -72,7 +72,7 @@ body {
 <hr>
   <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
+<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDateM.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
