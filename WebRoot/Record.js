@@ -43,7 +43,9 @@
 	    var url="Record.servlet?playerID="+playerID+"&event=Fouls&amount="+foul+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 	    sendRequest(url);
 	}
-	//刷新函数
+	/*
+	 * 刷新函数
+	 */
 	function refresh(homeTeamID,awayTeamID){
 		var url="LiveRefresh.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 		globalHomeTeamID=homeTeamID;
@@ -87,4 +89,33 @@
 				document.getElementById("awayteamscore").innerText=awayTeamScore;
 			}
 		}
+	}
+	/*
+	*统计撤销功能
+	*/
+	function cancelScore(playerID,homeTeamID,awayTeamID)
+	{
+		var score=parseInt(document.getElementById(playerID+"score").innerText)-1;
+		if (score>=0)
+		{
+			var url="Record.servlet?playerID="+playerID+"&event=CancelScore&amount="+score+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
+		    document.getElementById(playerID+"score").innerText=score;
+		    sendRequest(url);
+		}else{
+			alert("Wrong Operation!");
+		}
+	    
+	}
+	function cancelFoul(playerID,homeTeamID,awayTeamID)
+	{
+		var foul=parseInt(document.getElementById(playerID+"foul").innerText)-1;
+		if (foul>=0)
+		{
+			document.getElementById(playerID+"foul").innerText=foul;
+		    var url="Record.servlet?playerID="+playerID+"&event=CancelFouls&amount="+foul+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
+		    sendRequest(url);
+		}else{
+			alert("Wrong Operation!");
+		}
+	    
 	}
