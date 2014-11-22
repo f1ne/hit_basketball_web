@@ -9,7 +9,7 @@ public class PlayerBean {
 	private int NumberOfMatches;
 	private int Fouls;
 	private int Number;
-	PlayerBean(){
+	public PlayerBean(){
 		this.PlayerID=-1;
 		this.TeamID=-1;
 		this.Name="null";

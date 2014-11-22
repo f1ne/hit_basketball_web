@@ -153,6 +153,12 @@
   <action name="enterLiveBeginT">
   <result>EnterLiveT.jsp</result>
   </action>
+  <action name="GetPlayerDataByDate" class="com.hit.cs.basketball.Basketball" method="getPlayerDataByDate">
+<result>Search.jsp</result>
+</action>
+<action name="UpdateAllGameData" class="com.hit.cs.basketball.Basketball" method="updateAllGameData">
+<result>SearchM.jsp</result>
+</action>
 </package>
    
 
