@@ -32,15 +32,17 @@ public class Record extends HttpServlet{
 		String timeStr=sdf.format(new Date());
 		Date date=new Date();
 		Timestamp datetime=new Timestamp(date.getTime());
-		//在当天的比赛表中记录
+		//Record the game event
 		String sql=String.format("insert into gametable%s_%d_%d(PlayerID,Event,Time)values('%d','%s','%s')",
 				                 timeStr,homeTeamID,awayTeamID,playerID,event,datetime);
 		DataBaseBean.update(sql);
 		System.out.println(sql);
-		//在球员数据统计表中更新数据
+		//Update data in table playerstable
 		sql=String.format("update playerstable%s_%d_%d set %s='%d' where PlayerID='%d'",
 				timeStr,homeTeamID,awayTeamID,event,amount,playerID);
 		DataBaseBean.update(sql);
+		//Update data in table players
+		
 	}
 }
 
