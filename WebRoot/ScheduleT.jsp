@@ -62,7 +62,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -71,6 +71,101 @@ body {
     </tbody></table>
   </div>
 <hr>
-<%String Mess=(String)session.getAttribute("IndexMessage"); %>
-<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
-</body></html>
+    <h1 align="CENTER"><b><span style="color:white;"><s:property value="jspTitle" /></span></b></h1>
+    <table border=1 align="CENTER" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>Time</td>
+		<td>Place</td>
+		<td>HomeTeamID</td>
+		<td>AwayTeamID</td>
+
+  	</tr>
+	<s:iterator value="S" id="Games" status="stuts">
+  	 <tr>
+  	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
+        <td><s:property value="#Games.Time"/></td>
+		<td><s:property value="#Games.Place"/> </td>
+		<td><s:property value="#Games.HomeTeamID"/></td>
+		<td><s:property value="#Games.AwayTeamID"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+  <h1 align="CENTER"><b><span style="color:white;">A组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="A" id="GroupA" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupA.TeamID"/></td>
+        <td><s:property value="#GroupA.GroupID"/></td>
+        <td><s:property value="#GroupA.Win"/></td>
+        <td><s:property value="#GroupA.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">B组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="B" id="GroupB" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupB.TeamID"/></td>
+        <td><s:property value="#GroupB.GroupID"/></td>
+        <td><s:property value="#GroupB.Win"/></td>
+        <td><s:property value="#GroupB.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">C组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="C" id="GroupC" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupC.TeamID"/></td>
+        <td><s:property value="#GroupC.GroupID"/></td>
+        <td><s:property value="#GroupC.Win"/></td>
+        <td><s:property value="#GroupC.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">D组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+        <td>TeamID</td>
+		<td>GroupID</td>
+		<td>Win</td>
+		<td>Lose</td>
+
+  	</tr>
+	<s:iterator value="D" id="GroupD" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupD.TeamID"/></td>
+        <td><s:property value="#GroupD.GroupID"/></td>
+        <td><s:property value="#GroupD.Win"/></td>
+        <td><s:property value="#GroupD.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+  </body>
+</html>

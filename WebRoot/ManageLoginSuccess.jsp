@@ -53,13 +53,8 @@ body {
    <tbody><tr>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo.png" width="240px;" height="50px;"/> </td>
       <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/logo2.gif" width="240px;" height="50px;"/> </td> 
-<<<<<<< HEAD
-      <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %></span> </td>
-      <td><a href="returnMyJsp.action" style="font-size:14px;"><br>&nbsp;&nbsp;&nbsp;登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-=======
       <td><br><span style="color:lightblue;">你好,<%String name = (String)session.getAttribute("user");%><%=name %>&nbsp;&nbsp;&nbsp;</span> </td>
       <td><a href="returnMyJsp.action" style="font-size:14px;"><br>登出</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
->>>>>>> master
     </tr>
     </tbody>
     </table>
@@ -67,19 +62,10 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<<<<<<< HEAD
-    <td><a href="GetScheduleM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-=======
-    <td><a href="returnMyJspM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<<<<<<< HEAD
-    <td><a href="returnMyJspM.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-=======
->>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
->>>>>>> master
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
     </tr>
     </tbody></table>
@@ -90,11 +76,7 @@ body {
     <br><br><br>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-<<<<<<< HEAD
-    <td><h1><span style="color:lightblue;">身份：<%=name %><br>
-=======
     <td><h1><span style="color:white;">身份：<%=name %><br>
->>>>>>> master
    <b><s:property value="jspTitle"/></b></span></h1></td>
   	</tr>
   	</tbody></table></center>

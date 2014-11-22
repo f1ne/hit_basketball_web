@@ -15,8 +15,6 @@
 <action name="returnMyJsp">
 <result>index.jsp</result>
 </action>
-<<<<<<< HEAD
-=======
 <action name="SearchBegin">
 <result>Search.jsp</result>
 </action>
@@ -26,24 +24,69 @@
 <action name="SearchMBegin">
 <result>SearchM.jsp</result>
 </action>
->>>>>>> master
 </package>
 
-<package name="IndexNTable" extends="struts-default">
-<action name="GetSchedule" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>Schedule.jsp</result>
+<package name="indexNTable" extends="struts-default">
+<action name="GetNotification" class="indexNTable.IndexMessageAction" method="GetMessage">
+<result>Notification.jsp</result>
 </action>
-<action name="GetScheduleT" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>ScheduleT.jsp</result>
+<action name="GetNotificationT" class="indexNTable.IndexMessageAction" method="GetMessage">
+<result>NotificationT.jsp</result>
 </action>
-<action name="GetScheduleM" class="IndexNTable.IndexMessageAction" method="GetMessage">
-<result>ScheduleM.jsp</result>
+<action name="GetNotificationM" class="indexNTable.IndexMessageAction" method="GetMessage">
+<result>NotificationM.jsp</result>
 </action>
-<action name="setScheduleBegin">
+<action name="setNotificationBegin">
+<result>SetNotification.jsp</result>
+</action>
+<action name="setNotification" class="indexNTable.IndexMessageAction" method="InsertMessage">
+ <result name="success" type="redirectAction">GetNotificationM</result>
+</action>
+
+
+<action name="insertGroup" class="indexNTable.IndexMessageAction" method="InsertGroupMember">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
+</action>
+<action name="deleteGroup" class="indexNTable.IndexMessageAction" method="DeleteMember">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
+</action>
+<action name="addWin" class="indexNTable.IndexMessageAction" method="AddWin">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
+</action>
+<action name="addLose" class="indexNTable.IndexMessageAction" method="AddLose">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
+</action>
+
+
+<action name="uploadPic">
+<result>UploadPic.jsp</result>
+</action>
+<action name="uploadPicBegin" class="indexNTable.Uploadpic" method="uploadpic">
+ <result name="success" type="redirectAction">uploadPic</result>
+</action>
+
+ <action name="InsertSchedule" class="indexNTable.IndexMessageAction" method="InsertSchedule">
+      <result name="success" type="redirectAction">GetScheduleM</result>
+  </action>
+  <action name="InsertScheduleBegin">
 <result>SetSchedule.jsp</result>
 </action>
-<action name="setSchedule" class="IndexNTable.IndexMessageAction" method="InsertMessage">
- <result name="success" type="redirectAction">GetScheduleM</result>
+<action name="GetSchedule" class="indexNTable.IndexMessageAction" method="GetSchedule">
+<result>Schedule.jsp</result>
+</action>
+<action name="GetScheduleT" class="indexNTable.IndexMessageAction" method="GetSchedule">
+<result>ScheduleT.jsp</result>
+</action>
+<action name="GetScheduleM" class="indexNTable.IndexMessageAction" method="GetSchedule">
+<result>ScheduleM.jsp</result>
+</action>
+<action name="DeleteSchedule" class="indexNTable.IndexMessageAction" method="DeleteSchedule">
+<result name="success" type="redirectAction">GetScheduleM</result>
+<result name="error">addResultM.jsp</result>
 </action>
 </package>
 
@@ -89,8 +132,6 @@
 <result>Login.jsp</result>
 </action>
 </package>
-<<<<<<< HEAD
-=======
 <!-- Ye Zhe added -->
 <package name="com.hit.cs.basketball" extends="struts-default" namespace="/">  
   <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
@@ -115,5 +156,4 @@
 </package>
    
 
->>>>>>> master
 </struts>    

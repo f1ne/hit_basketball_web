@@ -11,16 +11,8 @@
   	</filter-class>
   </filter>
   <filter-mapping>
-<<<<<<< HEAD
     <filter-name>struts2</filter-name>
     <url-pattern>*.action</url-pattern>
-=======
-  	<filter-name>struts2</filter-name>
-  	<url-pattern>*.action</url-pattern>
-<<<<<<< HEAD
-  </filter-mapping></web-app>
-=======
->>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079
   </filter-mapping>
   <servlet>
     <servlet-name>Record</servlet-name>
@@ -38,11 +30,4 @@
     <servlet-name>LiveRefresh</servlet-name>
     <url-pattern>/LiveRefresh.servlet</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
 </web-app>
-=======
-  <!-- LiveRefresh配置结束 -->
- </web-app>
-  
->>>>>>> master
->>>>>>> a8c21767d30f6984db36127f8fdc01fe88eb9079

@@ -62,7 +62,7 @@ body {
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -81,6 +81,8 @@ body {
 		<td>StudentID</td>
 		<td>Sex</td>
 		<td>Position</td>
+		<td>Age Group</td>
+		<td>三好杯 player</td>
 
   	</tr>
 	<s:iterator value="A" id="players" status="stuts">
@@ -91,10 +93,12 @@ body {
 		<td><s:property value="#players.StudentID"/></td>
 		<td><s:property value="#players.Sex"/></td>
 		<td><s:property value="#players.Position"/></td>
+		<td><s:property value="#players.Age"/></td>
+		<td><s:property value="#players.IsSHB"/></td>
 		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerName" value="#players.Name"></s:param></s:url>">删除</a></td>
   	 </tr>
 	</s:iterator>
-	<td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a></td></tr>
+	<tr><td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a></td></tr>
 	</table>
   
   </body>

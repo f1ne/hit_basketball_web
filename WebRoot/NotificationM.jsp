@@ -3,14 +3,15 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ page import="Login.LoginAction" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+ <% request.setCharacterEncoding("utf-8");
+response.setContentType("text/html;charset=utf-8");%>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>RecordingDoor</title>
-    
+    <title>Add Author page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  <style type="text/css"> 
+<style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -46,7 +47,7 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body>
+  <body background="2image/background.jpg">
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -69,16 +70,7 @@ body {
     </tr>
     </tbody></table>
   </div>
-<hr>
-    <font size=5><span style="color:white;">输入两个对阵球队ID</span></font> 
-     <form id="teamid" method="post" action="<%=path%>/enterRecording.action">
-        <br><font size=3><span style="color:white;">主队(Home)</span></font>
-     	<input type="text" id="TeamID1" name="TeamID1">
-     	<br/><br>
-     	<font size=3><span style="color:white;">客队(Away)</span></font>
-     	<input type="text" id="TeamID2" name="TeamID2">
-     	<br/><br>
-     	<input type="submit" name="submit" value="进入现场记录">
-     </form>
-  </body>
-</html>
+<hr> 
+<%String Mess=(String)session.getAttribute("IndexMessage"); %>
+<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span><s:form action="setNotificationBegin.action" ><s:submit  align="left" value="修改"/></s:form></h3>
+</body></html>
