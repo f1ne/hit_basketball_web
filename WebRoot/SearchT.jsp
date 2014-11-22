@@ -70,29 +70,75 @@ body {
     </tbody></table>
   </div>
 <hr>
-  <h1><span style="color:white;">结果查询</span></h1>
+   <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="fomr1" name="input" method="get"action="<%=path %>/GetName">
+<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDateT.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
-	<input type="text" name="teamername" />
-
-</form>
-<form name="input"  method="get" action="<%=path %>/GetDate">
-
+	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-	<input type="text" name="racedate" />
+	<input type="text" id="RaceDate" name="RaceDate" />
 	<input type="submit" value="提交" />
 </form>
   <!--  %out.println("结果"); %-->
      <br>
      <%
- // ArrayList list=(ArrayList)request.getAttribute("list");
-    // PlayerBean Player;
-   //  String Score=(String)request.getAttribute("Score");
-   //  out.println("得分"+Score+"<br>");
-     
+          String PlayerName;
+          int Score;
+          int Foul;
+          PlayerBean player=new PlayerBean();
+          player=(PlayerBean)request.getAttribute("player");
+          if (player!=null){
+              PlayerName=player.getName();
+              Score=player.getScore();
+              Foul=player.getFouls();
+          }else{
+              PlayerName="null";
+              Score=0;
+              Foul=0;
+          }
+          
       %>
-
+      <table>
+          <tr>
+             <td><span style='color:white;'>球员姓名</span></td>
+             <td><span style='color:white;'>当日得分</span></td>
+             <td><span style='color:white;'>当日犯规</span></td>
+          </tr>
+          
+          <tr>
+             <td><span style='color:white;'><%=PlayerName %></span></td>
+             <td><span style='color:white;'><%=Score %></span></td>
+             <td><span style='color:white;'><%=Foul %></span></td>
+          </tr>
+      </table>
+      <div id=ScoreRanking>
+		<table>
+			<tr>
+			    <td><span style='color:white;'>排名</span></td>
+				<td><span style='color:white;'>球员姓名</span></td>
+				<td><span style='color:white;'>号码</span></td>
+				<td><span style='color:white;'>得分</span></td>
+				<td><span style='color:white;'>比赛场次</span></td>
+				<td><span style='color:white;'>所属球队</span></td>
+			</tr>
+			<%
+			      ArrayList<PlayerBean> scoreRankList=new ArrayList<PlayerBean>();
+			      scoreRankList=DataBaseBean.getPlayersOrderedByScore();
+			      for (int i=0;i<scoreRankList.size();i++){
+			          %>
+			<tr>
+			    <td><span style='color:white;'><%=i+1 %></span></td>
+				<td><span style='color:white;'><%=scoreRankList.get(i).getName() %></span></td>
+				<td><span style='color:white;'><%=scoreRankList.get(i).getNumber()%></span></td>
+				<td><span style='color:white;'><%=scoreRankList.get(i).getScore() %></span></td>
+				<td><span style='color:white;'><%=scoreRankList.get(i).getNumberOfMatches() %></span></td>
+				<td><span style='color:white;'><%=scoreRankList.get(i).getTeamID() %></span></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+	</div>
   </body>
 </html>
