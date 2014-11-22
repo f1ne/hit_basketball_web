@@ -19,6 +19,8 @@ public class Basketball extends ActionSupport{
 	private static final long serialVersionUID = 7140505626097926600L;
 	private int TeamID1;
 	private int TeamID2;
+	private String PlayerName;
+	private String RaceDate;
 	public void setTeamID1(int teamID1){
 		this.TeamID1=teamID1;
 	}
@@ -32,7 +34,18 @@ public class Basketball extends ActionSupport{
 	public int getTeamID2(){
 		return this.TeamID2;
 	}
-	
+	public void setPlayerName(String playerName){
+		this.PlayerName=playerName;
+	}
+	public String getPlayerName(){
+		return this.PlayerName;
+	}
+	public void setRaceDate(String RaceDate){
+		this.RaceDate=RaceDate;
+	}
+	public String getRaceDate(){
+		return this.RaceDate;
+	}
 	/*
 	 * 功能:完成进入比赛记录Record.jsp界面的数据库工作，并且读取球员名单
 	 */
@@ -145,6 +158,67 @@ public class Basketball extends ActionSupport{
 		}
 		return player;
 	}
+    /*
+     * Get the player data by race date 
+     */
+    public String getPlayerDataByDate(){
+    	HttpServletRequest request;
+		request=ServletActionContext.getRequest();
+		PlayerBean player=checkPlayerDataWithDate(getPlayerName(),getRaceDate());
+		System.out.println(getPlayerName()+getRaceDate());
+		request.setAttribute("player", player);
+    	return "success";
+    }
+    /*
+     * Get score ranking board
+     */
+    public String getRankingBoard(){
+    	ArrayList list=new ArrayList();
+    	list=DataBaseBean.getPlayersOrderedByScore();
+    	HttpServletRequest request;
+		request=ServletActionContext.getRequest();
+		request.setAttribute("RankingList",list);
+    	return "success";
+    }
+    /*
+     * Get the today score rank board limit 10 players
+     */
+    public String getRangkingBoardOfToday(){
+    	
+    	return "success";
+    }
+    /*
+     * Update everyday game data to the players table
+     */
+    public String updateAllGameData(){
+    	ArrayList<PlayerBean> allplayers=new ArrayList<PlayerBean>();
+    	ArrayList<GameBean> gamelist=new ArrayList<GameBean>();
+    	allplayers=DataBaseBean.getAllPlayersList();
+    	int Num_Games;
+    	int Score;
+    	int Foul;
+    	for (int i=0;i<allplayers.size();i++){
+    		PlayerBean player=new PlayerBean();
+    		player=allplayers.get(i);
+    		gamelist=DataBaseBean.getGameTableByTeamID(player.getTeamID());
+    		Num_Games=gamelist.size();
+    		Score=0;
+    		Foul=0;
+    		for (int j=0;j<gamelist.size();j++){
+    			PlayerBean playerdata=new PlayerBean();
+    			playerdata=DataBaseBean.getPlayerDataByDate(
+    					player.getPlayerID(),
+    					DataBaseBean.dateFormatTransfer(gamelist.get(j).getDate(),1),
+    					gamelist.get(j).getHomeTeamID(),
+    					gamelist.get(j).getAwayTeamID());
+    			Score+=playerdata.getScore();
+    			Foul+=playerdata.getFouls();
+    		}
+    		String sql=String.format("update players set Score='%d',Fouls='%d',NumberOfMatches='%d' where PlayerID='%d'",
+    				Score,Foul,Num_Games,player.getPlayerID());
+    		DataBaseBean.update(sql);
+    	}
+    	return "success";
+    }
     
-
 }

@@ -23,9 +23,9 @@ public class DataBaseBean {
 					"jdbc:mysql://localhost:3306/db","root","csm0212");
 			
 		}catch(Exception e){
-			System.out.println("数据库连接失败:"+e);
+			System.out.println("Connecting to database failed!:"+e);
 		}
-		System.out.println("数据库连接成功");
+		System.out.println("Connected!");
 		return con;
 	}
 	
@@ -38,9 +38,9 @@ public class DataBaseBean {
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(SQLException e){
-			System.out.println("查询失败:"+sql+e);
+			System.out.println("Querying failed:"+sql+e);
 		}
-		System.out.println("查询成功");
+		System.out.println("Querying succcess");
 		return rs;
 	}
 	
@@ -52,9 +52,9 @@ public class DataBaseBean {
 			stmt=conn.createStatement();
 			stmt.executeUpdate(sql);
 		}catch(SQLException e){
-			System.out.println("更新失败:"+sql+e);
+			System.out.println("Updating failed:"+sql+e);
 		}
-		System.out.println("更新成功"+sql);
+		System.out.println("Updating success"+sql);
 	}
     //检查比赛记录表是否建立
 	public static boolean isMatchRecordTableExist(String date,int homeTeamID,int awayTeamID){
@@ -71,7 +71,7 @@ public class DataBaseBean {
 				return false;
 			}
 		}catch(Exception e){
-			System.out.println("检查表存在出错"+e);
+			System.out.println("There is something wrong with Checking Game Table"+e);
 		}
 		return false;
 		
@@ -91,7 +91,7 @@ public class DataBaseBean {
 				return false;
 			}
 		}catch(Exception e){
-			System.out.println("检查表存在出错"+e);
+			System.out.println("There is something wrong with Checking Player Table"+e);
 		}
 		return false;
 		
@@ -113,7 +113,7 @@ public class DataBaseBean {
 					homeTeamID,awayTeamID,datestr2);
 			DataBaseBean.update(sql);
 		} catch (ParseException e) {
-			System.out.println("日期转换出错");
+			System.out.println("Transfering date failed");
 		}
 		
 	}
@@ -165,11 +165,33 @@ public class DataBaseBean {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("查询出错"+e);
+			System.out.println("Querying game information failed!"+e);
 		}
 		return list;
 	}
-
+    /*
+     * To get all games list of a team by teamid
+     */
+	public static ArrayList<GameBean> getGameTableByTeamID(int TeamID){
+		ArrayList<GameBean> list=new ArrayList<GameBean>();
+		ResultSet rs=null;
+		String sql=String.format("select * from allgametable where (HomeTeamID='%d' or AwayTeamID='%d')",
+				                 TeamID,TeamID);
+		rs=query(sql);
+		try {
+			while (rs.next()){
+				int GameID=rs.getInt("GameID");
+				int HomeTeamID=rs.getInt("HomeTeamID");
+				int AwayTeamID=rs.getInt("AwayTeamID");
+				String Date=(rs.getDate("Date")).toString();
+				list.add(new GameBean(GameID,HomeTeamID,AwayTeamID,Date));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Querying game information failed!"+e);
+		}
+		return list;
+	}
 	//通过一个日期和主队客队id来查找比赛表返回比赛记录
 	public static ArrayList<RecordBean> queryGameRecord(String date,int homeTeamID,int awayTeamID){
 		ArrayList<RecordBean> list=new ArrayList<RecordBean>();
@@ -185,7 +207,7 @@ public class DataBaseBean {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("查询出错"+e);
+			System.out.println("Querying game information failed"+e);
 		}
 		return list;
 	}
@@ -210,14 +232,13 @@ public class DataBaseBean {
 				player=new PlayerBean(PlayerID,TeamID,Name,StudentID,Score,NumberOfMatches,Fouls,Number);
 			}
 		} catch (SQLException e) {
-			System.out.println("通过ID查询球员失败"+e);
+			System.out.println("Querying player by ID failed"+e);
 		}
 			
 		return player;
 	}
 	/*
-	 * 通过球队ID获得球员信息
-	 * 返回全队球员信息
+	 * Get information of players of a team by querying TeamID
 	 */
 	public static ArrayList<PlayerBean> queryPlayerByTeamID(int TeamID){
 		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
@@ -240,6 +261,90 @@ public class DataBaseBean {
 		return list;
 	}
 	/*
-	 * 
+	 * take the score top 10 players
 	 */
+	public static ArrayList<PlayerBean> getPlayersOrderedByScore(){
+		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+		String sql="select * from players order by Score DESC limit 10";
+		ResultSet rs=DataBaseBean.query(sql);
+		try {
+			while (rs.next()){
+				list.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
+						                     (Integer)rs.getInt("TeamID"),
+						                     (String)rs.getString("Name"),
+						                     (String)rs.getString("StudentID"),
+						                     (Integer)rs.getInt("Score"),
+						                     (Integer)rs.getInt("NumberOfMatches"),
+						                     (Integer)rs.getInt("Fouls"),
+						                     (Integer)rs.getInt("Number")));
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
+	/*
+	 * Get the all players list
+	 */
+	public static ArrayList<PlayerBean> getAllPlayersList(){
+		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+		String sql="select * from players";
+		ResultSet rs=DataBaseBean.query(sql);
+		try {
+			while (rs.next()){
+				list.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
+						                     (Integer)rs.getInt("TeamID"),
+						                     (String)rs.getString("Name"),
+						                     (String)rs.getString("StudentID"),
+						                     (Integer)rs.getInt("Score"),
+						                     (Integer)rs.getInt("NumberOfMatches"),
+						                     (Integer)rs.getInt("Fouls"),
+						                     (Integer)rs.getInt("Number")));
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	} 
+	/*
+     * Get a player data by date directly from playerstable
+     */
+    public static PlayerBean getPlayerDataByDate(int PlayerID,String date,int homeTeamID,int awayTeamID){
+    	PlayerBean player=null;
+    	String sql=String.format("select * from playerstable%s_%d_%d where PlayerID='%d'",
+    			date,homeTeamID,awayTeamID,PlayerID);
+    	ResultSet rs=DataBaseBean.query(sql);
+    	try {
+    		if (rs.next()){
+    			player=new PlayerBean((Integer)rs.getInt("PlayerID"),
+    					(Integer)rs.getInt("TeamID"),
+    					(String)rs.getString("Name"),
+    					(String)rs.getString("StudentID"),
+    					(Integer)rs.getInt("Score"),
+    					(Integer)rs.getInt("NumberOfMatches"),
+    					(Integer)rs.getInt("Fouls"),
+    					(Integer)rs.getInt("Number"));
+    		}
+    	} catch (SQLException e) {
+    		System.out.println(e);
+    	}
+
+    	return player;
+    }
+    /*
+     * Date format transfer function
+     * model=1 则从yyyy-MM-dd 转为 yyyyMMdd
+     * model=2 则从yyyyMMdd转为yyyy-MM-dd
+     */
+    public static String dateFormatTransfer(String date,int model){
+    	String targetStr="";
+    	if (model==1){
+    		String[] splitStr=date.split("-");
+    		targetStr=splitStr[0]+splitStr[1]+splitStr[2];
+    	}
+    	if (model==2){
+    	   targetStr="";
+    	}
+    	return targetStr;
+    }
 }
