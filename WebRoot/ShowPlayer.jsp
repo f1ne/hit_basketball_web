@@ -82,6 +82,7 @@ body {
 		<td>Sex</td>
 		<td>Position</td>
 		<td>Age Group</td>
+		<td>三好杯 player</td>
 
   	</tr>
 	<s:iterator value="A" id="players" status="stuts">
@@ -93,6 +94,7 @@ body {
 		<td><s:property value="#players.Sex"/></td>
 		<td><s:property value="#players.Position"/></td>
 		<td><s:property value="#players.Age"/></td>
+		<td><s:property value="#players.IsSHB"/></td>
 		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerName" value="#players.Name"></s:param></s:url>">删除</a></td>
   	 </tr>
 	</s:iterator>

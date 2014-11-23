@@ -85,9 +85,15 @@ body {
     <tr><td>号码:<s:textfield name="newPlayer.Number"/></td></tr>
    	</table> 
    	<br>
+   	性别：
    	<li><div class="radio_panel">
 									<input type="radio" name="newPlayer.Sex" id="sex_1" value="男"  checked/><label for="sex_1">男</label>
 									<input type="radio" name="newPlayer.Sex" id="sex_2" value="女" /><label for="sex_2">女</label>
+								</div></li>
+	是否是三好杯球员（往年和今年）：
+	<li><div class="radio_panel">
+									<input type="radio" name="newPlayer.IsSHB" id="shb_1" value="是"  /><label for="shb_1">是</label>
+									<input type="radio" name="newPlayer.IsSHB" id="shb_2" value="否" checked/><label for="shb_2">否</label>
 								</div></li>
    	
    	<br>
