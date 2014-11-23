@@ -124,12 +124,13 @@ body {
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
 					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" value="撤销得分"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
 					</td>
 					<td>
 					
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
 					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
-					
+					    <input type="button" value="撤销犯规"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
 				</tr>
 				<%
@@ -165,10 +166,12 @@ body {
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
 					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" value="撤销得分"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
 					</td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
 					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+                        <input type="button" value="撤销犯规"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">   
                     </td>
 				</tr>
 				<%

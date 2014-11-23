@@ -123,6 +123,8 @@ public class DataBaseBean {
 					+ "where TeamID='%d' or TeamID='%d'"
 					,datestr,homeTeamID,awayTeamID,homeTeamID,awayTeamID);
 			update(sql);
+			sql=String.format("update playerstable%s_%d_%d set Score=0,Fouls=0",datestr,homeTeamID,awayTeamID);
+		    update(sql);
 		}
     //通过球员名字查询球员信息
 	public static ArrayList<PlayerBean> queryPlayerByName(String name){
