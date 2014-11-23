@@ -1,6 +1,5 @@
 package com.hit.cs.basketball;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
