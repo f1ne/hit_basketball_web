@@ -20,7 +20,7 @@ public class PlayerAction extends ActionSupport{
 	private String jspTitle;
 	private String target;
 	private Player newPlayer=new Player();
-	private String DPlayerName;
+	private String DPlayerID;
 	private int PlayerNum;
 	private DBConnection pConnection=new DBConnection();
 	private ArrayList<Player> A=new ArrayList<Player>();
@@ -62,15 +62,15 @@ public class PlayerAction extends ActionSupport{
 	{
 		try{
 		Connection tempConnection=pConnection.getConnection();
-		String sqlString="select * from players where Name= ?";
+		String sqlString="select * from players where PlayerID= ?";
 		PreparedStatement jokePreparedStatement=tempConnection.prepareStatement(sqlString);
-		jokePreparedStatement.setString(1, DPlayerName);
+		jokePreparedStatement.setString(1, DPlayerID);
 		ResultSet rs=jokePreparedStatement.executeQuery();
 		if(rs.next()){
 			Connection DConnection=pConnection.getConnection();
-			String sqlStringD="delete from players where players.Name= ?";
+			String sqlStringD="delete from players where players.PlayerID= ?";
 			PreparedStatement DPreparedStatement=DConnection.prepareStatement(sqlStringD);
-			DPreparedStatement.setString(1,rs.getString("Name"));
+			DPreparedStatement.setString(1,rs.getString("PlayerID"));
 			DPreparedStatement.executeUpdate();
 			Connection NumConnection=pConnection.getConnection();
 			String sqlString2="update team set PlayerNum=PlayerNum-1 where team.ID= ?";
@@ -161,11 +161,11 @@ public class PlayerAction extends ActionSupport{
 	public void setNewPlayer(Player newPlayer) {
 		this.newPlayer = newPlayer;
 	}
-	public String getDPlayerName() {
-		return DPlayerName;
+	public String getDPlayerID() {
+		return DPlayerID;
 	}
-	public void setDPlayerName(String dPlayerName) {
-		DPlayerName = dPlayerName;
+	public void setDPlayerID(String dPlayerID) {
+		DPlayerID = dPlayerID;
 	}
 	public int getPlayerNum() {
 		return PlayerNum;

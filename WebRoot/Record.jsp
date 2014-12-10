@@ -69,7 +69,7 @@ body {
         }
         PlayerBean aPlayer;
      %>
-  <body onload="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)" background="2image/background.jpg">
+  <body onload="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)">
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>

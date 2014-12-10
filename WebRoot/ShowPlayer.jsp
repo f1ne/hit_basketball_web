@@ -95,7 +95,7 @@ body {
 		<td><s:property value="#players.Position"/></td>
 		<td><s:property value="#players.Age"/></td>
 		<td><s:property value="#players.IsSHB"/></td>
-		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerName" value="#players.Name"></s:param></s:url>">删除</a></td>
+		<td><a href="<s:url action="DeletePlayer.action"><s:param name="DPlayerID" value="#players.PlayerID"></s:param></s:url>">删除</a></td>
   	 </tr>
 	</s:iterator>
 	<tr><td><a href="AddPlayer.action" style="font-size:14px;">添加球员</a></td></tr>

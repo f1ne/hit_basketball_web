@@ -48,7 +48,7 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body background="2image/background.jpg">
+  <body>
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -187,8 +187,24 @@ body {
 	<s:form action="insertGroup.action">
 	<table border=1 align="CENTER" style="color:white; width: 200px">
 	<tr>
-	    <td>TeamID:</td><s:textfield name="newMember.TeamID"></s:textfield>
-        <td>GroupID:</td><s:textfield name="newMember.GroupID" />
+	    <td>TeamID:</td><td>
+	    <select id="newMember.TeamID" name="newMember.TeamID">
+			<option disabled="disabled" value="" selected>-请选择 -</option> 
+			<%
+			  	ArrayList<String> T = (ArrayList<String>)session.getAttribute("TeamList");
+	 if(!T.isEmpty()){
+			  for(String teamopt:T){  
+			%>
+			<option value="<%=teamopt%>">
+				<%=teamopt%>
+				</option>
+				<%
+				}
+					}
+				%>
+				</select>
+	    </td></tr>
+        <tr><td>GroupID:</td><s:textfield name="newMember.GroupID" />
         <td>Win:</td><s:textfield name="0" />
         <td>Lose:</td><s:textfield name="0" /></tr>
 	<s:submit type="submit" value="添加队伍"></s:submit></table></s:form>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-<include file="struts-default.xml"></include>
 <package name="Team" extends="struts-default">
 <action name="index" >
 <result>index.jsp</result>
@@ -71,9 +70,11 @@
 
  <action name="InsertSchedule" class="indexNTable.IndexMessageAction" method="InsertSchedule">
       <result name="success" type="redirectAction">GetScheduleM</result>
+      <result name="error">addResultM.jsp</result>
   </action>
-  <action name="InsertScheduleBegin">
-<result>SetSchedule.jsp</result>
+  <action name="InsertScheduleBegin" class="indexNTable.IndexMessageAction" method="getReady">
+<result name="success">SetSchedule.jsp</result>
+<result name="error">addResultM.jsp</result>
 </action>
 <action name="GetSchedule" class="indexNTable.IndexMessageAction" method="GetSchedule">
 <result>Schedule.jsp</result>
@@ -137,21 +138,21 @@
   <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
       <result name="success">/Record.jsp</result>
   </action>
-  <action name="enterRecordingBegin">
-  <result>EnterRecording.jsp</result>
+  <action name="enterRecordingBegin" class="indexNTable.IndexMessageAction" method="getReady">
+  <result name="success">EnterRecording.jsp</result>
   </action>
   <action name="enterLive" class="com.hit.cs.basketball.Basketball" method="enterLive">
       <result name="success">/Live.jsp</result>
   </action>
-  <action name="enterLiveBegin">
-  <result>EnterLive.jsp</result>
+  <action name="enterLiveBegin" class="indexNTable.IndexMessageAction" method="getReady">
+  <result name="success">EnterLive.jsp</result>
   </action>
   
   <action name="enterLiveT" class="com.hit.cs.basketball.Basketball" method="enterLive">
       <result name="success">/LiveT.jsp</result>
   </action>
-  <action name="enterLiveBeginT">
-  <result>EnterLiveT.jsp</result>
+  <action name="enterLiveBeginT" class="indexNTable.IndexMessageAction" method="getReady">
+  <result name="success">EnterLiveT.jsp</result>
   </action>
   <action name="GetPlayerDataByDate" class="com.hit.cs.basketball.Basketball" method="getPlayerDataByDate">
 <result>Search.jsp</result>
