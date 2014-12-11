@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>比赛现场记录</title>
+    <title>比赛现场记录</title>   
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -98,6 +98,40 @@ body {
 	<div id="container">
 		<div id="header">	    
 			<h1><font size=14>现场比赛记录</font></h1>
+			<table>
+			    <tr>
+			        <td>比赛状态改变:</td>
+			        <td>
+			            <input type=button value="第一节" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,1)">
+			        </td>
+			        <td>
+			            <input type=button value="第二节" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,2)">
+			        </td>
+			        <td>
+			            <input type=button value="中场女生投篮比赛" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,3)">
+			        </td>
+			        <td>
+			            <input type=button value="第三节" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,4)">
+			        </td>
+			        <td>
+			            <input type=button value="第四节" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,5)">
+			        </td>
+			        <td>
+			            <input type=button value="加时赛" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,6)">
+			        </td>
+			        <td>
+			            <input type=button value="结束比赛" onclick="changeGameState(<%=HomeTeamID%>,<%=AwayTeamID%>,7)">
+			        </td>
+			    </tr>
+			    <tr>
+			        <td>当前状态</td>
+			        <td><div id=gamestate>未进行</div></td>
+			        <td>主队状态</td>
+			        <td><div id=homestate>不合格</div></td>
+			        <td>客队状态</td>
+			        <td><div id=awaystate>不合格</div></td>
+			    </tr>
+			</table>
 		</div>
 		<div id="hometeam">
 		<table>
@@ -114,6 +148,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+		    <td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam1!=null){
@@ -124,14 +159,18 @@ body {
 					<td><%=aPlayer.getName() %></td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
-					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
-					    <input type="button" value="撤销得分"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>scorebutton" disabled="true" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>cancelscorebutton"  disabled="true" value="撤销得分-1"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
 					</td>
 					<td>
 					
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
-					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
-					    <input type="button" value="撤销犯规"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>foulbutton"  disabled="true" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>cancelfoulbutton" disabled="true"  value="撤销犯规-1"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+                    </td>
+                    <td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                        <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
 				</tr>
 				<%
@@ -156,6 +195,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+		    <td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam2!=null){
@@ -166,13 +206,17 @@ body {
 					<td><%=aPlayer.getName() %></td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>score">0</div>
-					    <input type="button" value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
-					    <input type="button" value="撤销得分"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>scorebutton" disabled="true"  value="得分+1"onclick="score(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>cancelscorebutton" disabled="true"  value="撤销得分-1"onclick="cancelScore(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
 					</td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
-					    <input type="button" value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
-                        <input type="button" value="撤销犯规"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">   
+					    <input type="button" id="<%=aPlayer.getPlayerID()%>foulbutton" disabled="true"  value="犯规+1"onclick="foul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
+                        <input type="button" id="<%=aPlayer.getPlayerID()%>cancelfoulbutton" disabled="true"  value="撤销犯规-1"onclick="cancelFoul(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">   
+                    </td>
+                    <td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                        <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
 				</tr>
 				<%

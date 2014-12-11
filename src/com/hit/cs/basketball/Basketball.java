@@ -112,6 +112,8 @@ public class Basketball extends ActionSupport{
 				if (record.getPlayerID()==player.getPlayerID()){
 					String scorestr="Score";
 					String foulstr="Fouls";
+					String cancelfoulstr="CancelFouls";
+					String cancelscorestr="CancelScore";
 					if (scorestr.equals(record.getEvent())){
 						int tempscore=player.getScore();
 						player.setScore(tempscore+1);
@@ -120,12 +122,20 @@ public class Basketball extends ActionSupport{
 						int tempfoul=player.getFouls();
 						player.setFouls(tempfoul+1);
 					}
+					if (cancelscorestr.equals(record.getEvent())){
+						int tempscore=player.getScore();
+						player.setScore(tempscore-1);
+					}
+					if (cancelfoulstr.equals(record.getEvent())){
+						int tempfoul=player.getFouls();
+						player.setFouls(tempfoul-1);
+					}
 				}
 			}
 		}
 		return player;
 	}
-	/*
+	/*这是通过比赛日志表整理统计出的记录
 	 * 通过球员ID、比赛日期查询球员当天表现
 	 */
 	public static PlayerBean checkPlayerDataByIDAndDate(int playerID,String date){
@@ -165,6 +175,20 @@ public class Basketball extends ActionSupport{
 				}
 			}
 		}
+		return player;
+	}
+	/*
+	 * 查询某场比赛中的球员表现
+	 * 需要提供的输入有球员的id以及比赛日期
+	 * 这是通过查询每场比赛的球员状态总表获得比赛信息
+	 */
+	public static PlayerBean getPlayerInfByIDAndDate(int playerID,String date){
+		PlayerBean player=DataBaseBean.queryPlayerByID(playerID);
+		date=DataBaseBean.dateFormatTransfer(date, 2);
+		ArrayList<GameBean> list=DataBaseBean.queryGameTableNameByDateAndTeamID(date,player.getTeamID());
+		GameBean game=(GameBean)list.get(0);
+		date=DataBaseBean.dateFormatTransfer(date, 1);
+		player=DataBaseBean.getPlayerDataByDate(player.getPlayerID(), date, game.getHomeTeamID(), game.getAwayTeamID());
 		return player;
 	}
     /*

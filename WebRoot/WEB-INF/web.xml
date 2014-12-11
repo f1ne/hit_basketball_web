@@ -14,6 +14,7 @@
     <filter-name>struts2</filter-name>
     <url-pattern>*.action</url-pattern>
   </filter-mapping>
+  
   <servlet>
     <servlet-name>Record</servlet-name>
     <servlet-class>com.hit.cs.basketball.Record</servlet-class>
@@ -22,6 +23,7 @@
     <servlet-name>Record</servlet-name>
     <url-pattern>/Record.servlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>LiveRefresh</servlet-name>
     <servlet-class>com.hit.cs.basketball.LiveRefresh</servlet-class>
@@ -30,6 +32,26 @@
     <servlet-name>LiveRefresh</servlet-name>
     <url-pattern>/LiveRefresh.servlet</url-pattern>
   </servlet-mapping>
+
+  
+  <servlet>
+    <servlet-name>ChangePlayerState</servlet-name>
+    <servlet-class>com.hit.cs.basketball.ChangePlayerState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePlayerState</servlet-name>
+    <url-pattern>/ChangePlayerState.servlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ChangeGameState</servlet-name>
+    <servlet-class>com.hit.cs.basketball.ChangeGameState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeGameState</servlet-name>
+    <url-pattern>/ChangeGameState.servlet</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>ImageUpload</servlet-name>
     <servlet-class>indexNTable.ImageUpload</servlet-class>

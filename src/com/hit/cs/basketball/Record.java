@@ -40,8 +40,17 @@ public class Record extends HttpServlet{
 		//Update data in table playerstable
 		sql=String.format("update playerstable%s_%d_%d set %s='%d' where PlayerID='%d'",
 				timeStr,homeTeamID,awayTeamID,event,amount,playerID);
+		if (event.equals("CancelFouls")){
+			sql=String.format("update playerstable%s_%d_%d set Fouls='%d' where PlayerID='%d'",
+					timeStr,homeTeamID,awayTeamID,amount,playerID);
+		}
+        if (event.equals("CancelScore")){
+        	sql=String.format("update playerstable%s_%d_%d set Score='%d' where PlayerID='%d'",
+					timeStr,homeTeamID,awayTeamID,amount,playerID);
+        }
+		
 		DataBaseBean.update(sql);
-		//Update data in table players
+		
 		
 	}
 }

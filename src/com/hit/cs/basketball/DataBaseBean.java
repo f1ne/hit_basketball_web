@@ -118,14 +118,20 @@ public class DataBaseBean {
 		
 	}
 	//建立球员记录表
-		public static void createPlayersRecordTable(String datestr,int homeTeamID,int awayTeamID){
-			String sql=String.format("create table playerstable%s_%d_%d select * from players "
-					+ "where TeamID='%d' or TeamID='%d'"
-					,datestr,homeTeamID,awayTeamID,homeTeamID,awayTeamID);
-			update(sql);
-			sql=String.format("update playerstable%s_%d_%d set Score=0,Fouls=0",datestr,homeTeamID,awayTeamID);
-		    update(sql);
-		}
+	public static void createPlayersRecordTable(String datestr,int homeTeamID,int awayTeamID){
+		String sql=String.format("create table playerstable%s_%d_%d select * from players "
+				+ "where TeamID='%d' or TeamID='%d'"
+				,datestr,homeTeamID,awayTeamID,homeTeamID,awayTeamID);
+		update(sql);
+		//添加一个列记录球员当前的状态
+		sql=String.format("ALTER TABLE playerstable%s_%d_%d ADD COLUMN State VARCHAR(45) NULL "
+				+ "DEFAULT 'bench' AFTER IsSHB",datestr,homeTeamID,awayTeamID);
+		update(sql);
+		//重置得分、犯规、状态
+		sql=String.format("update playerstable%s_%d_%d "
+				+ "set Score=0,Fouls=0,State='bench'",datestr,homeTeamID,awayTeamID);
+		update(sql);
+	}
     //通过球员名字查询球员信息
 	public static ArrayList<PlayerBean> queryPlayerByName(String name){
 		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
@@ -150,7 +156,10 @@ public class DataBaseBean {
 		}
 		return list;
 	}
-	//通过date和TeamID来获得比赛信息
+	/*
+	 * 通过date和TeamID来获得比赛信息
+	 * 返回的信息是一个ArrayList，其中的元素的数据类型是GameBean
+	 */
 	public static ArrayList<GameBean> queryGameTableNameByDateAndTeamID(String datestr,int TeamID){
 		ArrayList<GameBean> list=new ArrayList<GameBean>();
 		ResultSet rs=null;
@@ -193,6 +202,33 @@ public class DataBaseBean {
 			System.out.println("Querying game information failed!"+e);
 		}
 		return list;
+	}
+	/*
+     * To get a game information by homeTeamID,awayTeamID and date
+     */
+	public static GameBean getGameTable(int homeTeamID,int awayTeamID,String date){
+		GameBean game = null;
+		ResultSet rs=null;
+		String sql=String.format("select * from allgametable where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')",
+				                 homeTeamID,awayTeamID,date);
+		rs=query(sql);
+		try {
+			if (rs.next()){
+				int GameID=rs.getInt("GameID");
+				int HomeTeamID=rs.getInt("HomeTeamID");
+				int AwayTeamID=rs.getInt("AwayTeamID");
+				String Date=(rs.getDate("Date")).toString();
+				int HomeScore=rs.getInt("HomeScore");
+				int AwayScore=rs.getInt("AwayScore");
+				int State=rs.getInt("State");
+				game=new GameBean(GameID,HomeTeamID,AwayTeamID,Date,HomeScore,AwayScore,State);
+				return game;
+			}
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Querying game information failed!"+e);
+		}
+		return game;
 	}
 	//通过一个日期和主队客队id来查找比赛表返回比赛记录
 	public static ArrayList<RecordBean> queryGameRecord(String date,int homeTeamID,int awayTeamID){
@@ -325,7 +361,8 @@ public class DataBaseBean {
     					(Integer)rs.getInt("Score"),
     					(Integer)rs.getInt("NumberOfMatches"),
     					(Integer)rs.getInt("Fouls"),
-    					(Integer)rs.getInt("Number"));
+    					(Integer)rs.getInt("Number"),
+    					(String)rs.getString("State"));
     		}
     	} catch (SQLException e) {
     		System.out.println(e);
@@ -346,7 +383,23 @@ public class DataBaseBean {
     	}
     	if (model==2){
     	   targetStr="";
+    	   String yyyy=date.substring(0, 4);
+    	   String mm=date.substring(4,6);
+    	   String dd=date.substring(6,8);
+    	   targetStr=yyyy+"-"+mm+"-"+dd;
     	}
     	return targetStr;
+    }
+    public static void changePlayerState(int playerID,int homeTeamID,int awayTeamID,String date,String state){
+    	//Update data in table playerstable
+    	String sql=String.format("update playerstable%s_%d_%d set State='%s' where PlayerID='%d'",
+    			date,homeTeamID,awayTeamID,state,playerID);
+    	DataBaseBean.update(sql);
+    }
+    public static void changeGameState(int homeTeamID,int awayTeamID,int homeScore,int awayScore,String date,int state){
+    	String sql=String.format("update allgametable set State='%d',HomeScore='%d',AwayScore='%d' "
+    			+ "where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')", 
+    			state,homeScore,awayScore,homeTeamID,awayTeamID,date);
+    	update(sql);
     }
 }
