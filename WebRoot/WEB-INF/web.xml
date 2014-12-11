@@ -32,6 +32,7 @@
     <servlet-name>LiveRefresh</servlet-name>
     <url-pattern>/LiveRefresh.servlet</url-pattern>
   </servlet-mapping>
+
   
   <servlet>
     <servlet-name>ChangePlayerState</servlet-name>
@@ -50,4 +51,37 @@
     <servlet-name>ChangeGameState</servlet-name>
     <url-pattern>/ChangeGameState.servlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ImageUpload</servlet-name>
+    <servlet-class>indexNTable.ImageUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUpload</servlet-name>
+    <url-pattern>/uploadImage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+   <servlet-name>UpImgServlet</servlet-name>
+    <servlet-class>indexNTable.UpImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpImgServlet</servlet-name>
+    <url-pattern>/UpImgServlet</url-pattern>
+  </servlet-mapping> 
+  <display-name>
+	AjaxPractice</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		BackGroundService</display-name>
+		<servlet-name>BackGroundService</servlet-name>
+		<servlet-class>
+		indexNTable.BackGroundService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackGroundService</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+  
 </web-app>

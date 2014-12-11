@@ -31,7 +31,14 @@ public class IndexMessageAction extends ActionSupport{
 	String datestr=new String();
 	String jspTitle=new String();
 	String DGame=new String();
+	String tyear=new String();
+	String tmonth=new String();
+	String tday=new String();
+	String thour=new String();
+	String tmin= new String();
+	
 	private ArrayList<GameBean> S=new ArrayList<GameBean>();
+	private ArrayList<String> T=new ArrayList<String>();
 	int newhomeTeamID;
 	int newawayTeamID;
     String newplace=new String();
@@ -39,6 +46,36 @@ public class IndexMessageAction extends ActionSupport{
 	//String timeStr=sdf.format(new Date());
 	//Date date=new Date();
 	//Timestamp datetime=new Timestamp(date.getTime());
+    public String getReady()
+	{	
+    	ss = ServletActionContext.getRequest();
+    	sss=ss.getSession();
+		T.clear();
+		try{
+		Connection tempConnection=dbConnection.getConnection();
+		String sqlString="select * from team";
+		PreparedStatement bstmt=tempConnection.prepareStatement(sqlString);
+		ResultSet rs= bstmt.executeQuery();
+		if(rs.next())
+		{
+			do{
+				String tempteam=rs.getString("ID");
+				T.add(tempteam);
+			}while(rs.next());
+			jspTitle="成功";
+			sss.setAttribute("TeamList",T);
+			
+			return SUCCESS;
+		}
+		else {
+			jspTitle="暂无队伍";
+			return ERROR;
+		}
+		}catch(Exception e){
+			jspTitle="数据库错误";
+			return ERROR;
+		}
+	}
     public String DeleteSchedule()
 	{
 		try{
@@ -67,6 +104,8 @@ public class IndexMessageAction extends ActionSupport{
     
     public String GetSchedule() throws SQLException
 	{	
+    	ss = ServletActionContext.getRequest();
+	sss=ss.getSession();
 		S.clear();
 		ShowGroupMember();
 		try{
@@ -101,17 +140,19 @@ public class IndexMessageAction extends ActionSupport{
 
 	public String InsertSchedule(){
 		//将日期格式从yyyyMMdd转换为yyyy-MM-dd，记录到数据库中与SQL的date类型匹配
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",Locale.SIMPLIFIED_CHINESE);
+    	//SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",Locale.SIMPLIFIED_CHINESE);
 		try {
-			Date date = sdf.parse(datestr);
-			sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",Locale.SIMPLIFIED_CHINESE); 
-			String datestr2=sdf.format(date);
+			System.out.print(tyear);
+			datestr=tyear+"-"+tmonth+"-"+tday+" "+thour+":"+tmin;
+			//Date date = sdf.parse(datestr);
+			//sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",Locale.SIMPLIFIED_CHINESE); 
+			//String datestr2=sdf.format(date);
 			String sql=String.format("INSERT INTO schedule (HomeTeamID, AwayTeamID, Time, Place) VALUES ('%d', '%d', '%s','%s')",
-					newhomeTeamID,newawayTeamID,datestr2,newplace);
+					newhomeTeamID,newawayTeamID,datestr,newplace);
 			DataBaseBean.update(sql);
 			jspTitle="添加成功";
 			return SUCCESS;
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			jspTitle="日期转换出错";
 			System.out.println("日期转换出错");
 			return ERROR;
@@ -447,7 +488,43 @@ public class IndexMessageAction extends ActionSupport{
 		public void setD(ArrayList<GroupBean> d) {
 			D = d;
 		}
-	
+		public ArrayList<String> getT() {
+			return T;
+		}
+		public void setT(ArrayList<String> t) {
+			T = t;
+		}
+		public String getTyear() {
+			return tyear;
+		}
+		public void setTyear(String tyear) {
+			this.tyear = tyear;
+		}
+		public String getTmonth() {
+			return tmonth;
+		}
+		public void setTmonth(String tmonth) {
+			this.tmonth = tmonth;
+		}
+		public String getTday() {
+			return tday;
+		}
+		public void setTday(String tday) {
+			this.tday = tday;
+		}
+		public String getThour() {
+			return thour;
+		}
+		public void setThour(String thour) {
+			this.thour = thour;
+		}
+		public String getTmin() {
+			return tmin;
+		}
+		public void setTmin(String tmin) {
+			this.tmin = tmin;
+		}
+		
 	
 	
 }

@@ -66,6 +66,7 @@ body {
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
@@ -73,10 +74,36 @@ body {
     <font size=5><span style="color:white;">输入两个对阵球队ID</span></font> 
      <form id="teamid" method="post" action="<%=path%>/enterRecording.action">
         <br><font size=3><span style="color:white;">主队(Home)</span></font>
-     	<input type="text" id="TeamID1" name="TeamID1">
+     	<select id="TeamID1" name="TeamID1">
+			<option disabled="disabled" value="" selected>-请选择 -</option> 
+			<%
+			  	ArrayList<String> T = (ArrayList<String>)session.getAttribute("TeamList");
+	 if(!T.isEmpty()){
+			  for(String teamopt:T){  
+			%>
+			<option value="<%=teamopt%>">
+				<%=teamopt%>
+				</option>
+				<%
+				}
+					}
+				%>
+				</select>
      	<br/><br>
      	<font size=3><span style="color:white;">客队(Away)</span></font>
-     	<input type="text" id="TeamID2" name="TeamID2">
+     	 <select id="TeamID2" name="TeamID2">
+			<option disabled="disabled" value="" selected>-请选择 -</option> 
+			<%
+			  for(String teamopt1:T){  
+			%>
+			<option value="<%=teamopt1%>">
+				<%=teamopt1%>
+				</option>
+				<%
+			
+					}
+				%>
+				</select>
      	<br/><br>
      	<input type="submit" name="submit" value="进入现场记录">
      </form>

@@ -65,6 +65,7 @@ body {
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
@@ -83,10 +84,11 @@ body {
    	<br>
    	<li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>权限：<select name="newManager.privilgeLevel" id="newManager.privilgeLevel">
-																				<option value="1总管理员" selected >总管理员</option>
+									                                            <option disabled="disabled" value="" selected>-请选择 -</option> 
+																				<option value="1总管理员" >总管理员</option>
 																				<option value="2副管理员"  >副管理员</option>
 																				<option value="3裁判"  >裁判</option>
-																				<option value="4队伍管理员"  >队伍管理员</option>
+																				<option value="4记分员"  >记分员</option>
 																				<option value="5待定"  >待定</option>
 																				
 																			</select></div>
