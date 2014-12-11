@@ -5,11 +5,27 @@ public class GameBean {
       private int HomeTeamID;
       private int AwayTeamID;
       private String Date;
+      private int HomeScore;
+      private int AwayScore;
+      private int State;
+      //为了兼容较早阶段的代码而保留的构造函数
       GameBean(int gameID,int homeTeamID,int awayTeamID,String date){
     	  setGameID(gameID);
     	  setHomeTeamID(homeTeamID);
     	  setAwayTeamID(awayTeamID);
     	  setDate(date);
+    	  setHomeScore(0);
+    	  setAwayScore(0);
+    	  setState(0);
+      }
+      GameBean(int gameID,int homeTeamID,int awayTeamID,String date,int homeScore,int awayScore,int state){
+    	  setGameID(gameID);
+    	  setHomeTeamID(homeTeamID);
+    	  setAwayTeamID(awayTeamID);
+    	  setDate(date);
+    	  setHomeScore(homeScore);
+    	  setAwayScore(awayScore);
+    	  setState(state);
       }
       public void setGameID(int gameID){
     	  this.GameID=gameID;
@@ -34,5 +50,23 @@ public class GameBean {
       }
       public String getDate(){
     	  return Date;
+      }
+      public int getHomeScore(){
+    	  return HomeScore;
+      }
+      public void setHomeScore(int homeScore){
+    	  this.HomeScore=homeScore;
+      }
+      public int getAwayScore(){
+    	  return AwayScore;
+      }
+      public void setAwayScore(int awayScore){
+    	  this.AwayScore=awayScore;
+      }
+      public int getState(){
+    	  return State;
+      }
+      public void setState(int state){
+    	  this.State=state;
       }
 }

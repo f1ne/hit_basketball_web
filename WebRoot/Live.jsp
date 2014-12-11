@@ -112,6 +112,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+			<td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam1!=null){
@@ -125,6 +126,10 @@ body {
 					</td>
 					<td>				
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+                    </td>
+					<td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                   
                     </td>
 				</tr>
 				<%
@@ -149,6 +154,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+			<td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam2!=null){
@@ -162,6 +168,10 @@ body {
 					</td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+                    </td>
+					<td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                   
                     </td>
 				</tr>
 				<%

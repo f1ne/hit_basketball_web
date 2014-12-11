@@ -9,6 +9,12 @@ public class PlayerBean {
 	private int NumberOfMatches;
 	private int Fouls;
 	private int Number;
+	/*state有这几种
+	 * bench 未上场
+	 * oncourt 在场上
+	 * fouledout 罚出
+	 */
+	private String State;
 	public PlayerBean(){
 		this.PlayerID=-1;
 		this.TeamID=-1;
@@ -20,7 +26,7 @@ public class PlayerBean {
 		this.Number=-1;
 	}
 	PlayerBean(int playerID,int teamID,String name,String studentID,int score,
-		int numberOfMatches,int fouls,int number){
+		int numberOfMatches,int fouls,int number,String state){
 		this.PlayerID=playerID;
 		this.TeamID=teamID;
 		this.Name=name;
@@ -29,7 +35,20 @@ public class PlayerBean {
 		this.NumberOfMatches=numberOfMatches;
 		this.Fouls=fouls;
 		this.Number=number;
+		this.State=state;
 	}
+	PlayerBean(int playerID,int teamID,String name,String studentID,int score,
+			int numberOfMatches,int fouls,int number){
+			this.PlayerID=playerID;
+			this.TeamID=teamID;
+			this.Name=name;
+			this.StudentID=studentID;
+			this.Score=score;
+			this.NumberOfMatches=numberOfMatches;
+			this.Fouls=fouls;
+			this.Number=number;
+			this.State="bench";
+		}
 	public int getPlayerID(){
 		return PlayerID;
 	}
@@ -39,7 +58,7 @@ public class PlayerBean {
 	public int getTeamID(){
 		return TeamID;
 	}
-	public void setTeadID(int teamID){
+	public void setTeamID(int teamID){
 		this.TeamID=teamID;
 	}
 	public String getName(){
@@ -77,5 +96,11 @@ public class PlayerBean {
 	}
 	public void setNumber(int number){
 		this.Number=number;
+	}
+	public String getState(){
+		return State;
+	}
+	public void setState(String state){
+		this.State=state;
 	}
 }

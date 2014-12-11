@@ -6,11 +6,11 @@
     var homeTeamScore;
     var awayTeamScore;
     var xmlHttp;
-	/*´´½¨XMLHttpRequest¶ÔÏó*/
+	/*åˆ›å»ºXMLHttpRequestå¯¹è±¡*/
 	function createXmlHttp(){
 		xmlHttp=new XMLHttpRequest();
 	}
-	/*´¦Àí·şÎñÆ÷ÏìÓ¦½á¹û*/
+	/*å¤„ç†æœåŠ¡å™¨å“åº”ç»“æœ*/
 	function processResponse(){
 		if (xmlHttp.readyState==4){
 			if (xmlHttp.status==200){
@@ -27,8 +27,21 @@
 					var score=y[1].childNodes[0].nodeValue;
 					var foul=y[2].childNodes[0].nodeValue;
 					var teamID=y[3].childNodes[0].nodeValue;
+					var state=y[4].childNodes[0].nodeValue;
 					document.getElementById(playerID+"score").innerText=score;
 					document.getElementById(playerID+"foul").innerText=foul;
+					if (state=="bench")
+					{
+						document.getElementById(playerID+"playerstate").innerText="æ›¿è¡¥";
+					}
+					if (state=="oncourt")
+					{
+						document.getElementById(playerID+"playerstate").innerText="åœºä¸Š";
+					}
+					if (state=="fouledout")
+					{
+					    document.getElementById(playerID+"playerstate").innerText="ç½šå‡º";
+					}
 					if (teamID==globalHomeTeamID){
 						homeTeamScore=homeTeamScore+parseInt(score);
 					}
@@ -42,14 +55,14 @@
 			}
 		}
 	}
-	/*·¢ËÍ¿Í»§¶ËµÄÇëÇó*/
+	/*å‘é€å®¢æˆ·ç«¯çš„è¯·æ±‚*/
 	function sendRequest(url){
 		createXmlHttp();
 		xmlHttp.open("GET",url,true);
 		xmlHttp.onreadystatechange=processResponse;
 		xmlHttp.send(null);
 	}
-	//Ë¢ĞÂº¯Êı
+	//åˆ·æ–°å‡½æ•°
 	function refresh(homeTeamID,awayTeamID){
 		var url="LiveRefresh.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 		globalHomeTeamID=homeTeamID;

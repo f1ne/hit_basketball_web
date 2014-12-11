@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -6,11 +7,11 @@
     var globalAwayTeamID;
     var homeTeamScore;
     var awayTeamScore;
-	/*´´½¨XMLHttpRequest¶ÔÏó*/
+	/*åˆ›å»ºXMLHttpRequestè¯·æ±‚*/
 	function createXmlHttp(){
 		xmlHttp=new XMLHttpRequest();
 	}
-	/*´¦Àí·şÎñÆ÷ÏìÓ¦½á¹û*/
+	/*å¤„ç†å“åº”*/
 	function processResponse(){
 		if (xmlHttp.readyState==4){
 			if (xmlHttp.status==200){
@@ -18,33 +19,33 @@
 			}
 		}
 	}
-	/*·¢ËÍ¿Í»§¶ËµÄÇëÇó*/
+	/*å‘é€è¯·æ±‚*/
 	function sendRequest(url){
 		createXmlHttp();
 		xmlHttp.open("GET",url,true);
 		xmlHttp.onreadystatechange=processResponse;
 		xmlHttp.send(null);
 	}
-	/*Ôö¼ÓµÃ·Ö*/
+	/*å¾—åˆ†*/
 	function score(playerID,homeTeamID,awayTeamID){
 		
-	    //µ±Ç°Ò³ÃæµÄÊı¾İ×Ô¼Ó1
+	    //å¾—åˆ†åŠ 1
 	    var score=parseInt(document.getElementById(playerID+"score").innerText)+1;
 	    var url="Record.servlet?playerID="+playerID+"&event=Score&amount="+score+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 	    document.getElementById(playerID+"score").innerText=score;
 	    sendRequest(url);
 	    
 	}
-	/*Ôö¼Ó·¸¹æ*/
+	/*çŠ¯è§„æ•°å¢åŠ */
 	function foul(playerID,homeTeamID,awayTeamID){
-		//µ±Ç°Ò³ÃæµÄ·¸¹æÊı¾İ×Ô¶¯¼Ó1
+		//å¢åŠ çŠ¯è§„æ•°
 		var foul=parseInt(document.getElementById(playerID+"foul").innerText)+1;
 	    document.getElementById(playerID+"foul").innerText=foul;
 	    var url="Record.servlet?playerID="+playerID+"&event=Fouls&amount="+foul+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 	    sendRequest(url);
 	}
 	/*
-	 * Ë¢ĞÂº¯Êı
+	 *åˆ·æ–°
 	 */
 	function refresh(homeTeamID,awayTeamID){
 		var url="LiveRefresh.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
@@ -52,14 +53,14 @@
 		globalAwayTeamID=awayTeamID;
 		sendRefreshRequest(url);
 	}
-	/*·¢ËÍ¿Í»§¶ËµÄÇëÇó*/
+	/*å‘é€åˆ·æ–°è¯·æ±‚*/
 	function sendRefreshRequest(url){
 		createXmlHttp();
 		xmlHttp.open("GET",url,true);
 		xmlHttp.onreadystatechange=processRefreshResponse;
 		xmlHttp.send(null);
 	}
-	/*´¦Àí·şÎñÆ÷ÏìÓ¦½á¹û*/
+	/*å¤„ç†åˆ·æ–°*/
 	function processRefreshResponse(){
 		if (xmlHttp.readyState==4){
 			if (xmlHttp.status==200){
@@ -67,6 +68,7 @@
 				awayTeamScore=parseInt(0);
 				var out="";
 				var res=xmlHttp.responseXML;
+				//åˆ·æ–°é¡µé¢çš„çƒå‘˜æ•°æ®
 				var data=res.getElementsByTagName("PlayerData");
 				var len=data.length;
 				for (var i=0;i<data.length;i++){
@@ -76,8 +78,27 @@
 					var score=y[1].childNodes[0].nodeValue;
 					var foul=y[2].childNodes[0].nodeValue;
 					var teamID=y[3].childNodes[0].nodeValue;
+					var state=y[4].childNodes[0].nodeValue;
 					document.getElementById(playerID+"score").innerText=score;
 					document.getElementById(playerID+"foul").innerText=foul;
+					//æ›´æ”¹çƒå‘˜çŠ¶æ€
+					if (foul>=5)
+					{
+					    var url="ChangePlayerState.servlet?playerID="+playerID+"&homeTeamID="+globalHomeTeamID+"&awayTeamID="+globalAwayTeamID+"&state=fouledout";
+						sendRequest(url);
+					    fouledout(playerID);
+					}
+					else
+					{
+					    if (state=="bench")
+						{
+						    bench(playerID);
+						}
+						if (state=="oncourt")
+						{
+						    oncourt(playerID);
+						}
+					}
 					if (teamID==globalHomeTeamID){
 						homeTeamScore=homeTeamScore+parseInt(score);
 					}
@@ -87,11 +108,51 @@
 				}
 				document.getElementById("hometeamscore").innerText=homeTeamScore;
 				document.getElementById("awayteamscore").innerText=awayTeamScore;
+				//åˆ·æ–°é¡µé¢çš„æ¯”èµ›çŠ¶æ€
+				var data=res.getElementsByTagName("GameData");
+				for (var i=0;i<data.length;i++)
+				{
+				    var y=Array();
+					var y=data[i].childNodes;
+					var State=y[0].childNodes[0].nodeValue;
+					if (State==0)
+					{
+					    document.getElementById("gamestate").innerText="æœªè¿›è¡Œ";
+					}
+					if (State==1)
+					{
+					    document.getElementById("gamestate").innerText="ç¬¬ä¸€èŠ‚";
+					}
+					if (State==2)
+					{
+					    document.getElementById("gamestate").innerText="ç¬¬äºŒèŠ‚";
+					}
+					if (State==3)
+					{
+					    document.getElementById("gamestate").innerText="ä¸­åœºæŠ•ç¯®æ¯”èµ›";
+					}
+					if (State==4)
+					{
+					    document.getElementById("gamestate").innerText="ç¬¬ä¸‰èŠ‚";
+					}
+					if (State==5)
+					{
+					    document.getElementById("gamestate").innerText="ç¬¬å››èŠ‚";
+					}
+					if (State==6)
+					{
+					    document.getElementById("gamestate").innerText="åŠ æ—¶èµ›";
+					}
+					if (State==7)
+					{
+					    document.getElementById("gamestate").innerText="æ¯”èµ›ç»“æŸ";
+					}
+				}
 			}
 		}
 	}
 	/*
-	*Í³¼Æ³·Ïú¹¦ÄÜ
+	*æ’¤é”€å¾—åˆ†
 	*/
 	function cancelScore(playerID,homeTeamID,awayTeamID)
 	{
@@ -114,8 +175,82 @@
 			document.getElementById(playerID+"foul").innerText=foul;
 		    var url="Record.servlet?playerID="+playerID+"&event=CancelFouls&amount="+foul+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
 		    sendRequest(url);
+			if (foul==4)
+			{
+			    bench(playerID);
+			}
 		}else{
 			alert("Wrong Operation!");
 		}
 	    
 	}
+	/*
+	 * æ›´æ”¹æ›¿æ¢çƒå‘˜
+	 */
+	function changeplayerstate(playerID,homeTeamID,awayTeamID)
+	{
+		//è·å¾—å½“å‰çŠ¶æ€
+		var currentstate=document.getElementById(playerID+"playerstate").innerText;
+		//ä¿®æ”¹æŒ‰é’®åå­—
+		if (currentstate=="æ›¿è¡¥")
+		{
+		    var url="ChangePlayerState.servlet?playerID="+playerID+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID+"&state=oncourt";
+			sendRequest(url);
+			oncourt(playerID);
+		}
+		if (currentstate=="åœºä¸Š")
+		{
+		    var url="ChangePlayerState.servlet?playerID="+playerID+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID+"&state=bench";
+			sendRequest(url);
+			bench(playerID);
+		}
+	}
+	
+	/*
+	 *æ”¹å˜çƒå‘˜çš„çŠ¶æ€çš„å‡ ä¸ªå‡½æ•°
+	 */
+	 //ä¸Šåœº
+	function oncourt(playerID)
+	{
+		document.getElementById(playerID+"playerstate").innerText="åœºä¸Š";
+		document.getElementById(playerID+"changeplayerstate").value="ä¸‹åœº";
+		document.getElementById(playerID+"scorebutton").disabled=false;
+		document.getElementById(playerID+"cancelscorebutton").disabled=false;
+		document.getElementById(playerID+"foulbutton").disabled=false;
+		document.getElementById(playerID+"cancelfoulbutton").disabled=false;
+		document.getElementById(playerID+"changeplayerstate").disabled=false;
+	}
+	//ä¸‹åœº
+	function bench(playerID)
+	{
+		document.getElementById(playerID+"playerstate").innerText="æ›¿è¡¥";
+		document.getElementById(playerID+"changeplayerstate").value="ä¸Šåœº";
+		document.getElementById(playerID+"scorebutton").disabled=true;
+		document.getElementById(playerID+"cancelscorebutton").disabled=true;
+		document.getElementById(playerID+"foulbutton").disabled=true;
+		document.getElementById(playerID+"cancelfoulbutton").disabled=true;
+		document.getElementById(playerID+"changeplayerstate").disabled=false;
+	}
+	//ç½šå‡ºæ¯”èµ›
+	function fouledout(playerID)
+	{
+	    document.getElementById(playerID+"playerstate").innerText="ç½šå‡º";
+		document.getElementById(playerID+"changeplayerstate").value="ä¸å¯ç”¨";
+		document.getElementById(playerID+"scorebutton").disabled=true;
+		document.getElementById(playerID+"cancelscorebutton").disabled=false;
+		document.getElementById(playerID+"foulbutton").disabled=true;
+		document.getElementById(playerID+"cancelfoulbutton").disabled=false;
+		document.getElementById(playerID+"changeplayerstate").disabled=true;
+	}
+/*
+ *æ¯”èµ›çŠ¶æ€ä¿®æ”¹
+ */
+//ç»“æŸæ¯”èµ›
+    function changeGameState(homeTeamID,awayTeamID,state)
+    {
+        var homeScore=document.getElementById("hometeamscore").innerText;
+		var awayScore=document.getElementById("awayteamscore").innerText; 
+        var url="ChangeGameState.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID+"&homeScore="+homeScore+"&awayScore="+awayScore+"&state="+state;
+        sendRequest(url);		
+    }
+    
