@@ -3,6 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+  <%@   page   contentType="text/html;charset=gb2312"%>    
+  <%@   page   import="java.sql.*"   %>    
+  <%@   page   import="java.util.*"%>    
+  <%@   page   import="java.text.*"%>    
+  <%@   page   import="java.io.*"%>  
 <%@ page import="Login.LoginAction" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -67,14 +72,22 @@ body {
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+   <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
 <hr>
-	<s:form action="UploadPicBegin.action" method="post">
-	<br/>
-	<input type="file" id="imgUpload" name="imgUpload"/>
-	<s:submit align="CENTER" value="上传"/>
-	</s:form>
-</body>
+	<center>
+    	<!--span style="color:white">图片上传 </span><br-->
+    	<form action="uploadImage" method="post" enctype="multipart/form-data">
+    		<span style="color:white">请选择图片:</span><fieldset style="height: 100%;"><input type="file" name="imageFile" onchange="showImg(this)"><br>
+    		<input type="submit" value="上传"></fieldset>
+    	</form>
+    	<!--  form action="UpImgServlet" method="post" enctype="multipart/form-data">
+    		<span style="color:white">请选择图片:</span><fieldset style="height: 100%;"><input type="file" name="imgfile" size="10"></fieldset><br>
+    		<input type="submit" value="上传">
+    	</form-->
+    </center>
+  </body>
 </html>
+

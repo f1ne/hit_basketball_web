@@ -30,7 +30,7 @@ CREATE TABLE `allgametable` (
   `AwayTeamID` int(11) DEFAULT NULL,
   `Date` date DEFAULT NULL,
   PRIMARY KEY (`GameID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `allgametable` (
 
 LOCK TABLES `allgametable` WRITE;
 /*!40000 ALTER TABLE `allgametable` DISABLE KEYS */;
-INSERT INTO `allgametable` VALUES (21,201601,201602,'2014-11-23');
+INSERT INTO `allgametable` VALUES (21,201601,201602,'2014-11-23'),(22,201201,201204,'2014-12-10'),(23,201601,201602,'2014-12-10'),(24,201201,201204,'2014-12-11');
 /*!40000 ALTER TABLE `allgametable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,6 +92,76 @@ INSERT INTO `gametable20141123_201601_201602` VALUES (15,'Score','2014-11-23 11:
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gametable20141210_201201_201204`
+--
+
+DROP TABLE IF EXISTS `gametable20141210_201201_201204`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gametable20141210_201201_201204` (
+  `PlayerID` int(11) DEFAULT NULL,
+  `Event` varchar(45) DEFAULT NULL,
+  `Time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gametable20141210_201201_201204`
+--
+
+LOCK TABLES `gametable20141210_201201_201204` WRITE;
+/*!40000 ALTER TABLE `gametable20141210_201201_201204` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gametable20141210_201201_201204` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gametable20141210_201601_201602`
+--
+
+DROP TABLE IF EXISTS `gametable20141210_201601_201602`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gametable20141210_201601_201602` (
+  `PlayerID` int(11) DEFAULT NULL,
+  `Event` varchar(45) DEFAULT NULL,
+  `Time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gametable20141210_201601_201602`
+--
+
+LOCK TABLES `gametable20141210_201601_201602` WRITE;
+/*!40000 ALTER TABLE `gametable20141210_201601_201602` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gametable20141210_201601_201602` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gametable20141211_201201_201204`
+--
+
+DROP TABLE IF EXISTS `gametable20141211_201201_201204`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gametable20141211_201201_201204` (
+  `PlayerID` int(11) DEFAULT NULL,
+  `Event` varchar(45) DEFAULT NULL,
+  `Time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gametable20141211_201201_201204`
+--
+
+LOCK TABLES `gametable20141211_201201_201204` WRITE;
+/*!40000 ALTER TABLE `gametable20141211_201201_201204` DISABLE KEYS */;
+INSERT INTO `gametable20141211_201201_201204` VALUES (5,'Score','2014-12-11 12:43:54'),(5,'Score','2014-12-11 12:43:54'),(5,'Score','2014-12-11 12:43:55'),(5,'CancelScore','2014-12-11 12:43:57'),(5,'Score','2014-12-11 12:43:58'),(5,'Fouls','2014-12-11 12:43:59'),(5,'Fouls','2014-12-11 12:43:59'),(5,'Fouls','2014-12-11 12:43:59'),(5,'Fouls','2014-12-11 12:44:00'),(2,'Score','2014-12-11 12:44:01'),(2,'Score','2014-12-11 12:44:01'),(2,'Fouls','2014-12-11 12:44:06'),(6,'Fouls','2014-12-11 12:44:06'),(6,'Score','2014-12-11 12:44:07'),(6,'Score','2014-12-11 12:44:08'),(2,'Fouls','2014-12-11 12:44:09'),(2,'Fouls','2014-12-11 12:44:09'),(6,'Fouls','2014-12-11 12:44:10'),(6,'Fouls','2014-12-11 12:44:11');
+/*!40000 ALTER TABLE `gametable20141211_201201_201204` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `groupgame`
 --
 
@@ -114,7 +184,7 @@ CREATE TABLE `groupgame` (
 
 LOCK TABLES `groupgame` WRITE;
 /*!40000 ALTER TABLE `groupgame` DISABLE KEYS */;
-INSERT INTO `groupgame` VALUES ('201201','A',2,2),('201202','A',1,3),('201204','A',2,2),('201601','B',1,1),('201602','C',1,1),('201701','A',3,1),('201702','D',1,1);
+INSERT INTO `groupgame` VALUES ('201201','A',3,2),('201202','A',2,3),('201204','A',2,3),('201601','B',1,1),('201602','C',1,1),('201701','A',3,2),('201702','D',1,1);
 /*!40000 ALTER TABLE `groupgame` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +227,7 @@ CREATE TABLE `message` (
   `index` int(11) NOT NULL AUTO_INCREMENT,
   `IndexMessage` varchar(500) NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +236,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'222'),(2,'2014-12-31 有比赛'),(3,'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！'),(4,'123213'),(5,'3123123'),(6,'ref24fr'),(7,'2013 '),(8,'的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇'),(9,''),(10,'213123123'),(11,'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\''),(12,'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\''),(13,'44'),(14,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！'),(15,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！！'),(16,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！！！');
+INSERT INTO `message` VALUES (1,'222'),(2,'2014-12-31 有比赛'),(3,'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！'),(4,'123213'),(5,'3123123'),(6,'ref24fr'),(7,'2013 '),(8,'的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇的电风扇'),(9,''),(10,'213123123'),(11,'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\''),(12,'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\'\'2014-12-22 将由201401队伍迎战201304队伍！请大家多多支持！\''),(13,'44'),(14,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！'),(15,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！！'),(16,'2014-11-13 将由201401队伍迎战201304队伍！请大家多多支持！！！'),(17,' 2014-11-14 将由201401队伍迎战201304队伍！请大家多多支持！！！\r\n\r\n');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +264,7 @@ CREATE TABLE `players` (
   PRIMARY KEY (`PlayerID`),
   UNIQUE KEY `PlayerID_UNIQUE` (`PlayerID`),
   UNIQUE KEY `StudentID_UNIQUE` (`StudentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +273,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (2,201204,'猛','Kobe','男','1123710502',24,'在读硕士生',0,0,0,20,'否'),(5,201201,'2','陈晨','男','1120310707',21,'在读硕士生',0,0,0,20,'是'),(6,201204,'猛','刘甜','女','1120311111',54,'在读硕士生',0,0,0,20,'否'),(8,201502,'TT','李言路','男','1120310303',7,'在读硕士生',0,0,0,20,'否'),(9,201601,'哈哈哈','赵','男','1120310301',1,'在读硕士生',0,1,0,20,'是'),(10,201601,'哈哈哈','钱','男','1120310302',2,'在读硕士生',0,1,0,20,'否'),(12,201601,'哈哈哈','孙','男','1120310304',3,'在读硕士生',0,1,0,20,'是'),(13,201601,'哈哈哈','李','男','1120310305',4,'在读硕士生',0,1,0,20,'否'),(14,201601,'哈哈哈','周','男','1120310306',5,'在读硕士生',0,1,0,20,'是'),(15,201602,'呵呵呵','吴','男','1120310311',1,'在读硕士生',3,1,0,20,'是'),(16,201602,'呵呵呵','孙瑞','男','1120310312',2,'在读硕士生',0,1,0,20,'否'),(17,201602,'呵呵呵','李泽宇','女','1120310313',3,'在读硕士生',0,1,0,20,'是'),(18,201602,'呵呵呵','张皓','男','1120310314',4,'在读硕士生',0,1,0,20,'否'),(19,201602,'呵呵呵','杜常辉','男','1120310315',5,'在读硕士生',0,1,0,20,'是');
+INSERT INTO `players` VALUES (2,201204,'猛','Kobe','男','1123710502',24,'在读硕士生',1,2,3,20,'否'),(5,201201,'2','陈晨','男','1120310707',21,'在读硕士生',3,2,4,20,'是'),(6,201204,'猛','刘甜','女','1120311111',54,'在读硕士生',2,2,3,20,'否'),(8,201502,'TT','李言路','男','1120310303',7,'在读硕士生',0,0,0,20,'否'),(9,201601,'哈哈哈','赵','男','1120310301',1,'在读硕士生',0,2,0,20,'是'),(10,201601,'哈哈哈','钱','男','1120310302',2,'在读硕士生',0,2,0,20,'否'),(12,201601,'哈哈哈','孙','男','1120310304',3,'在读硕士生',0,2,0,20,'是'),(13,201601,'哈哈哈','李','男','1120310305',4,'在读硕士生',0,2,0,20,'否'),(14,201601,'哈哈哈','周','男','1120310306',5,'在读硕士生',0,2,0,20,'是'),(15,201602,'呵呵呵','吴','男','1120310311',1,'在读硕士生',3,2,0,20,'是'),(16,201602,'呵呵呵','孙瑞','男','1120310312',2,'在读硕士生',0,2,0,20,'否'),(17,201602,'呵呵呵','李泽宇','女','1120310313',3,'在读硕士生',0,2,0,20,'是'),(18,201602,'呵呵呵','张皓','男','1120310314',4,'在读硕士生',0,2,0,20,'否'),(19,201602,'呵呵呵','杜常辉','男','1120310315',5,'在读硕士生',0,2,0,20,'是');
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,6 +346,108 @@ INSERT INTO `playerstable20141123_201601_201602` VALUES (9,201601,'哈哈哈','�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `playerstable20141210_201201_201204`
+--
+
+DROP TABLE IF EXISTS `playerstable20141210_201201_201204`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `playerstable20141210_201201_201204` (
+  `PlayerID` int(11) NOT NULL DEFAULT '0',
+  `TeamID` int(6) DEFAULT NULL,
+  `Team` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) NOT NULL,
+  `Sex` varchar(45) NOT NULL,
+  `StudentID` varchar(45) NOT NULL,
+  `Number` int(11) NOT NULL,
+  `Position` varchar(45) NOT NULL,
+  `Score` int(11) NOT NULL DEFAULT '0',
+  `NumberOfMatches` int(11) NOT NULL DEFAULT '0',
+  `Fouls` int(11) NOT NULL DEFAULT '0',
+  `Age` int(3) NOT NULL DEFAULT '20',
+  `IsSHB` varchar(4) NOT NULL DEFAULT '否'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playerstable20141210_201201_201204`
+--
+
+LOCK TABLES `playerstable20141210_201201_201204` WRITE;
+/*!40000 ALTER TABLE `playerstable20141210_201201_201204` DISABLE KEYS */;
+INSERT INTO `playerstable20141210_201201_201204` VALUES (2,201204,'猛','Kobe','男','1123710502',24,'在读硕士生',0,0,0,20,'否'),(5,201201,'2','陈晨','男','1120310707',21,'在读硕士生',0,0,0,20,'是'),(6,201204,'猛','刘甜','女','1120311111',54,'在读硕士生',0,0,0,20,'否');
+/*!40000 ALTER TABLE `playerstable20141210_201201_201204` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `playerstable20141210_201601_201602`
+--
+
+DROP TABLE IF EXISTS `playerstable20141210_201601_201602`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `playerstable20141210_201601_201602` (
+  `PlayerID` int(11) NOT NULL DEFAULT '0',
+  `TeamID` int(6) DEFAULT NULL,
+  `Team` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) NOT NULL,
+  `Sex` varchar(45) NOT NULL,
+  `StudentID` varchar(45) NOT NULL,
+  `Number` int(11) NOT NULL,
+  `Position` varchar(45) NOT NULL,
+  `Score` int(11) NOT NULL DEFAULT '0',
+  `NumberOfMatches` int(11) NOT NULL DEFAULT '0',
+  `Fouls` int(11) NOT NULL DEFAULT '0',
+  `Age` int(3) NOT NULL DEFAULT '20',
+  `IsSHB` varchar(4) NOT NULL DEFAULT '否'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playerstable20141210_201601_201602`
+--
+
+LOCK TABLES `playerstable20141210_201601_201602` WRITE;
+/*!40000 ALTER TABLE `playerstable20141210_201601_201602` DISABLE KEYS */;
+INSERT INTO `playerstable20141210_201601_201602` VALUES (9,201601,'哈哈哈','赵','男','1120310301',1,'在读硕士生',0,1,0,20,'是'),(10,201601,'哈哈哈','钱','男','1120310302',2,'在读硕士生',0,1,0,20,'否'),(12,201601,'哈哈哈','孙','男','1120310304',3,'在读硕士生',0,1,0,20,'是'),(13,201601,'哈哈哈','李','男','1120310305',4,'在读硕士生',0,1,0,20,'否'),(14,201601,'哈哈哈','周','男','1120310306',5,'在读硕士生',0,1,0,20,'是'),(15,201602,'呵呵呵','吴','男','1120310311',1,'在读硕士生',0,1,0,20,'是'),(16,201602,'呵呵呵','孙瑞','男','1120310312',2,'在读硕士生',0,1,0,20,'否'),(17,201602,'呵呵呵','李泽宇','女','1120310313',3,'在读硕士生',0,1,0,20,'是'),(18,201602,'呵呵呵','张皓','男','1120310314',4,'在读硕士生',0,1,0,20,'否'),(19,201602,'呵呵呵','杜常辉','男','1120310315',5,'在读硕士生',0,1,0,20,'是');
+/*!40000 ALTER TABLE `playerstable20141210_201601_201602` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `playerstable20141211_201201_201204`
+--
+
+DROP TABLE IF EXISTS `playerstable20141211_201201_201204`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `playerstable20141211_201201_201204` (
+  `PlayerID` int(11) NOT NULL DEFAULT '0',
+  `TeamID` int(6) DEFAULT NULL,
+  `Team` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) NOT NULL,
+  `Sex` varchar(45) NOT NULL,
+  `StudentID` varchar(45) NOT NULL,
+  `Number` int(11) NOT NULL,
+  `Position` varchar(45) NOT NULL,
+  `Score` int(11) NOT NULL DEFAULT '0',
+  `NumberOfMatches` int(11) NOT NULL DEFAULT '0',
+  `Fouls` int(11) NOT NULL DEFAULT '0',
+  `Age` int(3) NOT NULL DEFAULT '20',
+  `IsSHB` varchar(4) NOT NULL DEFAULT '否'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playerstable20141211_201201_201204`
+--
+
+LOCK TABLES `playerstable20141211_201201_201204` WRITE;
+/*!40000 ALTER TABLE `playerstable20141211_201201_201204` DISABLE KEYS */;
+INSERT INTO `playerstable20141211_201201_201204` VALUES (2,201204,'猛','Kobe','男','1123710502',24,'在读硕士生',1,1,3,20,'否'),(5,201201,'2','陈晨','男','1120310707',21,'在读硕士生',3,1,4,20,'是'),(6,201204,'猛','刘甜','女','1120311111',54,'在读硕士生',2,1,3,20,'否');
+/*!40000 ALTER TABLE `playerstable20141211_201201_201204` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `schedule`
 --
 
@@ -289,7 +461,7 @@ CREATE TABLE `schedule` (
   `HomeTeamID` varchar(45) NOT NULL,
   `AwayTeamID` varchar(45) NOT NULL,
   PRIMARY KEY (`Index`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,4 +511,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-09 23:53:33
+-- Dump completed on 2014-12-11 12:48:07

@@ -78,7 +78,8 @@ body {
     
     <li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>实验室：<select name="newTeam.lab" id="newTeam.lab">
-																				<option value="智能接口与人机交互研究中心" selected >智能接口与人机交互研究中心（01）</option>
+									                                          <option disabled="disabled" value="" selected>-请选择 -</option> 
+																				<option value="智能接口与人机交互研究中心" >智能接口与人机交互研究中心（01）</option>
 																				<option value="语言技术研究中心"  >语言技术研究中心（02）</option>
 																				<option value="企业与服务智能计算研究中心"  >企业与服务智能计算研究中心（03）</option>
 																				<option value="计算机网络与信息安全技术研究中心"  >计算机网络与信息安全技术研究中心（04）</option>

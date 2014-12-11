@@ -83,6 +83,7 @@ body {
 						style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 			</tbody>
 		</table>
@@ -96,7 +97,7 @@ body {
 		
 				<font size=3><span style="color:white;">主队:</span></font> 
 					<select id="newhomeTeamID" name="newhomeTeamID">
-			<option disabled="disabled" value="">-请选择 -</option> 
+			<option disabled="disabled" value="" selected>-请选择 -</option> 
 			<%
 			  	ArrayList<String> T = (ArrayList<String>)session.getAttribute("TeamList");
 	 if(!T.isEmpty()){
@@ -111,7 +112,7 @@ body {
 				%>
 				</select> <br><br>
 				<font size=3><span style="color:white;">客队:</span></font> <select id="newawayTeamID" name="newawayTeamID">
-			<option disabled="disabled" value="">-请选择 -</option> 
+			<option disabled="disabled" value="" selected>-请选择 -</option> 
 			<%
 			  for(String teamopt1:T){  
 			%>

@@ -64,10 +64,6 @@
 <action name="uploadPic">
 <result>UploadPic.jsp</result>
 </action>
-<action name="uploadPicBegin" class="indexNTable.Uploadpic" method="uploadpic">
- <result name="success" type="redirectAction">uploadPic</result>
-</action>
-
  <action name="InsertSchedule" class="indexNTable.IndexMessageAction" method="InsertSchedule">
       <result name="success" type="redirectAction">GetScheduleM</result>
       <result name="error">addResultM.jsp</result>
@@ -125,10 +121,13 @@
 
 <package name="Login" extends="struts-default">
 <action name="LoginBegin" class="Login.LoginAction" method="Login" >
-<result name="success">ManageLoginSuccess.jsp</result>
+<result name="success" type="redirectAction">prepare</result>
 <result name="input">TeamLoginSuccess.jsp</result>
 <result name="error">LoginError.jsp</result>
 </action>
+<action name="prepare" class="indexNTable.IndexMessageAction" method="getReady">
+  <result name="success">ManageLoginSuccess.jsp</result>
+  </action>
 <action name="Login">
 <result>Login.jsp</result>
 </action>

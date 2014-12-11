@@ -63,7 +63,7 @@ body {
     <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-    <!--  td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+    <!--  td><a href="fileUpload.html" style="font-size:14px;">上传图片2</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td-->
     </tr>
     </tbody></table>
   </div>
