@@ -112,6 +112,8 @@ public class Basketball extends ActionSupport{
 				if (record.getPlayerID()==player.getPlayerID()){
 					String scorestr="Score";
 					String foulstr="Fouls";
+					String cancelfoulstr="CancelFouls";
+					String cancelscorestr="CancelScore";
 					if (scorestr.equals(record.getEvent())){
 						int tempscore=player.getScore();
 						player.setScore(tempscore+1);
@@ -119,6 +121,14 @@ public class Basketball extends ActionSupport{
 					if (foulstr.equals(record.getEvent())){
 						int tempfoul=player.getFouls();
 						player.setFouls(tempfoul+1);
+					}
+					if (cancelscorestr.equals(record.getEvent())){
+						int tempscore=player.getScore();
+						player.setScore(tempscore-1);
+					}
+					if (cancelfoulstr.equals(record.getEvent())){
+						int tempfoul=player.getFouls();
+						player.setFouls(tempfoul-1);
 					}
 				}
 			}
