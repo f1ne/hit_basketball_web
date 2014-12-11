@@ -282,7 +282,10 @@ public class IndexMessageAction extends ActionSupport{
 		private ArrayList<GroupBean> B = new ArrayList<GroupBean>();
 		private ArrayList<GroupBean> C = new ArrayList<GroupBean>();
 		private ArrayList<GroupBean> D = new ArrayList<GroupBean>();
-
+		private ArrayList<GroupBean> E = new ArrayList<GroupBean>();
+		private ArrayList<GroupBean> F = new ArrayList<GroupBean>();
+		private ArrayList<GroupBean> G = new ArrayList<GroupBean>();
+		private ArrayList<GroupBean> H = new ArrayList<GroupBean>();
 		public String AddWin(){
 			try {
 				Connection NumConnection=dbConnection.getConnection();
@@ -336,6 +339,10 @@ public class IndexMessageAction extends ActionSupport{
 				ShowGroupBMember();
 				ShowGroupCMember();
 				ShowGroupDMember();
+				ShowGroupEMember();
+				ShowGroupFMember();
+				ShowGroupGMember();
+				ShowGroupHMember();
 			return SUCCESS;
 		}
 		public String ShowGroupAMember(){
@@ -426,6 +433,93 @@ public class IndexMessageAction extends ActionSupport{
 				return ERROR;
 			}
 		}
+		public String ShowGroupEMember(){
+			E.clear();
+			try {
+				Connection tempConnection = dbConnection.getConnection();
+				String sqlString = "select * from groupgame where groupgame.GroupID=?";
+				PreparedStatement jokePreparedStatement = tempConnection
+						.prepareStatement(sqlString);
+				jokePreparedStatement.setString(1, "E");
+				ResultSet rs = jokePreparedStatement.executeQuery();
+				if (rs.next()) {
+					do{
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						E.add(tempMember);
+					}while(rs.next());
+				}
+			} catch (Exception e) {
+				jspTitle="œ‘ æ¥ÌŒÛ";
+				return ERROR;
+			}
+			return SUCCESS;
+		}
+		
+		public String ShowGroupFMember(){
+			F.clear();
+			try {
+				Connection tempConnection = dbConnection.getConnection();
+				String sqlString = "select * from groupgame where groupgame.GroupID=?";
+				PreparedStatement jokePreparedStatement = tempConnection
+						.prepareStatement(sqlString);
+				jokePreparedStatement.setString(1, "F");
+				ResultSet rs = jokePreparedStatement.executeQuery();
+				if (rs.next()) {
+					do{
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						F.add(tempMember);
+					}while(rs.next());
+				}
+			} catch (Exception e) {
+				jspTitle="œ‘ æ¥ÌŒÛ";
+				return ERROR;
+			}
+			return SUCCESS;
+		}
+		
+		public String ShowGroupGMember(){
+			G.clear();
+			try {
+				Connection tempConnection = dbConnection.getConnection();
+				String sqlString = "select * from groupgame where groupgame.GroupID=?";
+				PreparedStatement jokePreparedStatement = tempConnection
+						.prepareStatement(sqlString);
+				jokePreparedStatement.setString(1, "G");
+				ResultSet rs = jokePreparedStatement.executeQuery();
+				if (rs.next()) {
+					do{
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						G.add(tempMember);
+					}while(rs.next());
+				}
+			} catch (Exception e) {
+				jspTitle="œ‘ æ¥ÌŒÛ";
+				return ERROR;
+			}
+			return SUCCESS;
+		}
+		
+		public String ShowGroupHMember(){
+			H.clear();
+			try {
+				Connection tempConnection = dbConnection.getConnection();
+				String sqlString = "select * from groupgame where groupgame.GroupID=?";
+				PreparedStatement jokePreparedStatement = tempConnection
+						.prepareStatement(sqlString);
+				jokePreparedStatement.setString(1, "H");
+				ResultSet rs = jokePreparedStatement.executeQuery();
+				if (rs.next()) {
+					do{
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						H.add(tempMember);
+					}while(rs.next());
+				}
+			} catch (Exception e) {
+				jspTitle="œ‘ æ¥ÌŒÛ";
+				return ERROR;
+			}
+			return SUCCESS;
+		}
 		
 		public String DeleteMember() {
 			try {
@@ -487,6 +581,31 @@ public class IndexMessageAction extends ActionSupport{
 		}
 		public void setD(ArrayList<GroupBean> d) {
 			D = d;
+		}
+		
+		public ArrayList<GroupBean> getE() {
+			return E;
+		}
+		public void setE(ArrayList<GroupBean> e) {
+			E = e;
+		}
+		public ArrayList<GroupBean> getF() {
+			return F;
+		}
+		public void setF(ArrayList<GroupBean> f) {
+			F = f;
+		}
+		public ArrayList<GroupBean> getG() {
+			return G;
+		}
+		public void setG(ArrayList<GroupBean> g) {
+			G = g;
+		}
+		public ArrayList<GroupBean> getH() {
+			return H;
+		}
+		public void setH(ArrayList<GroupBean> h) {
+			H = h;
 		}
 		public ArrayList<String> getT() {
 			return T;

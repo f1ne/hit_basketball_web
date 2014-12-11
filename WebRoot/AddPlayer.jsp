@@ -74,11 +74,20 @@ body {
    <center>
     <h1><b><span style="color:white">添加球员</span></b></h1>
     <br>
-   <span style="color:white"> 注：球员姓名不能重，如果有相关情况请在后面用1，2区分</span>
+   <span style="color:white"> 注：球员姓名不能重，如果有相关情况请在后面用1，2区分；另教师学号不必填；</span>
     <br><br>
     <s:form action="AddPlayerBegin.action" style="color:white">
     
-								
+	<li><div class="select_panel">
+									<div class="addr_panel"><i class="addr"></i>参赛身份：<select name="newPlayer.Position" id="newPlayer.position">
+																				<option value="领队" selected >领队</option>
+																				<option value="教练"  >教练</option>
+																				<option value="在读本科生"  >在读本科生</option>
+																				<option value="在读硕士生"  >在读硕士生</option>
+																				<option value="在读博士生"  >在读博士生</option>
+																				<option value="教师"  >教师</option>
+																			</select></div>
+								</div></li> <br>							
     <table style="color:white">
     <tr><td>名字:<s:textfield name="newPlayer.Name"/></td></tr>
     <tr><td>学号:<s:textfield name="newPlayer.StudentID"/></td></tr>
@@ -97,16 +106,7 @@ body {
 								</div></li>
    	
    	<br>
-   	<li><div class="select_panel">
-									<div class="addr_panel"><i class="addr"></i>参赛身份：<select name="newPlayer.Position" id="newPlayer.position">
-																				<option value="领队" selected >领队</option>
-																				<option value="教练"  >教练</option>
-																				<option value="在读本科生"  >在读本科生</option>
-																				<option value="在读硕士生"  >在读硕士生</option>
-																				<option value="在读博士生"  >在读博士生</option>
-																				<option value="教师"  >教师</option>
-																			</select></div>
-								</div></li> <br>
+   	
 								<li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>年龄段：<select name="newPlayer.Age" id="newPlayer.Age">
 																				<option value="20" selected ><%="<" %>45岁</option>

@@ -71,10 +71,10 @@ body {
     <table border=1 align="CENTER" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>Time</td>
-		<td>Place</td>
-		<td>HomeTeamID</td>
-		<td>AwayTeamID</td>
+        <td>时间</td>
+		<td>地点</td>
+		<td>主队ID</td>
+		<td>客队ID</td>
 
   	</tr>
 	<s:iterator value="S" id="Games" status="stuts">
@@ -91,16 +91,14 @@ body {
 	<table border=1 align="center" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>TeamID</td>
-		<td>GroupID</td>
-		<td>Win</td>
-		<td>Lose</td>
+        <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
 
   	</tr>
 	<s:iterator value="A" id="GroupA" status="stuts">
   	 <tr>
         <td><s:property value="#GroupA.TeamID"/></td>
-        <td><s:property value="#GroupA.GroupID"/></td>
         <td><s:property value="#GroupA.Win"/></td>
         <td><s:property value="#GroupA.Lose"/></td>
   	 </tr>
@@ -110,16 +108,14 @@ body {
 	<table border=1 align="center" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>TeamID</td>
-		<td>GroupID</td>
-		<td>Win</td>
-		<td>Lose</td>
+        <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
 
   	</tr>
 	<s:iterator value="B" id="GroupB" status="stuts">
   	 <tr>
         <td><s:property value="#GroupB.TeamID"/></td>
-        <td><s:property value="#GroupB.GroupID"/></td>
         <td><s:property value="#GroupB.Win"/></td>
         <td><s:property value="#GroupB.Lose"/></td>
   	 </tr>
@@ -129,16 +125,14 @@ body {
 	<table border=1 align="center" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>TeamID</td>
-		<td>GroupID</td>
-		<td>Win</td>
-		<td>Lose</td>
+        <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
 
   	</tr>
 	<s:iterator value="C" id="GroupC" status="stuts">
   	 <tr>
         <td><s:property value="#GroupC.TeamID"/></td>
-        <td><s:property value="#GroupC.GroupID"/></td>
         <td><s:property value="#GroupC.Win"/></td>
         <td><s:property value="#GroupC.Lose"/></td>
   	 </tr>
@@ -148,18 +142,84 @@ body {
 	<table border=1 align="center" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>TeamID</td>
-		<td>GroupID</td>
-		<td>Win</td>
-		<td>Lose</td>
+        <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
 
   	</tr>
 	<s:iterator value="D" id="GroupD" status="stuts">
   	 <tr>
         <td><s:property value="#GroupD.TeamID"/></td>
-        <td><s:property value="#GroupD.GroupID"/></td>
         <td><s:property value="#GroupD.Win"/></td>
         <td><s:property value="#GroupD.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">E组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+       <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
+
+  	</tr>
+	<s:iterator value="E" id="GroupE" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupE.TeamID"/></td>
+        <td><s:property value="#GroupE.Win"/></td>
+        <td><s:property value="#GroupE.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">F组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+       <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
+
+  	</tr>
+	<s:iterator value="F" id="GroupF" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupF.TeamID"/></td>
+        <td><s:property value="#GroupF.Win"/></td>
+        <td><s:property value="#GroupF.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">G组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+       <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
+
+  	</tr>
+	<s:iterator value="G" id="GroupG" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupG.TeamID"/></td>
+        <td><s:property value="#GroupG.Win"/></td>
+        <td><s:property value="#GroupG.Lose"/></td>
+  	 </tr>
+	</s:iterator>
+	</table>
+	<h1 align="CENTER"><b><span style="color:white;">H组</span></b></h1>
+	<table border=1 align="center" style=color:white>
+    <tr>
+    	<!-- <td>Index</td>-->
+       <td>队伍ID</td>
+		<td>胜</td>
+		<td>负</td>
+
+  	</tr>
+	<s:iterator value="H" id="GroupH" status="stuts">
+  	 <tr>
+        <td><s:property value="#GroupH.TeamID"/></td>
+        <td><s:property value="#GroupH.Win"/></td>
+        <td><s:property value="#GroupH.Lose"/></td>
   	 </tr>
 	</s:iterator>
 	</table>
