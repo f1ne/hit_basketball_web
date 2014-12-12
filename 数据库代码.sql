@@ -221,6 +221,8 @@ DROP TABLE IF EXISTS `groupgame`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupgame` (
   `TeamID` varchar(6) NOT NULL,
+  `TeamName` varchar(45) NOT NULL,
+  `TeamLab` varchar(45) NOT NULL,
   `GroupID` varchar(1) NOT NULL,
   `Win` int(11) NOT NULL DEFAULT '0',
   `Lose` int(11) NOT NULL DEFAULT '0',
@@ -235,7 +237,7 @@ CREATE TABLE `groupgame` (
 
 LOCK TABLES `groupgame` WRITE;
 /*!40000 ALTER TABLE `groupgame` DISABLE KEYS */;
-INSERT INTO `groupgame` VALUES ('201201','A',3,2),('201202','A',1,3),('201204','E',0,0),('201502','F',0,0),('201601','B',0,0),('201602','C',1,2),('201702','D',1,1);
+INSERT INTO `groupgame` VALUES ('201201','2','智能接口与人机交互研究中心','A',1,1),('201204','猛','计算机网络与信息安全技术研究中心','A',1,1),('201502','TT','语言技术研究中心','B',0,0),('201601','哈哈哈','智能接口与人机交互研究中心','C',0,0),('201602','呵呵呵','语言技术研究中心','D',0,0),('201707','gdaf','生物信息学研究中心','G',0,0);
 /*!40000 ALTER TABLE `groupgame` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -633,4 +635,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-11 17:44:41
+-- Dump completed on 2014-12-12 10:21:15
