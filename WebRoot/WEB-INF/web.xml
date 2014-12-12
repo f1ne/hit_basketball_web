@@ -53,6 +53,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>SearchPlayerData</servlet-name>
+    <servlet-class>com.hit.cs.basketball.SearchPlayerData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchPlayerData</servlet-name>
+    <url-pattern>/SearchPlayerData.servlet</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
     <servlet-name>ImageUpload</servlet-name>
     <servlet-class>indexNTable.ImageUpload</servlet-class>
   </servlet>
