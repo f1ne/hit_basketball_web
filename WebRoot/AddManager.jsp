@@ -20,12 +20,13 @@ response.setContentType("text/html;charset=utf-8");%>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-  </head>
+</head>
   <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
 color: #FFFFFF; 
+text-decoration: none; 
 } 
 a:visited { 
 font-size: 12px; 
@@ -65,6 +66,7 @@ body {
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>

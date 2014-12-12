@@ -92,18 +92,7 @@ body {
     </tbody></table>
   </div>
 <hr>
-     <table border="0" cellpadding="0" style="margin-left:0px;">
-    <tbody><tr>
-    <td><a href="returnMyJsp.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetSchedule.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="enterLiveBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="SearchBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
-    </tr>
-    </tbody></table>
-  </div>
-<hr>
-    
-	<div id="container">
+     <div id="container">
 		<div id="header">
 			<h1><font size=14>比赛现场实时技术统计</font></h1><br>注：点击刷新才能更新实时数据
 			<input type="button" value="刷新" onclick="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)">
@@ -123,6 +112,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+			<td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam1!=null){
@@ -136,6 +126,10 @@ body {
 					</td>
 					<td>				
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+                    </td>
+					<td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                   
                     </td>
 				</tr>
 				<%
@@ -160,6 +154,7 @@ body {
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
+			<td>球员状态</td>
 		    </tr>
 		<%
 		if (listTeam2!=null){
@@ -173,6 +168,10 @@ body {
 					</td>
 					<td>
 						<div id="<%=aPlayer.getPlayerID() %>foul">0</div>
+                    </td>
+					<td>
+                        <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
+                   
                     </td>
 				</tr>
 				<%

@@ -51,7 +51,7 @@ body {
 	background-color: #668866;
 }
 </style>
-  <body>
+ <body>
   <div id="menu">
    <table border="0" cellpadding="0" style="margin-left:0px;">
    <tbody><tr>
@@ -71,6 +71,7 @@ body {
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+   <td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
    <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
@@ -87,8 +88,7 @@ body {
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
-<center>
-<div align="left" id="resultPanel">
+<div id="resultPanel">
 <span style="color:black;">查询结果：</span>
   <!--  %out.println("结果"); %-->
      <br>
@@ -122,7 +122,6 @@ body {
           
       </table>
       </div>
-      </center>
       <form id="form2" name="UpdateAllGameData method="post" action="<%=path %>/UpdateAllGameData.action">
           <input type="submit" value="更新所有数据">
       </form>
