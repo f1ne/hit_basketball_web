@@ -1,38 +1,38 @@
 package com.hit.cs.basketball;
 
 public class TeamBean {
-      private int GameID;
-      private int HomeTeamID;
-      private int AwayTeamID;
-      private String Date;
-      TeamBean(int gameID,int homeTeamID,int awayTeamID,String date){
-    	  setGameID(gameID);
-    	  setHomeTeamID(homeTeamID);
-    	  setAwayTeamID(awayTeamID);
-    	  setDate(date);
+      private int TeamID;
+      private String TeamName;
+      private String TeamLab;
+      private int TeamPlayerNum;
+      TeamBean(int teamID,String teamName,String teamLab,int teamPlayerNum){
+    	  setTeamID(teamID);
+    	  setTeamName(teamName);
+    	  setTeamLab(teamLab);
+    	  setTeamPlayerNum(teamPlayerNum);
       }
-      public void setGameID(int gameID){
-    	  this.GameID=gameID;
+      public void setTeamID(int teamID){
+    	  this.TeamID=teamID;
       }
-      public int getGameID(){
-    	  return GameID;
+      public int getTeamID(){
+    	  return TeamID;
       }
-      public void setHomeTeamID(int homeTeamID){
-    	  this.HomeTeamID=homeTeamID;
+      public void setTeamName(String teamName){
+    	  this.TeamName=teamName;
       }
-      public int getHomeTeamID(){
-    	  return HomeTeamID;
+      public String getTeamName(){
+    	  return TeamName;
       }
-      public void setAwayTeamID(int awayTeamID){
-    	  this.AwayTeamID=awayTeamID;
+      public void setTeamLab(String teamLab){
+    	  this.TeamLab=teamLab;
       }
-      public int getAwayTeamID(){
-    	  return AwayTeamID;
+      public String getTeamLab(){
+    	  return TeamLab;
       }
-      public void setDate(String date){
-    	  this.Date=date;
+      public void setTeamPlayerNum(int teamPlayerNum){
+    	  this.TeamPlayerNum=teamPlayerNum;
       }
-      public String getDate(){
-    	  return Date;
+      public int getTeamPlayerNum(){
+    	  return TeamPlayerNum;
       }
 }

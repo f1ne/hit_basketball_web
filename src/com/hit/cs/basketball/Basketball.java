@@ -1,5 +1,6 @@
 package com.hit.cs.basketball;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -253,5 +254,35 @@ public class Basketball extends ActionSupport{
     	}
     	return "success";
     }
-    
+    public static ArrayList<PlayerBean> getPlayersDataByPlayerNameAndDate(String playerName,String date){
+    	ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+    	//用于保存查到的同一个名字的所有球员
+    	ArrayList<PlayerBean> list2=new ArrayList<PlayerBean>();
+    	list2=DataBaseBean.queryPlayerByName(playerName);
+    	for (int i=0;i<list2.size();i++){
+    		PlayerBean playerdata=new PlayerBean();
+    		playerdata=(PlayerBean)list2.get(i);
+    		int playerID=playerdata.getPlayerID();
+    		playerdata=getPlayerInfByIDAndDate(playerID,date);
+    		list.add(playerdata);
+    	}
+    	return list;
+    }
+    public static TeamBean getTeamByTeamID(int teamID){
+    	TeamBean team=null;
+    	String sql=String.format("select * from team where ID='%d'",teamID);
+    	ResultSet rs=DataBaseBean.query(sql);
+    	try {
+			if (rs.next()){
+				int ID=rs.getInt("ID");
+				String teamName=rs.getString("Name");
+				String teamLab=rs.getString("Lab");
+				int playerNum=rs.getInt("PlayerNum");
+				team=new TeamBean(ID,teamName,teamLab,playerNum);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+    	return team;
+    }
 }

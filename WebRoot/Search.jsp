@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,com.hit.cs.basketball.PlayerBean" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,7 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<!-- link calendar resources 日历插件 -->
+   <link rel="stylesheet" type="text/css" href="tcal.css" />
+	<script language="javascript" src="tcal.js"></script> 
+	<script language="javascript"src="Search.js"></script>
    </head>
  <style type="text/css"> 
 <!-- 
@@ -76,8 +80,8 @@ body {
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-	<input type="text" id="RaceDate" name="RaceDate" />
-	<input type="submit" value="提交" />
+	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
+	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
   <!--  %out.println("结果"); %-->
      <br>
@@ -98,18 +102,17 @@ body {
           }
           
       %>
-      <table>
+      <table id="playerdatatable" border="1">
           <tr>
              <td><span style='color:white;'>球员姓名</span></td>
+			 <td><span style='color:white;'>球员ID</span></td>
+			 <td><span style='color:white;'>球队ID</span></td>
+			 <td><span style='color:white;'>球队名</span></td>
+			 <td><span style='color:white;'>所属实验室</span></td>
              <td><span style='color:white;'>当日得分</span></td>
              <td><span style='color:white;'>当日犯规</span></td>
           </tr>
           
-          <tr>
-             <td><span style='color:white;'><%=PlayerName %></span></td>
-             <td><span style='color:white;'><%=Score %></span></td>
-             <td><span style='color:white;'><%=Foul %></span></td>
-          </tr>
       </table>
       <div id=ScoreRanking>
 		<table>
