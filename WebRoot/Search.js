@@ -2,7 +2,6 @@
  * 
  */
 var xmlHttp;
-var gamedate;
 function createXmlHttp(){
 		xmlHttp=new XMLHttpRequest();
 	}
@@ -26,7 +25,6 @@ function processResponse(){
 				var name=y[5].childNodes[0].nodeValue;
 				var teamName=y[6].childNodes[0].nodeValue;
 				var teamLab=y[7].childNodes[0].nodeValue;
-				var playerNumber=y[8].childNodes[0].nodeValue;
 				var x=document.getElementById("playerdatatable").insertRow();
 				var y0=x.insertCell(0);
 				var y1=x.insertCell(1);
@@ -35,17 +33,13 @@ function processResponse(){
 				var y4=x.insertCell(4);
 				var y5=x.insertCell(5);
 				var y6=x.insertCell(6);
-				var y7=x.insertCell(7);
-				var y8=x.insertCell(8);
-				y0.innerHTML="<span style='color:white;'>"+name+"</span>";
-				y1.innerHTML="<span style='color:white;'>"+playerID+"</span>";
-				y2.innerHTML="<span style='color:white;'>"+teamID+"</span>";
-				y3.innerHTML="<span style='color:white;'>"+teamName+"</span>";
-				y4.innerHTML="<span style='color:white;'>"+teamLab+"</span>";
-				y5.innerHTML="<span style='color:white;'>"+score+"</span>";
-				y6.innerHTML="<span style='color:white;'>"+foul+"</span>";
-				y7.innerHTML="<span style='color:white;'>"+gamedate+"</span>";
-				y8.innerHTML="<span style='color:white;'>"+playerNumber+"</span>";
+				y0.innerHTML=name;
+				y1.innerHTML=playerID;
+				y2.innerHTML=teamID;
+				y3.innerHTML=teamName;
+				y4.innerHTML=teamLab;
+				y5.innerHTML=score;
+				y6.innerHTML=foul;
 			}	
 		}
 		if (xmlHttp.status==500){
@@ -64,7 +58,6 @@ function searchPlayerData()
 {
     var playerName=document.getElementById("PlayerName").value;
 	var raceDate=document.getElementById("RaceDate").value;
-	gamedate=raceDate;
 	var url="SearchPlayerData.servlet?playerName="+playerName+"&raceDate="+raceDate;
 	sendRequest(url);
 }

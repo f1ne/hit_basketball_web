@@ -20,12 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<<<<<<< HEAD
-   <!-- link calendar resources 日历插件 -->
-=======
 	<!-- link calendar resources 日历插件 -->
 	<link href="fileUpload.css" type="text/css" rel="stylesheet"/>
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
    <link rel="stylesheet" type="text/css" href="tcal.css" />
 	<script language="javascript" src="tcal.js"></script> 
 	<script language="javascript"src="Search.js"></script>
@@ -80,23 +76,15 @@ body {
     </tbody></table>
   </div>
 <hr>
-<<<<<<< HEAD
-   <h1><span style="color:white;">结果查询</span></h1>
-=======
 <center>
   <h1><span style="color:white;">结果查询</span></h1>
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
+<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDateM.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-<<<<<<< HEAD
-	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
-=======
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
 <center>
@@ -123,16 +111,15 @@ body {
       %>
       <table id="playerdatatable" border="1">
           <tr>
-             <td><span style='color:white;'>球员姓名</span></td>
-			 <td><span style='color:white;'>球员ID</span></td>
-			 <td><span style='color:white;'>球队ID</span></td>
-			 <td><span style='color:white;'>球队名</span></td>
-			 <td><span style='color:white;'>所属实验室</span></td>
-             <td><span style='color:white;'>当日得分</span></td>
-             <td><span style='color:white;'>当日犯规</span></td>
-			 <td><span style='color:white;'>日期（年月日）</span></td>
-			 <td><span style='color:white;'>球员号码</span></td>
-          </tr>         
+             <td><span style='color:black;'>球员姓名</span></td>
+			 <td><span style='color:black;'>球员ID</span></td>
+			 <td><span style='color:black;'>球队ID</span></td>
+			 <td><span style='color:black;'>球队名</span></td>
+			 <td><span style='color:black;'>所属实验室</span></td>
+             <td><span style='color:black;'>当日得分</span></td>
+             <td><span style='color:black;'>当日犯规</span></td>
+          </tr>
+          
       </table>
       </div>
       </center>
