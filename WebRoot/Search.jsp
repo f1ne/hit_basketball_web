@@ -83,8 +83,8 @@ body {
 	<span style="color:white;">输入比赛日期：</span>
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
-</form><center>
-<div align="left" id="resultPanel">
+</form>
+<div id="resultPanel">
 <span style="color:black;">查询结果：</span>
   <!--  %out.println("结果"); %-->
      <br>
@@ -117,7 +117,7 @@ body {
           </tr>
           
       </table>
-      </div></center>
+      </div>
       <hr>
       <span style="color:white;">排行榜：</span>
       <br>
