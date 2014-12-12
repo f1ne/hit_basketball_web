@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DataBaseBean {
+	public static Connection conn;
+	public static Statement stmt;
+	public static ResultSet rs;
 	//建立数据连接
 	public static Connection getConnection(){
 		Connection con=null;
@@ -30,9 +33,9 @@ public class DataBaseBean {
 	}
 	
 	public static ResultSet query(String sql){
-		Connection conn=null;
-		Statement stmt=null;
-		ResultSet rs=null;
+		conn = null;
+		stmt=null;
+		rs=null;
 		try{
 			conn=getConnection();
 			stmt=conn.createStatement();
@@ -45,8 +48,8 @@ public class DataBaseBean {
 	}
 	
 	public static void update(String sql){
-		Connection conn=null;
-		Statement stmt=null;
+		conn=null;
+		stmt=null;
 		try{
 			conn=getConnection();
 			stmt=conn.createStatement();
@@ -54,7 +57,32 @@ public class DataBaseBean {
 		}catch(SQLException e){
 			System.out.println("Updating failed:"+sql+e);
 		}
+		closeDBConnection();
 		System.out.println("Updating success"+sql);
+	}
+	public static void closeDBConnection(){
+		//关闭连接对象
+		if (rs!=null){
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+		}
+		if (stmt!=null){
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+		}
+		if (conn!=null){
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+		}
 	}
     //检查比赛记录表是否建立
 	public static boolean isMatchRecordTableExist(String date,int homeTeamID,int awayTeamID){
@@ -65,6 +93,7 @@ public class DataBaseBean {
 			conn=getConnection();
 			DatabaseMetaData md=conn.getMetaData();
 			rs=md.getTables(null, null,tableName, null);
+			closeDBConnection();
 			if (rs.next()){
 				return true;
 			}else{
@@ -73,6 +102,7 @@ public class DataBaseBean {
 		}catch(Exception e){
 			System.out.println("There is something wrong with Checking Game Table"+e);
 		}
+		closeDBConnection();
 		return false;
 		
 	}
@@ -85,6 +115,7 @@ public class DataBaseBean {
 			conn=getConnection();
 			DatabaseMetaData md=conn.getMetaData();
 			rs=md.getTables(null, null,tableName, null);
+			closeDBConnection();
 			if (rs.next()){
 				return true;
 			}else{
@@ -103,6 +134,7 @@ public class DataBaseBean {
 				+"Event VARCHAR(45),"
 				+"Time DATETIME)",datestr,homeTeamID,awayTeamID);
 		update(sql);
+		closeDBConnection();
 		//将日期格式从yyyyMMdd转换为yyyy-MM-dd，记录到数据库中与SQL的date类型匹配
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
 		try {
@@ -112,6 +144,7 @@ public class DataBaseBean {
 			sql=String.format("INSERT INTO allgametable (HomeTeamID, AwayTeamID, Date) VALUES ('%d', '%d', '%s')",
 					homeTeamID,awayTeamID,datestr2);
 			DataBaseBean.update(sql);
+			closeDBConnection();
 		} catch (ParseException e) {
 			System.out.println("Transfering date failed");
 		}
@@ -123,14 +156,17 @@ public class DataBaseBean {
 				+ "where TeamID='%d' or TeamID='%d'"
 				,datestr,homeTeamID,awayTeamID,homeTeamID,awayTeamID);
 		update(sql);
+		closeDBConnection();
 		//添加一个列记录球员当前的状态
 		sql=String.format("ALTER TABLE playerstable%s_%d_%d ADD COLUMN State VARCHAR(45) NULL "
 				+ "DEFAULT 'bench' AFTER IsSHB",datestr,homeTeamID,awayTeamID);
 		update(sql);
+		closeDBConnection();
 		//重置得分、犯规、状态
 		sql=String.format("update playerstable%s_%d_%d "
 				+ "set Score=0,Fouls=0,State='bench'",datestr,homeTeamID,awayTeamID);
 		update(sql);
+		closeDBConnection();
 	}
     //通过球员名字查询球员信息
 	public static ArrayList<PlayerBean> queryPlayerByName(String name){
@@ -154,6 +190,7 @@ public class DataBaseBean {
 		} catch (SQLException e) {
 			System.out.println("查询出错"+e);
 		}
+		closeDBConnection();
 		return list;
 	}
 	/*
@@ -178,6 +215,7 @@ public class DataBaseBean {
 		} catch (SQLException e) {
 			System.out.println("Querying game information failed!"+e);
 		}
+		closeDBConnection();
 		return list;
 	}
     /*
@@ -201,6 +239,7 @@ public class DataBaseBean {
 		} catch (SQLException e) {
 			System.out.println("Querying game information failed!"+e);
 		}
+		closeDBConnection();
 		return list;
 	}
 	/*
@@ -228,6 +267,7 @@ public class DataBaseBean {
 		} catch (SQLException e) {
 			System.out.println("Querying game information failed!"+e);
 		}
+		closeDBConnection();
 		return game;
 	}
 	//通过一个日期和主队客队id来查找比赛表返回比赛记录
@@ -247,6 +287,7 @@ public class DataBaseBean {
 		} catch (SQLException e) {
 			System.out.println("Querying game information failed"+e);
 		}
+		closeDBConnection();
 		return list;
 	}
 	/*
@@ -269,10 +310,11 @@ public class DataBaseBean {
 				int Number=rs.getInt("Number");
 				player=new PlayerBean(PlayerID,TeamID,Name,StudentID,Score,NumberOfMatches,Fouls,Number);
 			}
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Querying player by ID failed"+e);
 		}
-			
+		closeDBConnection();	
 		return player;
 	}
 	/*
@@ -293,9 +335,11 @@ public class DataBaseBean {
 						                     (Integer)rs.getInt("Fouls"),
 						                     (Integer)rs.getInt("Number")));
 			}
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+		closeDBConnection();
 		return list;
 	}
 	/*
@@ -316,9 +360,11 @@ public class DataBaseBean {
 						                     (Integer)rs.getInt("Fouls"),
 						                     (Integer)rs.getInt("Number")));
 			}
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+		closeDBConnection();
 		return list;
 	}
 	/*
@@ -339,9 +385,11 @@ public class DataBaseBean {
 						                     (Integer)rs.getInt("Fouls"),
 						                     (Integer)rs.getInt("Number")));
 			}
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+		closeDBConnection();
 		return list;
 	} 
 	/*
@@ -364,10 +412,11 @@ public class DataBaseBean {
     					(Integer)rs.getInt("Number"),
     					(String)rs.getString("State"));
     		}
+    		rs.close();
     	} catch (SQLException e) {
     		System.out.println(e);
     	}
-
+    	closeDBConnection();
     	return player;
     }
     /*
@@ -395,11 +444,13 @@ public class DataBaseBean {
     	String sql=String.format("update playerstable%s_%d_%d set State='%s' where PlayerID='%d'",
     			date,homeTeamID,awayTeamID,state,playerID);
     	DataBaseBean.update(sql);
+    	closeDBConnection();
     }
     public static void changeGameState(int homeTeamID,int awayTeamID,int homeScore,int awayScore,String date,int state){
     	String sql=String.format("update allgametable set State='%d',HomeScore='%d',AwayScore='%d' "
     			+ "where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')", 
     			state,homeScore,awayScore,homeTeamID,awayTeamID,date);
     	update(sql);
+    	closeDBConnection();
     }
 }

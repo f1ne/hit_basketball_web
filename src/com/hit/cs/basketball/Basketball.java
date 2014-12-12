@@ -280,6 +280,7 @@ public class Basketball extends ActionSupport{
 				int playerNum=rs.getInt("PlayerNum");
 				team=new TeamBean(ID,teamName,teamLab,playerNum);
 			}
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
