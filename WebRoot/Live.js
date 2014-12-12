@@ -10,7 +10,7 @@
 	function createXmlHttp(){
 		xmlHttp=new XMLHttpRequest();
 	}
-	/*处理服务器响应结果*/
+	/*处理服务器响应结� /
 	function processResponse(){
 		if (xmlHttp.readyState==4){
 			if (xmlHttp.status==200){
@@ -55,7 +55,7 @@
 			}
 		}
 	}
-	/*发送客户端的请求*/
+	/*发�客户端的请求*/
 	function sendRequest(url){
 		createXmlHttp();
 		xmlHttp.open("GET",url,true);
@@ -68,5 +68,5 @@
 		globalHomeTeamID=homeTeamID;
 		globalAwayTeamID=awayTeamID;
 		sendRequest(url);
-		t=setTimeout("refresh(globalHomeTeamID,globalAwayTeamID)",3000);
+		t=setTimeout("refresh(globalHomeTeamID,globalAwayTeamID)",30000);
 	}

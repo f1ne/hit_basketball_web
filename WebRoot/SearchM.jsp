@@ -65,13 +65,14 @@ body {
     <hr>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
+   <%int cpl=(Integer)session.getAttribute("CPL"); %>
     <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetNotificationM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
-   <td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <%if(cpl==1){%><td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><%} %>
+      <%if(cpl<=2) {%><td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <%} %>    
    <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
@@ -88,7 +89,7 @@ body {
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
-<div id="resultPanel">
+<div id="resultPanel" style="background-color:  #66BB66">
 <span style="color:black;">查询结果：</span>
   <!--  %out.println("结果"); %-->
      <br>
@@ -126,18 +127,19 @@ body {
           <input type="submit" value="更新所有数据">
       </form>
       <hr>
-      <span style="color:white;">排行榜：</span>
+      <div id="resultPanel" style="background-color:  #66BB66">
+      <h1><span style="color:black;">排行榜：</span></h1>
       <br>
   <br>
       <div id=ScoreRanking>
 		<table>
 			<tr>
-			    <td><span style='color:white;'>排名</span></td>
-				<td><span style='color:white;'>球员姓名</span></td>
-				<td><span style='color:white;'>号码</span></td>
-				<td><span style='color:white;'>得分</span></td>
-				<td><span style='color:white;'>比赛场次</span></td>
-				<td><span style='color:white;'>所属球队</span></td>
+			    <td><span style='color:black;'>排名</span></td>
+				<td><span style='color:black;'>球员姓名</span></td>
+				<td><span style='color:black;'>号码</span></td>
+				<td><span style='color:black;'>得分</span></td>
+				<td><span style='color:black;'>比赛场次</span></td>
+				<td><span style='color:black;'>所属球队</span></td>
 			</tr>
 			<%
 			      ArrayList<PlayerBean> scoreRankList=new ArrayList<PlayerBean>();
@@ -145,17 +147,18 @@ body {
 			      for (int i=0;i<scoreRankList.size();i++){
 			          %>
 			<tr>
-			    <td><span style='color:white;'><%=i+1 %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getName() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getNumber()%></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getScore() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getNumberOfMatches() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getTeamID() %></span></td>
+			    <td><span style='color:black;'><%=i+1 %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getName() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getNumber()%></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getScore() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getNumberOfMatches() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getTeamID() %></span></td>
 			</tr>
 			<%
 				}
 			%>
 		</table>
+	</div>
 	</div>
 	</center>
   </body>

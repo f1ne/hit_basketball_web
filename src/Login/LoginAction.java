@@ -17,6 +17,7 @@ public class LoginAction extends ActionSupport{
 	private String jspTitle;
 	private String user;
 	private String psw;
+	private int CPL;
 	private String logintype;
 	private String teamLogin="0";
 	
@@ -33,6 +34,7 @@ public class LoginAction extends ActionSupport{
 		ss = ServletActionContext.getRequest();
 		sss=ss.getSession();
 			try{
+				CPL=0;
 				logintype=getLogintype();
 				user=getUser();
 				psw=getPsw();
@@ -51,6 +53,10 @@ public class LoginAction extends ActionSupport{
 					sss.setAttribute("logintype",logintype);
 				    sss.setAttribute("user",user);
 				    sss.setAttribute("psw",psw);
+				    CPL=(int)rs.getString("NPL").charAt(0)-48;
+				    //System.out.println(CPL);
+				    sss.setAttribute("CPL", CPL);
+				    
 				    return SUCCESS;
 					//System.out.println("mmm");
 					}
@@ -172,4 +178,13 @@ public class LoginAction extends ActionSupport{
 	public void setManagerLogin(String managerLogin) {
 		this.managerLogin = managerLogin;
 	}
+
+	public int getCPL() {
+		return CPL;
+	}
+
+	public void setCPL(int cPL) {
+		CPL = cPL;
+	}
+	
 }

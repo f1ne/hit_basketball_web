@@ -76,9 +76,9 @@ body {
   </div>
 <hr>
 <center>
-   <h1><span style="color:white;">结果查询</span></h1>
+  <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDateT.action">
+<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
@@ -86,8 +86,8 @@ body {
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
-<div id="resultPanel">
-<span style="color:black;">查询结果：</span>
+<div id="resultPanel" style="background-color:  #66BB66">
+<h2><span style="color:black;">查询结果：</span></h2>
   <!--  %out.println("结果"); %-->
      <br>
      <%
@@ -121,18 +121,19 @@ body {
       </table>
       </div>
       <hr>
-      <span style="color:white;">排行榜：</span>
+      <div id="resultPanel" style="background-color:  #66BB66">
+      <h1><span style="color:black;">排行榜：</span></h1>
       <br>
   <br>
       <div id=ScoreRanking>
 		<table>
 			<tr>
-			    <td><span style='color:white;'>排名</span></td>
-				<td><span style='color:white;'>球员姓名</span></td>
-				<td><span style='color:white;'>号码</span></td>
-				<td><span style='color:white;'>得分</span></td>
-				<td><span style='color:white;'>比赛场次</span></td>
-				<td><span style='color:white;'>所属球队</span></td>
+			    <td><span style='color:black;'>排名</span></td>
+				<td><span style='color:black;'>球员姓名</span></td>
+				<td><span style='color:black;'>号码</span></td>
+				<td><span style='color:black;'>得分</span></td>
+				<td><span style='color:black;'>比赛场次</span></td>
+				<td><span style='color:black;'>所属球队</span></td>
 			</tr>
 			<%
 			      ArrayList<PlayerBean> scoreRankList=new ArrayList<PlayerBean>();
@@ -140,17 +141,18 @@ body {
 			      for (int i=0;i<scoreRankList.size();i++){
 			          %>
 			<tr>
-			    <td><span style='color:white;'><%=i+1 %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getName() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getNumber()%></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getScore() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getNumberOfMatches() %></span></td>
-				<td><span style='color:white;'><%=scoreRankList.get(i).getTeamID() %></span></td>
+			    <td><span style='color:black;'><%=i+1 %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getName() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getNumber()%></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getScore() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getNumberOfMatches() %></span></td>
+				<td><span style='color:black;'><%=scoreRankList.get(i).getTeamID() %></span></td>
 			</tr>
 			<%
 				}
 			%>
 		</table>
+	</div>
 	</div>
 	</center>
   </body>
