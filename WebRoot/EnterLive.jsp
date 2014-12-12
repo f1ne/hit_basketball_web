@@ -143,7 +143,7 @@ body {
                      <input type="hidden" id="TeamID1" name="TeamID1" value=<%=homeTeam.getTeamID() %> style="visibility:hidden">
                      <input type="hidden" id="TeamID2" name="TeamID2" value=<%=awayTeam.getTeamID() %> style="visibility:hidden">
                      <input type="hidden" id="RaceDate" name="RaceDate" value=<%=game.getDate() %> style="visibility:hidden">
-                     <input type="submit" name="submit" value="进入现场记录">
+                     <input type="submit" name="submit" value="进入赛事直播">
                      </form>
                  </td>
              </tr>
