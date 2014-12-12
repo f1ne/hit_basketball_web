@@ -111,6 +111,8 @@ body {
 			 <td><span style='color:white;'>所属实验室</span></td>
              <td><span style='color:white;'>当日得分</span></td>
              <td><span style='color:white;'>当日犯规</span></td>
+			 <td><span style='color:white;'>日期（年月日）</span></td>
+			 <td><span style='color:white;'>球员号码</span></td>
           </tr>
           
       </table>

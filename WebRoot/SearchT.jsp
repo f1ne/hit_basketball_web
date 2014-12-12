@@ -19,7 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+   <!-- link calendar resources 日历插件 -->
+   <link rel="stylesheet" type="text/css" href="tcal.css" />
+	<script language="javascript" src="tcal.js"></script> 
+	<script language="javascript"src="Search.js"></script>
    </head>
 <style type="text/css"> 
 <!-- 
@@ -72,13 +75,13 @@ body {
 <hr>
    <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
-<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDateT.action">
+<form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-	<input type="text" id="RaceDate" name="RaceDate" />
-	<input type="submit" value="提交" />
+	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
+	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
   <!--  %out.println("结果"); %-->
      <br>
@@ -99,18 +102,19 @@ body {
           }
           
       %>
-      <table>
+      <table id="playerdatatable" border="1">
           <tr>
              <td><span style='color:white;'>球员姓名</span></td>
+			 <td><span style='color:white;'>球员ID</span></td>
+			 <td><span style='color:white;'>球队ID</span></td>
+			 <td><span style='color:white;'>球队名</span></td>
+			 <td><span style='color:white;'>所属实验室</span></td>
              <td><span style='color:white;'>当日得分</span></td>
              <td><span style='color:white;'>当日犯规</span></td>
+			 <td><span style='color:white;'>日期（年月日）</span></td>
+			 <td><span style='color:white;'>球员号码</span></td>
           </tr>
           
-          <tr>
-             <td><span style='color:white;'><%=PlayerName %></span></td>
-             <td><span style='color:white;'><%=Score %></span></td>
-             <td><span style='color:white;'><%=Foul %></span></td>
-          </tr>
       </table>
       <div id=ScoreRanking>
 		<table>
