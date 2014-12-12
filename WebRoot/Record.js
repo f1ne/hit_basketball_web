@@ -253,4 +253,23 @@
         var url="ChangeGameState.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID+"&homeScore="+homeScore+"&awayScore="+awayScore+"&state="+state;
         sendRequest(url);		
     }
+	/*
+	*打开一个请求时锁定所有按键直到请求完成
+	*/
+	function openbutton()
+	{
+	    var x=document.getElementsByTagName("input");
+		for (var i=0;i<x.length;i++)
+		{
+		    x[i].disabled=false;
+		}
+	}
+	function lockbutton()
+	{
+	    var x=document.getElementsByTagName("input");
+		for (var i=0;i<x.length;i++)
+		{
+		    x[i].disabled=true;
+		}
+	}
     
