@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.hit.cs.basketball.PlayerBean" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,12 +20,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+<<<<<<< HEAD
    <!-- link calendar resources 日历插件 -->
+=======
+	<!-- link calendar resources 日历插件 -->
+	<link href="fileUpload.css" type="text/css" rel="stylesheet"/>
+>>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
    <link rel="stylesheet" type="text/css" href="tcal.css" />
 	<script language="javascript" src="tcal.js"></script> 
 	<script language="javascript"src="Search.js"></script>
    </head>
-<style type="text/css"> 
+ <style type="text/css"> 
 <!-- 
 a:link { 
 font-size: 12px; 
@@ -73,6 +79,7 @@ body {
     </tbody></table>
   </div>
 <hr>
+<center>
    <h1><span style="color:white;">结果查询</span></h1>
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
 <form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
@@ -80,9 +87,16 @@ body {
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
+<<<<<<< HEAD
 	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
+=======
+	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
+>>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
+<center>
+<div align="left" id="resultPanel">
+<span style="color:black;">查询结果：</span>
   <!--  %out.println("结果"); %-->
      <br>
      <%
@@ -116,6 +130,12 @@ body {
           </tr>
           
       </table>
+      </div>
+      </center>
+      <hr>
+      <span style="color:white;">排行榜：</span>
+      <br>
+  <br>
       <div id=ScoreRanking>
 		<table>
 			<tr>
@@ -144,5 +164,6 @@ body {
 			%>
 		</table>
 	</div>
+	</center>
   </body>
 </html>

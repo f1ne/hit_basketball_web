@@ -315,6 +315,18 @@ public class IndexMessageAction extends ActionSupport{
 		}
 		public String InsertGroupMember(){
 			try {
+				String teamn=new String();
+				String teamlab=new String();
+				Connection tempConnection2 = dbConnection.getConnection();
+				String sql2="select * from team where team.ID=?";
+				PreparedStatement jokePreparedStatement2 = tempConnection2
+						.prepareStatement(sql2);
+				jokePreparedStatement2.setString(1, newMember.TeamID);
+				ResultSet rs2 = jokePreparedStatement2.executeQuery();
+				if (rs2.next()) {
+					teamn=rs2.getString("Name");
+					teamlab=rs2.getString("Lab");
+				}
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame,team where team.ID=groupgame.TeamID and groupgame.TeamID=?";
 				PreparedStatement jokePreparedStatement = tempConnection
@@ -322,11 +334,15 @@ public class IndexMessageAction extends ActionSupport{
 				jokePreparedStatement.setString(1, newMember.TeamID);
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (!rs.next()) {
-				String sql=String.format("INSERT INTO groupgame (TeamID, GroupID, Win, Lose) VALUES ('%s', '%s','%d','%d')",
-						newMember.TeamID,newMember.GroupID,newMember.Win,newMember.Lose);
+				String sql=String.format("INSERT INTO groupgame (TeamID,TeamName,TeamLab, GroupID, Win, Lose) VALUES ('%s', '%s', '%s', '%s','%d','%d')",
+						newMember.TeamID,teamn,teamlab,newMember.GroupID,newMember.Win,newMember.Lose);
 				DataBaseBean.update(sql);
 				jspTitle="添加成功";
 				ShowGroupMember();
+				}
+				else{
+					jspTitle="队伍已经被加入小组中";
+					return ERROR;
 				}
 			} catch (Exception e) {
 				jspTitle="添加队伍错误";
@@ -347,6 +363,9 @@ public class IndexMessageAction extends ActionSupport{
 		}
 		public String ShowGroupAMember(){
 			A.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagA=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -356,19 +375,24 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						A.add(tempMember);
+						EmptyFlagA++;
 					}while(rs.next());
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("AA",EmptyFlagA);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupBMember(){
 			B.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagB=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -378,19 +402,23 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						B.add(tempMember);
+						EmptyFlagB++;
 					}while(rs.next());
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("BB",EmptyFlagB);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupCMember(){
 			C.clear();
+			ss = ServletActionContext.getRequest();
+			int EmptyFlagC=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -400,19 +428,25 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						C.add(tempMember);
+						EmptyFlagC++;
 					}while(rs.next());
+					
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("CC",EmptyFlagC);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupDMember(){
 			D.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagD=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -422,19 +456,23 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						D.add(tempMember);
+						EmptyFlagD++;
 					}while(rs.next());
-				return SUCCESS;
 				}
-				return ERROR;
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("DD",EmptyFlagD);
+			return SUCCESS;
 		}
 		public String ShowGroupEMember(){
 			E.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagE=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -444,19 +482,25 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						E.add(tempMember);
+						EmptyFlagE++;
 					}while(rs.next());
+					
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("EE",EmptyFlagE);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupFMember(){
 			F.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagF=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -466,19 +510,25 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						F.add(tempMember);
+						EmptyFlagF++;
 					}while(rs.next());
+					
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("FF",EmptyFlagF);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupGMember(){
 			G.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagG=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -488,19 +538,25 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						G.add(tempMember);
+						EmptyFlagG++;
 					}while(rs.next());
+					
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("GG",EmptyFlagG);
 			return SUCCESS;
 		}
 		
 		public String ShowGroupHMember(){
 			H.clear();
+			ss = ServletActionContext.getRequest();
+			sss=ss.getSession();
+			int EmptyFlagH=0;
 			try {
 				Connection tempConnection = dbConnection.getConnection();
 				String sqlString = "select * from groupgame where groupgame.GroupID=?";
@@ -510,14 +566,17 @@ public class IndexMessageAction extends ActionSupport{
 				ResultSet rs = jokePreparedStatement.executeQuery();
 				if (rs.next()) {
 					do{
-						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
+						GroupBean tempMember=new GroupBean(rs.getString("TeamID"),rs.getString("TeamName"),rs.getString("TeamLab"),rs.getString("GroupID"),rs.getInt("Win"),rs.getInt("Lose"));
 						H.add(tempMember);
+						EmptyFlagH++;
 					}while(rs.next());
+					
 				}
 			} catch (Exception e) {
 				jspTitle="显示错误";
 				return ERROR;
 			}
+			sss.setAttribute("HH",EmptyFlagH);
 			return SUCCESS;
 		}
 		
@@ -644,6 +703,5 @@ public class IndexMessageAction extends ActionSupport{
 			this.tmin = tmin;
 		}
 		
-	
 	
 }
