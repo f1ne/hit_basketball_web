@@ -20,12 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<<<<<<< HEAD
-   <!-- link calendar resources 日历插件 -->
-=======
 	<!-- link calendar resources 日历插件 -->
 	<link href="fileUpload.css" type="text/css" rel="stylesheet"/>
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
    <link rel="stylesheet" type="text/css" href="tcal.css" />
 	<script language="javascript" src="tcal.js"></script> 
 	<script language="javascript"src="Search.js"></script>
@@ -87,11 +83,7 @@ body {
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-<<<<<<< HEAD
-	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
-=======
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
 <center>

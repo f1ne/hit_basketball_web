@@ -80,23 +80,15 @@ body {
     </tbody></table>
   </div>
 <hr>
-<<<<<<< HEAD
-   <h1><span style="color:white;">结果查询</span></h1>
-=======
 <center>
   <h1><span style="color:white;">结果查询</span></h1>
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
   <p><em><span style="color:white;">你可以在这个页面查询队员姓名，队伍编号，按照日期查找当日比赛结果，</span></em></p>
 <form id="form1" name="input" method="post"action="<%=path %>/GetPlayerDataByDate.action">
 	<h3><span style="color:white;">按队员查询</span></h3>
 	 <span style="color:white;">输入队员名称：</span>
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
-<<<<<<< HEAD
-	<input type="text" id="RaceDate" name="RaceDate" class="tcal" />
-=======
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
->>>>>>> ee3924ddee71339e0c63c123f40326a866b74ef7
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
 <center>
