@@ -45,14 +45,14 @@ public class SearchPlayerData extends HttpServlet{
 			output+="<PlayerID>"+APlayer.getPlayerID()+"</PlayerID>";			
 			output+="<Score>"+APlayer.getScore()+"</Score>";
 			output+="<Foul>"+APlayer.getFouls()+"</Foul>";
-			output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";			
+			output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
+			
 			output+="<State>"+APlayer.getState()+"</State>";
 			output+="<PlayerName>"+APlayer.getName()+"</PlayerName>";
 			//获得球队的信息
 			TeamBean team=Basketball.getTeamByTeamID(APlayer.getTeamID());
 			output+="<TeamName>"+team.getTeamName()+"</TeamName>";
 			output+="<TeamLab>"+team.getTeamLab()+"</TeamLab>";
-			output+="<PlayerNumber>"+APlayer.getNumber()+"</PlayerNumber>";
 			output+="</PlayerData>";
 		}
 		output+="</response>";

@@ -108,15 +108,13 @@ body {
       %>
       <table id="playerdatatable" border="1">
           <tr>
-             <td><span style='color:white;'>球员姓名</span></td>
-			 <td><span style='color:white;'>球员ID</span></td>
-			 <td><span style='color:white;'>球队ID</span></td>
-			 <td><span style='color:white;'>球队名</span></td>
-			 <td><span style='color:white;'>所属实验室</span></td>
-             <td><span style='color:white;'>当日得分</span></td>
-             <td><span style='color:white;'>当日犯规</span></td>
-			 <td><span style='color:white;'>日期（年月日）</span></td>
-			 <td><span style='color:white;'>球员号码</span></td>
+             <td><span style='color:black;'>球员姓名</span></td>
+			 <td><span style='color:black;'>球员ID</span></td>
+			 <td><span style='color:black;'>球队ID</span></td>
+			 <td><span style='color:black;'>球队名</span></td>
+			 <td><span style='color:black;'>所属实验室</span></td>
+             <td><span style='color:black;'>当日得分</span></td>
+             <td><span style='color:black;'>当日犯规</span></td>
           </tr>
           
       </table>

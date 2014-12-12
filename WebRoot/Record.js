@@ -28,7 +28,7 @@
 	}
 	/*得分*/
 	function score(playerID,homeTeamID,awayTeamID){
-		lockbutton();
+		
 	    //得分加1
 	    var score=parseInt(document.getElementById(playerID+"score").innerText)+1;
 	    var url="Record.servlet?playerID="+playerID+"&event=Score&amount="+score+"&homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID;
@@ -68,8 +68,6 @@
 				awayTeamScore=parseInt(0);
 				var out="";
 				var res=xmlHttp.responseXML;
-				//解锁按钮
-				openbutton();
 				//刷新页面的球员数据
 				var data=res.getElementsByTagName("PlayerData");
 				var len=data.length;
@@ -150,7 +148,6 @@
 					    document.getElementById("gamestate").innerText="比赛结束";
 					}
 				}
-				
 			}
 		}
 	}
@@ -256,23 +253,4 @@
         var url="ChangeGameState.servlet?homeTeamID="+homeTeamID+"&awayTeamID="+awayTeamID+"&homeScore="+homeScore+"&awayScore="+awayScore+"&state="+state;
         sendRequest(url);		
     }
-	/*
-	*打开一个请求时锁定所有按键直到请求完成
-	*/
-	function openbutton()
-	{
-	    var x=document.getElementsByTagName("input");
-		for (var i=0;i<x.length;i++)
-		{
-		    x[i].disabled=false;
-		}
-	}
-	function lockbutton()
-	{
-	    var x=document.getElementsByTagName("input");
-		for (var i=0;i<x.length;i++)
-		{
-		    x[i].disabled=true;
-		}
-	}
     
