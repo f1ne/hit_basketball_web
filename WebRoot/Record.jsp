@@ -19,10 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style type="text/css">
-	div#container{width:1200px;align:center}
+	div#container{width:1400px;align:center}
 	div#header{background-color:#99bbbb;text-align:center}
-	div#hometeam{background-color:#ffff99;height:600px;width:600px;float:left}
-	div#awayteam{background-color:#eeeeee;height:600px;width:600px;float:left}
+	div#hometeam{background-color:#ffff99;height:800px;width:700px;float:left}
+	div#awayteam{background-color:#eeeeee;height:800px;width:700px;float:left}
 	div#footer{background-color:#99bbbb;clear:both;text-align:center}
 	h1{margin-bottom:0}
 	h2{margin-bottom:0;font-size:14px}
@@ -99,7 +99,7 @@ body {
 	<div id="container">
 		<div id="header">	    
 			<h1><font size=14>现场比赛记录</font></h1>
-			<table>
+			<table border="1">
 			    <tr>
 			        <td>比赛状态改变:</td>
 			        <td>
@@ -127,15 +127,11 @@ body {
 			    <tr>
 			        <td>当前状态</td>
 			        <td><div id=gamestate>未进行</div></td>
-			        <td>主队状态</td>
-			        <td><div id=homestate>不合格</div></td>
-			        <td>客队状态</td>
-			        <td><div id=awaystate>不合格</div></td>
 			    </tr>
 			</table>
 		</div>
 		<div id="hometeam">
-		<table>
+		<table border="1">
 		  <tr>
 		    <td>主队(HomeTeam)</td>
 		    <td><div id=hometeamid><%=HomeTeamID %></div></td>
@@ -143,14 +139,18 @@ body {
 		    <td><div id=hometeamscore>0</div></td>
 		  </tr>
 		</table>
-		<table>
+		<table border="1">
 		 <tr>
 		    <td>号码</td>
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
 		    <td>球员状态</td>
-		    </tr>
+			<td>性别</td>
+			<td>年龄</td>
+			<td>是否三好杯</td>
+			<td>学历</td>
+		</tr>
 		<%
 		if (listTeam1!=null){
 		    for (int i=0;i<listTeam1.size();i++){
@@ -173,6 +173,10 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                         <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
+					<td><%=aPlayer.getSex() %></td>
+					<td><%=aPlayer.getAge() %></td>
+					<td><%=aPlayer.getIsSHB() %></td>
+					<td><%=aPlayer.getPosition() %></td>
 				</tr>
 				<%
 					}
@@ -182,7 +186,7 @@ body {
 		</div>
 		
 		<div id="awayteam">
-		<table>
+		<table border="1">
 		  <tr>
 		    <td>客队(AwayTeam)</td>
 		    <td><div id=awayteamid><%=AwayTeamID %></div></td>
@@ -190,13 +194,17 @@ body {
 		    <td><div id=awayteamscore>0</div></td>
 		  </tr>
 		</table>
-		<table>
+		<table border="1">
 		 <tr>
 		    <td>号码</td>
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
 		    <td>球员状态</td>
+			<td>性别</td>
+			<td>年龄</td>
+			<td>是否三好杯</td>
+			<td>学历</td>
 		    </tr>
 		<%
 		if (listTeam2!=null){
@@ -219,6 +227,10 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                         <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
+					<td><%=aPlayer.getSex() %></td>
+					<td><%=aPlayer.getAge() %></td>
+					<td><%=aPlayer.getIsSHB() %></td>
+					<td><%=aPlayer.getPosition() %></td>
 				</tr>
 				<%
 					}

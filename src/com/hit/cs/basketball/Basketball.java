@@ -59,9 +59,17 @@ public class Basketball extends ActionSupport{
 		listTeam2=DataBaseBean.queryPlayerByTeamID(TeamID2);
 		request.setAttribute("listTeam1", listTeam1);
 		request.setAttribute("listTeam2", listTeam2);
-		//建立比赛表
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
-		String timeStr=sdf.format(new Date());
+		//获得日期并检查是否是当天的比赛
+		String timeStr=RaceDate;
+		if (RaceDate.equals("0")){
+			//建立比赛表
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd",Locale.SIMPLIFIED_CHINESE);
+	        timeStr=sdf.format(new Date());
+		}else
+		{
+			timeStr=DataBaseBean.dateFormatTransfer(timeStr, 1);
+		}
+		
 		//先查询比赛表记录表是否建立，否则建立
 		if (DataBaseBean.isMatchRecordTableExist(timeStr, TeamID1, TeamID2)==false){
 			DataBaseBean.createMatchRecordTable(timeStr, TeamID1, TeamID2);			
@@ -285,5 +293,36 @@ public class Basketball extends ActionSupport{
 			System.out.println(e);
 		}
     	return team;
+    }
+    /*
+     * 将int类的状态转为文字
+     */
+    public static String resolveState(int state){
+    	String stateStr="";
+    	if (state==0){
+    		stateStr="未进行";
+    	}
+    	if (state==1){
+    		stateStr="第一节";
+    	}
+    	if (state==2){
+    		stateStr="第二节";
+    	}
+    	if (state==3){
+    		stateStr="中场女生投篮比赛";
+    	}
+    	if (state==4){
+    		stateStr="第三节";
+    	}
+    	if (state==5){
+    		stateStr="第四节";
+    	}
+    	if (state==6){
+    		stateStr="加时赛";
+    	}
+    	if (state==7){
+    		stateStr="结束比赛";
+    	}
+    	return stateStr;
     }
 }

@@ -333,7 +333,11 @@ public class DataBaseBean {
 						                     (Integer)rs.getInt("Score"),
 						                     (Integer)rs.getInt("NumberOfMatches"),
 						                     (Integer)rs.getInt("Fouls"),
-						                     (Integer)rs.getInt("Number")));
+						                     (Integer)rs.getInt("Number"),
+						                     (String)rs.getString("Sex"),
+						                     (Integer)rs.getInt("Age"),
+						                     (String)rs.getString("IsSHB"),
+						                     (String)rs.getString("Position")));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -437,6 +441,13 @@ public class DataBaseBean {
     	   String dd=date.substring(6,8);
     	   targetStr=yyyy+"-"+mm+"-"+dd;
     	}
+    	if (model==3){
+    	   targetStr="";
+     	   String yyyy=date.substring(0, 4);
+     	   String mm=date.substring(4,6);
+     	   String dd=date.substring(6,8);
+     	   targetStr=yyyy+"年"+mm+"月"+dd+"日";
+    	}
     	return targetStr;
     }
     public static void changePlayerState(int playerID,int homeTeamID,int awayTeamID,String date,String state){
@@ -452,5 +463,71 @@ public class DataBaseBean {
     			state,homeScore,awayScore,homeTeamID,awayTeamID,date);
     	update(sql);
     	closeDBConnection();
+    }
+    /*
+     * 获得进行中的比赛
+     */
+    public static ArrayList<GameBean> getRunningGames(){
+    	ArrayList<GameBean> list=new ArrayList<GameBean>();
+    	String sql="select * from allgametable where (State>'0' and State<'7')";
+    	rs=query(sql);
+    	try {
+			while(rs.next()){
+				list.add(new GameBean((Integer)rs.getInt("GameID"),
+						(Integer)rs.getInt("HomeTeamID"),
+						(Integer)rs.getInt("AwayTeamID"),
+						(String)rs.getString("Date"),
+						(Integer)rs.getInt("HomeScore"),
+						(Integer)rs.getInt("AwayScore"),
+						(Integer)rs.getInt("State")));
+				
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+    	closeDBConnection();
+    	return list;
+    }
+    public static ArrayList<GameBean> getNotEndGames(){
+    	ArrayList<GameBean> list=new ArrayList<GameBean>();
+    	String sql="select * from allgametable where State<'7'";
+    	rs=query(sql);
+    	try {
+			while(rs.next()){
+				list.add(new GameBean((Integer)rs.getInt("GameID"),
+						(Integer)rs.getInt("HomeTeamID"),
+						(Integer)rs.getInt("AwayTeamID"),
+						(String)rs.getString("Date"),
+						(Integer)rs.getInt("HomeScore"),
+						(Integer)rs.getInt("AwayScore"),
+						(Integer)rs.getInt("State")));
+				
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+    	closeDBConnection();
+    	return list;
+    }
+    public static ArrayList<GameBean> getEndGames(){
+    	ArrayList<GameBean> list=new ArrayList<GameBean>();
+    	String sql="select * from allgametable where State='7'";
+    	rs=query(sql);
+    	try {
+			while(rs.next()){
+				list.add(new GameBean((Integer)rs.getInt("GameID"),
+						(Integer)rs.getInt("HomeTeamID"),
+						(Integer)rs.getInt("AwayTeamID"),
+						(String)rs.getString("Date"),
+						(Integer)rs.getInt("HomeScore"),
+						(Integer)rs.getInt("AwayScore"),
+						(Integer)rs.getInt("State")));
+				
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+    	closeDBConnection();
+    	return list;
     }
 }

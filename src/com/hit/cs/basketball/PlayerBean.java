@@ -9,6 +9,10 @@ public class PlayerBean {
 	private int NumberOfMatches;
 	private int Fouls;
 	private int Number;
+	private String Sex;
+	private int Age;
+	private String IsSHB;
+	private String Position;
 	/*state有这几种
 	 * bench 未上场
 	 * oncourt 在场上
@@ -48,6 +52,23 @@ public class PlayerBean {
 			this.Fouls=fouls;
 			this.Number=number;
 			this.State="bench";
+		}
+	PlayerBean(int playerID,int teamID,String name,String studentID,int score,
+			int numberOfMatches,int fouls,int number,String sex,int age,String isSHB,String position){
+			this.PlayerID=playerID;
+			this.TeamID=teamID;
+			this.Name=name;
+			this.StudentID=studentID;
+			this.Score=score;
+			this.NumberOfMatches=numberOfMatches;
+			this.Fouls=fouls;
+			this.Number=number;
+			this.State="bench";
+			this.Sex=sex;
+			this.Age=age;
+			this.IsSHB=isSHB;
+			this.Position=position;
+			
 		}
 	public int getPlayerID(){
 		return PlayerID;
@@ -102,5 +123,29 @@ public class PlayerBean {
 	}
 	public void setState(String state){
 		this.State=state;
+	}
+	public String getSex(){
+		return Sex;
+	}
+	public void setSex(String sex){
+		this.Sex=sex;
+	}
+	public String getIsSHB(){
+		return IsSHB;
+	}
+	public void setIsSHB(String isSHB){
+		this.IsSHB=isSHB;
+	}
+	public int getAge(){
+		return this.Age;
+	}
+	public void setAge(int age){
+		this.Age=age;
+	}
+	public String getPosition(){
+		return Position;
+	}
+	public void setPosition(String position){
+		this.Position=position;
 	}
 }
