@@ -143,9 +143,15 @@
   <action name="enterLive" class="com.hit.cs.basketball.Basketball" method="enterLive">
       <result name="success">/Live.jsp</result>
   </action>
+  <action name="GameStatistic" class="com.hit.cs.basketball.Basketball" method="GameStatistic">
+      <result name="success">/EndGameStatistic.jsp</result>
+  </action>
+  
+  
   <action name="enterLiveBegin" class="indexNTable.IndexMessageAction" method="getReady">
   <result name="success">EnterLive.jsp</result>
   </action>
+  
   
   <action name="enterLiveT" class="com.hit.cs.basketball.Basketball" method="enterLive">
       <result name="success">/LiveT.jsp</result>

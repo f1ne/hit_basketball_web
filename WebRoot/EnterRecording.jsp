@@ -116,6 +116,8 @@ body {
          ArrayList<GameBean> listGame=DataBaseBean.getNotEndGames();
      %>    
      <table border="1"> 
+     <tr><span style='color:white;'>未结束的比赛列表</span></tr>
+     <tr><span style='color:white;'>管理员请注意：每日的比赛需要在当天修改为比赛结束</span></tr>
      <tr>
          <td><span style='color:white;'>主队ID</span></td>
          <td><span style='color:white;'>主队</span></td>

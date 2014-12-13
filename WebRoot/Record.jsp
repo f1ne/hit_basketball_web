@@ -100,7 +100,7 @@ body {
 	<div id="container">
 		<div id="header">	    
 			<h1><font size=14>现场比赛记录</font></h1>
-			<table border="1">
+			<table border="1" align="center">
 			    <tr>
 			        <td>比赛状态改变:</td>
 			        <td>
@@ -128,6 +128,21 @@ body {
 			    <tr>
 			        <td>当前状态</td>
 			        <td><div id=gamestate>未进行</div></td>
+					<input type="hidden" id="gamestateint"  name="gamestateint" value="0">
+			    </tr>
+			    <tr>
+			        <div id="gamerule">
+			        <p>
+			        1、各参赛单位上场运动员中：男教师不少于2人，男学生不多于2人，学生运动员须为在读硕士生，博士生（实验中心允许有至多同时2名本科生上场；教研室允许有同时1名本科生上场；其它单位不允许本科生上场)。
+			        </p>
+			        <p>
+			        2、 对于参加学校“三好杯”篮球赛（往年和今年）的学生，各参赛单位允许且仅允许在第三小节至多同时1名队员上场。
+			        </p>
+			        <p>
+			        3、比赛中犯规满5次者将被罚下场，若因犯规罚下，导致某队场上男教师人数小于规定人数，则可增补女运动员代替上场，此时，女运动员不再享有任何特殊政策（得分不加倍、男运动员可对其防守）
+			        </p>
+			        </div>
+			        
 			    </tr>
 			</table>
 		</div>
@@ -151,12 +166,13 @@ body {
 			<td>年龄</td>
 			<td>是否三好杯</td>
 			<td>学历</td>
+			<td>规则</td>
 		</tr>
 		<%
 		if (listTeam1!=null){
 		    for (int i=0;i<listTeam1.size();i++){
 		        aPlayer=(PlayerBean)listTeam1.get(i);%>
-				<tr>
+				<tr id="<%=aPlayer.getPlayerID()%>">
 					<td><%=aPlayer.getNumber() %></td>
 					<td><%=aPlayer.getName() %></td>
 					<td>
@@ -174,10 +190,13 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                         <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
-					<td><%=aPlayer.getSex() %></td>
-					<td><%=aPlayer.getAge() %></td>
-					<td><%=aPlayer.getIsSHB() %></td>
-					<td><%=aPlayer.getPosition() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Sex"><%=aPlayer.getSex() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Age"><%=aPlayer.getAge() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>IsSHB"><%=aPlayer.getIsSHB() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Position"><%=aPlayer.getPosition() %></td>
+					<td>
+					    <div id="<%=aPlayer.getPlayerID() %>rule"></div>
+					</td>
 				</tr>
 				<%
 					}
@@ -206,12 +225,13 @@ body {
 			<td>年龄</td>
 			<td>是否三好杯</td>
 			<td>学历</td>
+			<td>规则</td>
 		    </tr>
 		<%
 		if (listTeam2!=null){
 		    for (int i=0;i<listTeam2.size();i++){
 		        aPlayer=(PlayerBean)listTeam2.get(i);%>
-				<tr>
+				<tr id="<%=aPlayer.getPlayerID()%>">
 					<td><%=aPlayer.getNumber() %></td>
 					<td><%=aPlayer.getName() %></td>
 					<td>
@@ -228,10 +248,13 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                         <input type="button" id="<%=aPlayer.getPlayerID() %>changeplayerstate" value="上场" onclick="changeplayerstate(<%=aPlayer.getPlayerID()%>,<%=HomeTeamID%>,<%=AwayTeamID%>)">
                     </td>
-					<td><%=aPlayer.getSex() %></td>
-					<td><%=aPlayer.getAge() %></td>
-					<td><%=aPlayer.getIsSHB() %></td>
-					<td><%=aPlayer.getPosition() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Sex"><%=aPlayer.getSex() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Age"><%=aPlayer.getAge() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>IsSHB"><%=aPlayer.getIsSHB() %></td>
+					<td id="<%=aPlayer.getPlayerID() %>Position"><%=aPlayer.getPosition() %></td>
+					<td>
+					    <div id="<%=aPlayer.getPlayerID() %>rule"></div>
+					</td>
 				</tr>
 				<%
 					}

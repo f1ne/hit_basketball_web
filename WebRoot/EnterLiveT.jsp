@@ -152,7 +152,7 @@ body {
                  <td><span style='color:white;'><%=game.getDate() %></span></td>
 				 <td><span style='color:white;'><%=gameState%></span></td>
                  <td>
-                     <form  method="post" action="<%=path%>/enterLive.action">
+                     <form  method="post" action="<%=path%>/enterLiveT.action">
                      <input type="hidden" id="TeamID1" name="TeamID1" value=<%=homeTeam.getTeamID() %> style="visibility:hidden">
                      <input type="hidden" id="TeamID2" name="TeamID2" value=<%=awayTeam.getTeamID() %> style="visibility:hidden">
                      <input type="hidden" id="RaceDate" name="RaceDate" value=<%=game.getDate() %> style="visibility:hidden">

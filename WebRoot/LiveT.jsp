@@ -98,7 +98,7 @@ body {
 			<input type="button" value="刷新" onclick="refresh(<%=HomeTeamID %>,<%=AwayTeamID %>)">
 		</div>
 		<div id="hometeam">
-		<table>
+		<table border="1">
 		  <tr>
 		    <td>主队(HomeTeam)</td>
 		    <td><div id=hometeamid><%=HomeTeamID %></div></td>
@@ -106,14 +106,18 @@ body {
 		    <td><div id=hometeamscore>0</div></td>
 		  </tr>
 		</table>
-		<table>
+		<table border="1">
 		 <tr>
 		    <td>号码</td>
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
-			<td>球员状态</td>
-		    </tr>
+		    <td>球员状态</td>
+			<td>性别</td>
+			<td>年龄</td>
+			<td>是否三好杯</td>
+			<td>学历</td>
+		 </tr>
 		<%
 		if (listTeam1!=null){
 		    for (int i=0;i<listTeam1.size();i++){
@@ -131,6 +135,10 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                    
                     </td>
+					<td><%=aPlayer.getSex() %></td>
+					<td><%=aPlayer.getAge() %></td>
+					<td><%=aPlayer.getIsSHB() %></td>
+					<td><%=aPlayer.getPosition() %></td>
 				</tr>
 				<%
 					}
@@ -140,7 +148,7 @@ body {
 		</div>
 		
 		<div id="awayteam">
-		<table>
+		<table border="1">
 		  <tr>
 		    <td>客队(AwayTeam)</td>
 		    <td><div id=awayteamid><%=AwayTeamID %></div></td>
@@ -148,14 +156,18 @@ body {
 		    <td><div id=awayteamscore>0</div></td>
 		  </tr>
 		</table>
-		<table>
+		<table border="1">
 		 <tr>
 		    <td>号码</td>
 		    <td>名字</td>
 		    <td>得分</td>
 		    <td>犯规</td>
-			<td>球员状态</td>
-		    </tr>
+		    <td>球员状态</td>
+			<td>性别</td>
+			<td>年龄</td>
+			<td>是否三好杯</td>
+			<td>学历</td>
+		 </tr>
 		<%
 		if (listTeam2!=null){
 		    for (int i=0;i<listTeam2.size();i++){
@@ -173,6 +185,10 @@ body {
                         <div id="<%=aPlayer.getPlayerID() %>playerstate">替补</div>
                    
                     </td>
+					<td><%=aPlayer.getSex() %></td>
+					<td><%=aPlayer.getAge() %></td>
+					<td><%=aPlayer.getIsSHB() %></td>
+					<td><%=aPlayer.getPosition() %></td>
 				</tr>
 				<%
 					}

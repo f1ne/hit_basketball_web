@@ -6,11 +6,12 @@
     var homeTeamScore;
     var awayTeamScore;
     var xmlHttp;
+    
 	/*创建XMLHttpRequest对象*/
 	function createXmlHttp(){
 		xmlHttp=new XMLHttpRequest();
 	}
-	/*处理服务器响应结� /
+	/*处理服务器响应结 */
 	function processResponse(){
 		if (xmlHttp.readyState==4){
 			if (xmlHttp.status==200){
@@ -55,7 +56,7 @@
 			}
 		}
 	}
-	/*发�客户端的请求*/
+	/*发客户端的请求*/
 	function sendRequest(url){
 		createXmlHttp();
 		xmlHttp.open("GET",url,true);
@@ -68,5 +69,5 @@
 		globalHomeTeamID=homeTeamID;
 		globalAwayTeamID=awayTeamID;
 		sendRequest(url);
-		t=setTimeout("refresh(globalHomeTeamID,globalAwayTeamID)",30000);
+		t=setTimeout("refresh(globalHomeTeamID,globalAwayTeamID)",3000);
 	}

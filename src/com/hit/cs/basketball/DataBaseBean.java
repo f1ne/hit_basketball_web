@@ -458,9 +458,16 @@ public class DataBaseBean {
     	closeDBConnection();
     }
     public static void changeGameState(int homeTeamID,int awayTeamID,int homeScore,int awayScore,String date,int state){
-    	String sql=String.format("update allgametable set State='%d',HomeScore='%d',AwayScore='%d' "
-    			+ "where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')", 
-    			state,homeScore,awayScore,homeTeamID,awayTeamID,date);
+    	String sql="";
+    	if (state!=100){
+    		sql=String.format("update allgametable set State='%d',HomeScore='%d',AwayScore='%d' "
+        			+ "where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')", 
+        			state,homeScore,awayScore,homeTeamID,awayTeamID,date);
+    	}else{
+    		sql=String.format("update allgametable set HomeScore='%d',AwayScore='%d' "
+        			+ "where (HomeTeamID='%d' and AwayTeamID='%d' and Date='%s')", 
+        			homeScore,awayScore,homeTeamID,awayTeamID,date);
+    	}   	
     	update(sql);
     	closeDBConnection();
     }
@@ -528,6 +535,46 @@ public class DataBaseBean {
 			System.out.println(e);
 		}
     	closeDBConnection();
+    	return list;
+    }
+    /*
+     * 获得全队某天的数据统计
+     * Date:yyyyMMdd
+     */
+    public static ArrayList<PlayerBean> getPlayerDataByTeamIDAndDate(int teamID,String date){
+    	ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+    	//先找到该比赛表信息
+    	ArrayList<GameBean> gameslist=queryGameTableNameByDateAndTeamID(date,teamID);
+    	int HomeTeamID;
+    	int AwayTeamID;
+        if (gameslist.size()>0){
+        	GameBean game=(GameBean)gameslist.get(0);
+        	HomeTeamID=game.getHomeTeamID();
+        	AwayTeamID=game.getAwayTeamID();
+        	String sql=String.format("select * from playerstable%s_%d_%d where TeamID='%d'",
+        	       date,HomeTeamID,AwayTeamID,teamID);
+        	rs=query(sql);
+        	try {
+				while(rs.next()){
+					list.add(new PlayerBean((Integer)rs.getInt("PlayerID"),
+		                     (Integer)rs.getInt("TeamID"),
+		                     (String)rs.getString("Name"),
+		                     (String)rs.getString("StudentID"),
+		                     (Integer)rs.getInt("Score"),
+		                     (Integer)rs.getInt("NumberOfMatches"),
+		                     (Integer)rs.getInt("Fouls"),
+		                     (Integer)rs.getInt("Number"),
+		                     (String)rs.getString("Sex"),
+		                     (Integer)rs.getInt("Age"),
+		                     (String)rs.getString("IsSHB"),
+		                     (String)rs.getString("Position")));
+				}
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+        	closeDBConnection();
+        }
+        
     	return list;
     }
 }
