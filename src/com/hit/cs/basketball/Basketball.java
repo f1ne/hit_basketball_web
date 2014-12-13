@@ -17,8 +17,8 @@ public class Basketball extends ActionSupport{
 	
 	
 	private static final long serialVersionUID = 7140505626097926600L;
-	private int TeamID1;
-	private int TeamID2;
+	private int TeamID1;//HomeTeamID
+	private int TeamID2;//AwayTeamID
 	private String PlayerName;
 	private String RaceDate;
 	public void setTeamID1(int teamID1){
@@ -96,6 +96,29 @@ public class Basketball extends ActionSupport{
 		request.setAttribute("listTeam2", listTeam2);
 		return "success";
 	}
+	/*
+     * 查询结束比赛的数据统计
+     */
+    public String GameStatistic(){
+    	HttpServletRequest request;
+		request=ServletActionContext.getRequest();
+		RaceDate=DataBaseBean.dateFormatTransfer(RaceDate, 1);
+		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
+		ArrayList<PlayerBean> listTeam2=new ArrayList<PlayerBean>();
+		listTeam1=DataBaseBean.getPlayerDataByTeamIDAndDate(TeamID1, RaceDate);
+		listTeam2=DataBaseBean.getPlayerDataByTeamIDAndDate(TeamID2,RaceDate);
+		//获得球队信息
+		TeamBean Team1=getTeamByTeamID(TeamID1);
+		TeamBean Team2=getTeamByTeamID(TeamID2);
+		//获得比赛信息
+		GameBean game=(GameBean)DataBaseBean.queryGameTableNameByDateAndTeamID(RaceDate, TeamID1).get(0);
+		request.setAttribute("listTeam1", listTeam1);
+		request.setAttribute("listTeam2", listTeam2);
+		request.setAttribute("Team1",Team1);
+		request.setAttribute("Team2",Team2);
+		request.setAttribute("game", game);
+    	return "success";
+    }
 	/*
 	 * 球员名字、日期查询球员当天球赛的表现，可能会出现重名的情况
 	 * 会用过request类返回
@@ -325,4 +348,5 @@ public class Basketball extends ActionSupport{
     	}
     	return stateStr;
     }
+    
 }

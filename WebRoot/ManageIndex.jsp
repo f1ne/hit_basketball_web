@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.hit.cs.basketball.*"
+	pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -80,5 +81,57 @@ body {
      </tr>
     </tbody></table>
    <br>
+   <!-- 获得正在进行的比赛列表 -->
+     
+     <%
+         ArrayList<GameBean> listGame=DataBaseBean.getEndGames();
+     %>    
+     <table border="1"> 
+     <tr>
+          <td><span style='color:white;'>已结束的比赛</span></td>
+     </tr>
+     <tr>
+         <td><span style='color:white;'>主队ID</span></td>
+         <td><span style='color:white;'>主队</span></td>
+         <td><span style='color:white;'>主队得分</span></td>
+         <td><span style='color:white;'>客队得分</span></td>
+         <td><span style='color:white;'>客队</span></td>
+         <td><span style='color:white;'>客队ID</span></td>
+         <td><span style='color:white;'>比赛日期</span></td>
+		 <td><span style='color:white;'>比赛状态</span></td>
+         <td><span style='color:white;'>操作</span></td>
+     </tr>   
+     <%
+         for (int i=0;i<listGame.size();i++){
+             GameBean game=listGame.get(i);
+             TeamBean homeTeam;
+             TeamBean awayTeam;
+             homeTeam=Basketball.getTeamByTeamID(game.getHomeTeamID());
+             awayTeam=Basketball.getTeamByTeamID(game.getAwayTeamID());
+			 String gameState=Basketball.resolveState(game.getState());
+			 
+             %>
+             <tr>
+                 <td><span style='color:white;'><%=homeTeam.getTeamID() %></span></td>
+                 <td><span style='color:white;'><%=homeTeam.getTeamLab() %>:<%=homeTeam.getTeamName() %></span></td>
+                 <td><span style='color:white;'><%=game.getHomeScore() %></span></td>
+                 <td><span style='color:white;'><%=game.getAwayScore() %></span></td>
+                 <td><span style='color:white;'><%=awayTeam.getTeamLab() %>:<%=awayTeam.getTeamName() %></span></td>
+                 <td><span style='color:white;'><%=awayTeam.getTeamID() %></span></td>
+                 <td><span style='color:white;'><%=game.getDate() %></span></td>
+				 <td><span style='color:white;'><%=gameState%></span></td>
+                 <td>
+                     <form  method="post" action="<%=path%>/GameStatistic.action">
+                     <input type="hidden" id="TeamID1" name="TeamID1" value=<%=homeTeam.getTeamID() %> style="visibility:hidden">
+                     <input type="hidden" id="TeamID2" name="TeamID2" value=<%=awayTeam.getTeamID() %> style="visibility:hidden">
+                     <input type="hidden" id="RaceDate" name="RaceDate" value=<%=game.getDate() %> style="visibility:hidden">
+                     <input type="submit" name="submit" value="查看数据统计">
+                     </form>
+                 </td>
+             </tr>
+             <%
+         }
+      %>
+      </table>
   </body>
 </html>
