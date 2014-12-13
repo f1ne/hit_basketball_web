@@ -14,7 +14,13 @@ public class DBConnection {
 	   	public DBConnection(){
 	  	try {
 	  		Class.forName("com.mysql.jdbc.Driver");
-	  		con = DriverManager.getConnection(URL,USER,PWD);
+	  		//<----------------- 本地数据库------------------------>
+	  		//con = DriverManager.getConnection(URL,USER,PWD);
+	  		//<-----------------sae数据库链接------------------------->
+	  		String accesskey="k00152n2my";
+    		String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";
+    		con=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_guangxibei",accesskey,secretkey);
+	  	    //<---------------------------------------------------->
 	  	} catch (SQLException e) {
 	  		System.out.println("database connecting failed");
 	  		// TODO Auto-generated catch blo-QWAwaaAck
