@@ -83,7 +83,7 @@ public class LoginAction extends ActionSupport{
 				{
 					if(psw.compareTo(rs.getString("PSW"))== 0 ){
 						sss.setAttribute("logintype",logintype);
-					    sss.setAttribute("user",user);
+					    sss.setAttribute("user",rs.getString("Name"));
 					    sss.setAttribute("psw",psw);
 					    String team=rs.getString("Name");
 					    sss.setAttribute("team",team);
