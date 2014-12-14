@@ -23,12 +23,12 @@ public class DataBaseBean {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			//<-----------------------本地数据库--------------------------->
-			//con=(Connection) DriverManager.getConnection(
-			//		"jdbc:mysql://localhost:3306/db","root","csm0212");
+			con=(Connection) DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/db","root","csm0212");
 			//<-----------------------SAE端数据库-------------------------->
-			String accesskey="k00152n2my";
-    		String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";
-    		con=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_guangxibei",accesskey,secretkey);
+			//String accesskey="k00152n2my";
+    		//String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";
+    		//con=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_guangxibei",accesskey,secretkey);
 		    //<--------------------------------------------------------->
 		}catch(Exception e){
 			System.out.println("Connecting to database failed!:"+e);
@@ -214,7 +214,10 @@ public class DataBaseBean {
 				int HomeTeamID=rs.getInt("HomeTeamID");
 				int AwayTeamID=rs.getInt("AwayTeamID");
 				String Date=(rs.getDate("Date")).toString();
-				list.add(new GameBean(GameID,HomeTeamID,AwayTeamID,Date));
+				int HomeScore=rs.getInt("HomeScore");
+				int AwayScore=rs.getInt("AwayScore");
+				int State=rs.getInt("State");
+				list.add(new GameBean(GameID,HomeTeamID,AwayTeamID,Date,HomeScore,AwayScore,State));
 			}
 			rs.close();
 		} catch (SQLException e) {
