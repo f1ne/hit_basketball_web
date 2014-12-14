@@ -51,7 +51,7 @@ public class LoginAction extends ActionSupport{
 					managerLogin="1";
 					teamLogin="0";
 					sss.setAttribute("logintype",logintype);
-				    sss.setAttribute("user",user);
+				    sss.setAttribute("user",rs.getString("Name"));
 				    sss.setAttribute("psw",psw);
 				    CPL=(int)rs.getString("NPL").charAt(0)-48;
 				    //System.out.println(CPL);

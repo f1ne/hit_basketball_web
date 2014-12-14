@@ -12,11 +12,11 @@ public class DBConnection {
 	  	try {
 	  		Class.forName("com.mysql.jdbc.Driver");
 	  		//<----------------- 本地数据库------------------------>
-	  		con = DriverManager.getConnection(URL,USER,PWD);
+	  		//con = DriverManager.getConnection(URL,USER,PWD);
 	  		//<-----------------sae数据库链接------------------------->
-	  		//String accesskey="k00152n2my";
-    		//String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";
-    		//con=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_guangxibei",accesskey,secretkey);
+	  		String accesskey="k00152n2my";
+    		String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";
+    		con=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_guangxibei",accesskey,secretkey);
 	  	    //<---------------------------------------------------->
 	  	} catch (SQLException e) {
 	  		System.out.println("database connecting failed");
