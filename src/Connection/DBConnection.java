@@ -4,9 +4,6 @@ import java.sql.*;
 
 public class DBConnection {
 	   	String DRIVER = "com.mysql.jdbc.Driver";
-	   	//private static final String URL ="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_booklib";
-	   	//private static final String USER = "ynw54y204w";
-	   	//private static final String PWD = "3xwx5zi540j2543ki3ymyyl1m4xklw5xm21m132j";
 	   	private static final String URL ="jdbc:mysql://localhost:3306/db";
 	   	private static final String USER = "root";
 	   	private static final String PWD = "csm0212";

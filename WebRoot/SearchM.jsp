@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>search</title>
+   <title>光熙杯篮球赛管理系统</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -89,7 +89,7 @@ body {
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
 	<input type="button" value="提交" onclick="searchPlayerData()"/>
 </form>
-<div id="resultPanel" style="background-color:  #66BB66">
+<div id="resultPanel" style="background-color:  white;">
 <span style="color:black;">查询结果：</span>
   <!--  %out.println("结果"); %-->
      <br>
@@ -127,7 +127,7 @@ body {
           <input type="submit" value="更新所有数据">
       </form>
       <hr>
-      <div id="resultPanel" style="background-color:  #66BB66">
+      <div id="resultPanel" style="background-color:  white;">
       <h1><span style="color:black;">排行榜：</span></h1>
       <br>
   <br>

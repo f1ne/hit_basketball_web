@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 response.setContentType("text/html;charset=utf-8");%>
   <head>
     <base href="<%=basePath%>">
-    <title>Add Author page</title>
+   <title>光熙杯篮球赛管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -72,12 +72,7 @@ body {
     </tbody></table>
   </div>
 <hr>
-<table border="0" cellpadding="0" style="margin-left:0px;">
-    <tbody><tr>
-    <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/ball.png" width="620px;" height="356px;"/> </td> 
-     </tr>
-    </tbody></table>
-   <br>
+<br>
    <!-- 获得正在进行的比赛列表 -->
      
      <%
@@ -130,5 +125,16 @@ body {
          }
       %>
       </table>
+      <br>
+       <br><span style='color:white;'>近期图片：</span>
+      <table border="0" cellpadding="0" style="margin-left:0px;">
+    <tbody><tr>
+    <td style="padding-right:50px;"><img src="${pageContext.request.contextPath}/image/ball.png" width="620px;" height="356px;"/> </td> 
+     </tr>
+    </tbody></table>
+    <br>
+      <img src="${pageContext.request.contextPath}/image/pic1.jpg" width="620px;" height="356px;"/>
+      <br><br>
+      <img src="${pageContext.request.contextPath}/image/pic2.jpg" width="620px;" height="356px;"/>
   </body>
 </html>
