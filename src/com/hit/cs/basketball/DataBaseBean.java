@@ -23,8 +23,8 @@ public class DataBaseBean {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			//<-----------------------本地数据库--------------------------->
-			/*con=(Connection) DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/db","root","csm0212");*/
+			//con=(Connection) DriverManager.getConnection(
+			//		"jdbc:mysql://localhost:3306/db","root","csm0212");
 			//<-----------------------SAE端数据库-------------------------->
 			String accesskey="k00152n2my";
     		String secretkey="mk3wwz5w1552xxlhh1kl043j1yz513l3ii0ikh22";

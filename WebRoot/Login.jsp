@@ -13,7 +13,7 @@ response.setContentType("text/html;charset=utf-8");%>
 <head>
 <base href="<%=basePath%>">
  <!--link rel="stylesheet" type="text/css" href="bootstrap.css" /-->
-<title>My JSP 'Login.jsp' starting page</title>
+<title>光熙杯篮球赛管理系统</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

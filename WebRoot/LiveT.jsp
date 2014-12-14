@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">    
-    <title>比赛现场实时技术统计</title>
+    <title>光熙杯篮球赛管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
