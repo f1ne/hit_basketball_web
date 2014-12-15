@@ -44,14 +44,19 @@ public class LoginAction extends ActionSupport{
 				realpsw=(String)sss.getAttribute("psw");
 				if(realpsw.compareTo(psw0)==0){
 					if(psw1.compareTo(psw2)==0){
-				
+						if(psw1.compareTo("")!=0){
 				String sql=String.format("update manager set manager.PSW='%s' where Name='%s'", 
 	        			psw1,realname);
 				DataBaseBean.update(sql);
 			
 				jspTitle="修改成功";
 				    return SUCCESS;
-				
+						}
+				    else{
+				    	jspTitle="密码不能为空！";
+						return SUCCESS;
+						
+					}
 				}
 				else{
 						jspTitle="两次密码不一致！";
@@ -81,12 +86,18 @@ public class LoginAction extends ActionSupport{
 							realpsw=(String)sss.getAttribute("psw");
 							if(realpsw.compareTo(psw0)==0){
 								if(psw1.compareTo(psw2)==0){
+									if(psw1.compareTo("")!=0){
 							String sql=String.format("update team set team.PSW='%s' where Name='%s'", 
 				        			psw1,realname);
 							DataBaseBean.update(sql);
 							jspTitle="修改成功";
 							    return SUCCESS;
-							
+								}
+							    else{
+							    	jspTitle="密码不能为空！";
+									return SUCCESS;
+									
+								}
 							}
 							else{
 									jspTitle="两次密码不一致！";
