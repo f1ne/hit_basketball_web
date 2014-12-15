@@ -28,8 +28,8 @@ public class SearchPlayerData extends HttpServlet{
 		String playerName=request.getParameter("playerName").toString();
 		System.out.println(playerName);
 		//<------本地数据库代码------->用于sae上的话该代码需要删去
-		//playerName=java.net.URLEncoder.encode(playerName, "ISO-8859-1");
-		//playerName=java.net.URLDecoder.decode(playerName,"UTF-8");
+		playerName=java.net.URLEncoder.encode(playerName, "ISO-8859-1");
+		playerName=java.net.URLDecoder.decode(playerName,"UTF-8");
 		//<---------------------------->
 		String raceDate=request.getParameter("raceDate").toString();
 		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();

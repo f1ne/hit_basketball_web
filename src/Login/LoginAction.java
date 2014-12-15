@@ -2,7 +2,7 @@ package Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import com.hit.cs.basketball.DataBaseBean;
 import javax.jms.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,12 +11,17 @@ import org.apache.struts2.ServletActionContext;
 import Connection.DBConnection;
 import Manager.Manager;
 import Team.Team;
+
+import com.hit.cs.basketball.DataBaseBean;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport{
 	private String jspTitle;
 	private String user;
 	private String psw;
+	private String psw0;
+	private String psw1;
+	private String psw2;
 	private int CPL;
 	private String logintype;
 	private String teamLogin="0";
@@ -28,6 +33,78 @@ public class LoginAction extends ActionSupport{
 	private DBConnection dbConnection=new DBConnection();
 	HttpSession sss = null;
 	
+	public String ChangePswM()
+	{
+		ss = ServletActionContext.getRequest();
+		sss=ss.getSession();
+			try{
+				String realpsw;
+				String realname;
+				realname=(String)sss.getAttribute("user");
+				realpsw=(String)sss.getAttribute("psw");
+				if(realpsw.compareTo(psw0)==0){
+					if(psw1.compareTo(psw2)==0){
+				
+				String sql=String.format("update manager set manager.PSW='%s' where Name='%s'", 
+	        			psw1,realname);
+				DataBaseBean.update(sql);
+			
+				jspTitle="修改成功";
+				    return SUCCESS;
+				
+				}
+				else{
+						jspTitle="两次密码不一致！";
+						return SUCCESS;
+						
+					}
+				}
+				else{
+					jspTitle="原密码错误！";
+					return SUCCESS;
+				
+				}
+			}catch(Exception e){
+				jspTitle="发生错误";
+				
+				return SUCCESS;
+			}
+	}
+				public String ChangePswT()
+				{
+					ss = ServletActionContext.getRequest();
+					sss=ss.getSession();
+						try{
+							String realpsw;
+							String realname;
+							realname=(String)sss.getAttribute("user");
+							realpsw=(String)sss.getAttribute("psw");
+							if(realpsw.compareTo(psw0)==0){
+								if(psw1.compareTo(psw2)==0){
+							String sql=String.format("update team set team.PSW='%s' where Name='%s'", 
+				        			psw1,realname);
+							DataBaseBean.update(sql);
+							jspTitle="修改成功";
+							    return SUCCESS;
+							
+							}
+							else{
+									jspTitle="两次密码不一致！";
+									return SUCCESS;
+									
+								}
+							}
+							else{
+								jspTitle="原密码错误！";
+								return SUCCESS;
+							
+							}
+						}catch(Exception e){
+							jspTitle="发生错误";
+							
+							return SUCCESS;
+						}
+	}
 
 	public String Login()
 	{
@@ -115,6 +192,37 @@ public class LoginAction extends ActionSupport{
 				}
 			return ERROR;
 	}
+
+	
+	public String getPsw0() {
+		return psw0;
+	}
+
+
+	public void setPsw0(String psw0) {
+		this.psw0 = psw0;
+	}
+
+
+	public String getPsw1() {
+		return psw1;
+	}
+
+
+	public void setPsw1(String psw1) {
+		this.psw1 = psw1;
+	}
+
+
+	public String getPsw2() {
+		return psw2;
+	}
+
+
+	public void setPsw2(String psw2) {
+		this.psw2 = psw2;
+	}
+
 
 	public String getJspTitle() {
 		return jspTitle;
