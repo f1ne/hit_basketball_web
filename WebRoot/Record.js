@@ -311,7 +311,7 @@
 	 //上场
 	function oncourt(playerID)
 	{
-	    document.getElementById(playerID).setAttribute("style","background-color:green");
+	    document.getElementById(playerID).setAttribute("style","background-color:#00FF00");
 		document.getElementById(playerID+"playerstate").innerText="场上";
 		document.getElementById(playerID+"changeplayerstate").value="下场";
 		document.getElementById(playerID+"scorebutton").disabled=false;
