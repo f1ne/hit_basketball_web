@@ -308,7 +308,7 @@
 	 //上场
 	function oncourt(playerID)
 	{
-	    document.getElementById(playerID).setAttribute("style","background-color:#FF0000");
+		document.getElementById(playerID).setAttribute("style","background-color:#00FF00");
 		document.getElementById(playerID+"playerstate").innerText="场上";
 		document.getElementById(playerID+"changeplayerstate").value="下场";
 		document.getElementById(playerID+"scorebutton").disabled=false;
@@ -332,7 +332,7 @@
 	//罚出比赛
 	function fouledout(playerID)
 	{
-	    document.getElementById(playerID).setAttribute("style","background-color:green");
+		document.getElementById(playerID).setAttribute("style","background-color:#FF0000");
 	    document.getElementById(playerID+"playerstate").innerText="罚出";
 		document.getElementById(playerID+"changeplayerstate").value="不可用";
 		document.getElementById(playerID+"scorebutton").disabled=true;
