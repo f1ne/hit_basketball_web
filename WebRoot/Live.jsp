@@ -20,8 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style type="text/css">
 	div#container{width:1400px;align:center}
 	div#header{background-color:#99bbbb;text-align:center}
-	div#hometeam{background-color:#ffff99;height:800px;width:700px;float:left}
-	div#awayteam{background-color:#eeeeee;height:800px;width:700px;float:left}
+	div#hometeam{background-color:#ffff99;height:2000px;width:700px;float:left}
+	div#awayteam{background-color:#eeeeee;height:2000px;width:700px;float:left}
 	div#footer{background-color:#99bbbb;clear:both;text-align:center}
 	h1{margin-bottom:0}
 	h2{margin-bottom:0;font-size:14px}

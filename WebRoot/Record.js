@@ -9,7 +9,7 @@
     var awayTeamScore;
 	/*创建XMLHttpRequest请求*/
 	function createXmlHttp(){
-		xmlHttp=new XMLHttpRequest();
+		xmlHttp=new XMLHttpRequest()
 	}
 	/*处理响应*/
 	function processResponse(){
@@ -173,15 +173,18 @@
 						}
 						if (Age>=45&&Age<55)
 						{
-						    var node=document.createTextNode("每打满一节加2分，上限6分,全队加分上限20分");
-							rule.appendchild(node);
+							var tmp=rule.innerText;
+						    //var node=document.createTextNode("每打满一节加2分，上限6分,全队加分上限20分");
+							rule.innerText=tmp+"每打满一节加2分，上限6分,全队加分上限20分";
 						}
 						else
 						{
 						    if (Age>=55)
 							{
-							    var node=document.createTextNode("每打满一节加3分，上限6分，全队加分上限20分");
-							    rule.appendchild(node);
+								var tmp=rule.innerText;
+						        //var node=document.createTextNode("每打满一节加2分，上限6分,全队加分上限20分");
+							    rule.innerText=tmp+"每打满一节加3分，上限6分，全队加分上限20分";
+							    
 							}
 						}
 					}
@@ -308,7 +311,7 @@
 	 //上场
 	function oncourt(playerID)
 	{
-	    document.getElementById(playerID).setAttribute("style","background-color:#FF0000");
+	    document.getElementById(playerID).setAttribute("style","background-color:green");
 		document.getElementById(playerID+"playerstate").innerText="场上";
 		document.getElementById(playerID+"changeplayerstate").value="下场";
 		document.getElementById(playerID+"scorebutton").disabled=false;
@@ -332,7 +335,8 @@
 	//罚出比赛
 	function fouledout(playerID)
 	{
-	    document.getElementById(playerID).setAttribute("style","background-color:green");
+	    
+	    document.getElementById(playerID).setAttribute("style","background-color:#FF0000");
 	    document.getElementById(playerID+"playerstate").innerText="罚出";
 		document.getElementById(playerID+"changeplayerstate").value="不可用";
 		document.getElementById(playerID+"scorebutton").disabled=true;
