@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport{
 	private String jspTitle;
 	private String user;
+	private String id;
 	private String psw;
 	private String psw0;
 	private String psw1;
@@ -142,6 +143,7 @@ public class LoginAction extends ActionSupport{
 					sss.setAttribute("logintype",logintype);
 				    sss.setAttribute("user",rs.getString("Name"));
 				    sss.setAttribute("psw",psw);
+				    sss.setAttribute("id", rs.getString("ID"));
 				    CPL=(int)rs.getString("NPL").charAt(0)-48;
 				    //System.out.println(CPL);
 				    sss.setAttribute("CPL", CPL);
@@ -176,6 +178,7 @@ public class LoginAction extends ActionSupport{
 					    sss.setAttribute("psw",psw);
 					    String team=rs.getString("Name");
 					    sss.setAttribute("team",team);
+					    sss.setAttribute("id", rs.getString("ID"));
 					jspTitle="µÇÂ¼³É¹¦";
 					teamLogin="1";
 					managerLogin="0";
@@ -231,6 +234,12 @@ public class LoginAction extends ActionSupport{
 	}
 
 
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public void setPsw2(String psw2) {
 		this.psw2 = psw2;
 	}

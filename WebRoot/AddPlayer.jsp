@@ -58,7 +58,8 @@ body {
     </tr>
     </tbody>
     </table>
-    <hr><% String team=(String)session.getAttribute("team"); %>
+    <hr><% String team=(String)session.getAttribute("team");
+    String id=(String)session.getAttribute("id"); %>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
     <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -117,7 +118,7 @@ body {
 								</div></li> <br>   
 								<li><div class="select_panel">
 									<div class="addr_panel"><i class="addr"></i>队伍ID：<select name="newPlayer.TeamID" id="newPlayer.TeamID">
-																				<option value=<%=teamID %> selected ><%=teamID %></option>
+																				<option value=<%=id %> selected ><%=id %></option>
 																			</select></div>
 								</div></li> <br>   
 								<li><div class="select_panel">
