@@ -48,7 +48,7 @@ public class LoginAction extends ActionSupport{
 				String sql=String.format("update manager set manager.PSW='%s' where Name='%s'", 
 	        			psw1,realname);
 				DataBaseBean.update(sql);
-			
+				sss.setAttribute("psw",psw1);
 				jspTitle="修改成功";
 				    return SUCCESS;
 						}
@@ -90,6 +90,7 @@ public class LoginAction extends ActionSupport{
 							String sql=String.format("update team set team.PSW='%s' where Name='%s'", 
 				        			psw1,realname);
 							DataBaseBean.update(sql);
+							sss.setAttribute("psw",psw1);
 							jspTitle="修改成功";
 							    return SUCCESS;
 								}
