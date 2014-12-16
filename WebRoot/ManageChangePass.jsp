@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 response.setContentType("text/html;charset=utf-8");%>
   <head>
     <base href="<%=basePath%>">
-    <title>光熙杯篮球赛管理系统</title>
+   <title>光熙杯篮球赛管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -70,15 +70,21 @@ body {
       <%if(cpl==1){%><td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><%} %>
       <%if(cpl<=2) {%><td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <%} %>    
     <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="ChangePassM.action" style="font-size:14px;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   <td><a href="ChangePassM.action" style="font-size:14px;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
-<hr> 
-<%String Mess=(String)session.getAttribute("IndexMessage"); %>
-<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
-<s:form action="setNotification.action">
-<span style="color:white;">新赛事通告:</span><s:textarea name="newMess" style="font-size:12px;width:450px;height:100px;border:0px;overflow-x:hidden"></s:textarea>                  
-   	<s:submit align="right" value="提交"/>
-    </s:form>
-</body></html>
+<hr>
+
+  <center>       <h2 ><span style="color:white">修改密码</span> </h2 >  <s:form action="ChangeBeginM.action" style="color:white">
+            原密码：<br><Input type = "password" name = "psw0" style = "width:150"><br>
+             新密码：<br><Input type = "password" name = "psw1" style = "width:150"><br>
+              确认新密码：<br><Input type = "password" name = "psw2" style = "width:150">
+              <br>
+              
+              	<s:submit align="CENTER" value="修改"/>
+
+</s:form></center >
+  	
+  </body>
+</html>

@@ -71,7 +71,7 @@ body {
    <center>
     <br><br><br><br>
    <center><h1><b><span style="color:white"><s:property value="jspTitle"/></span></b></h1></center>
-  	<s:form action="returnMyJsp.action" style="color:white" ><s:submit  align="right" value="返回"/></s:form>
+  	<s:form action="Login.action" style="color:white" ><s:submit  align="right" value="返回"/></s:form>
   	</center>
   	
   	

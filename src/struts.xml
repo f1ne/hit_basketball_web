@@ -135,6 +135,18 @@
 <action name="Login">
 <result>Login.jsp</result>
 </action>
+<action name="ChangePassM">
+<result>ManageChangePass.jsp</result>
+</action>
+<action name="ChangePassT">
+<result>TeamChangePass.jsp</result>
+</action>
+<action name="ChangeBeginM" class="Login.LoginAction" method="ChangePswM">
+<result name="success">addResultM.jsp</result>
+</action>
+<action name="ChangeBeginT" class="Login.LoginAction" method="ChangePswT">
+<result name="success">addResultP.jsp</result>
+</action>
 </package>
 <!-- Ye Zhe added -->
 <package name="com.hit.cs.basketball" extends="struts-default" namespace="/">  

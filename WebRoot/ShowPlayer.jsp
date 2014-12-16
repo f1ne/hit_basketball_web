@@ -67,6 +67,7 @@ body {
     <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td><a href="ShowPlayer.action" style="font-size:14px;">查看球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+    <td><a href="ChangePassT.action" style="font-size:14px;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
@@ -76,16 +77,16 @@ body {
     <table border=1 align="CENTER" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>Name</td>
-		<td>Number</td>
-		<td>StudentID</td>
-		<td>Sex</td>
-		<td>Position</td>
-		<td>Age Group</td>
-		<td>三好杯 player</td>
+        <td>姓名</td>
+		<td>号码</td>
+		<td>ID</td>
+		<td>性别</td>
+		<td>身份</td>
+		<td>年龄段</td>
+		<td>是否三好杯球员</td>
 
   	</tr>
-	<s:iterator value="A" id="players" status="stuts">
+	<s:iterator value="P" id="players" status="stuts">
   	 <tr>
   	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
         <td><s:property value="#players.Name"/></td>

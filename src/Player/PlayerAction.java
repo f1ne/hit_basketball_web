@@ -23,7 +23,7 @@ public class PlayerAction extends ActionSupport{
 	private String DPlayerID;
 	private int PlayerNum;
 	private DBConnection pConnection=new DBConnection();
-	private ArrayList<Player> A=new ArrayList<Player>();
+	private ArrayList<Player> P=new ArrayList<Player>();
 	HttpServletRequest ss=null;
 	HttpSession sss = null;
 	
@@ -31,11 +31,11 @@ public class PlayerAction extends ActionSupport{
 	{	
 		ss = ServletActionContext.getRequest();
 		sss=ss.getSession();
-		A.clear();
+		P.clear();
 		try{
 		Connection tempConnection=pConnection.getConnection();
 		//Statement bookstmt=tempConnection.createStatement();
-		String initialString="select * from players where TeamID= ?";
+		String initialString="select * from players where Team= ?";
 		PreparedStatement bookstmt=tempConnection.prepareStatement(initialString);
 		bookstmt.setString(1,(String)sss.getAttribute("user"));
 		ResultSet rs= bookstmt.executeQuery();
@@ -45,7 +45,7 @@ public class PlayerAction extends ActionSupport{
 			jspTitle="队内成员:";
 			do{
 				Player tempPlayer=new Player(rs.getInt("PlayerID"),rs.getInt("TeamID"),rs.getString("Name"),rs.getString("StudentID"),rs.getInt("Score"),rs.getInt("NumberOfMatches"),rs.getInt("fouls"),rs.getInt("Number"),rs.getString("Position"),target,rs.getString("Sex"),rs.getInt("Age"),rs.getString("IsSHB"));
-				A.add(tempPlayer);
+				P.add(tempPlayer);
 				num++;
 			}while(rs.next());
 				PlayerNum=num;
@@ -131,11 +131,11 @@ public class PlayerAction extends ActionSupport{
 		}
 	}
 	
-	public ArrayList<Player> getA() {
-		return A;
+	public ArrayList<Player> getP() {
+		return P;
 	}
-	public void setA(ArrayList<Player> a) {
-		A = a;
+	public void setP(ArrayList<Player> p) {
+		P = p;
 	}
 	
 	public String getJspTitle() {

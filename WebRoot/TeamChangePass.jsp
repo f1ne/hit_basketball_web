@@ -61,24 +61,29 @@ body {
     <hr>
     <table border="0" cellpadding="0" style="margin-left:0px;">
     <tbody><tr>
-    <%int cpl=(Integer)session.getAttribute("CPL"); %>
-    <td><a href="returnMyJspM.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetNotificationM.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="GetScheduleM.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="enterRecordingBegin.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="SearchMBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <%if(cpl==1){%><td><a href="AddManager.action" style="font-size:14px;">管理员注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><%} %>
-      <%if(cpl<=2) {%><td><a href="AddTeam.action" style="font-size:14px;">队伍注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <%} %>    
-    <td><a href="uploadPic.action" style="font-size:14px;">上传图片</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="ChangePassM.action" style="font-size:14px;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="returnMyJspT.action" style="font-size:14px;">主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetNotificationT.action" style="font-size:14px;">近期赛事通告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="GetScheduleT.action" style="font-size:14px;">比赛日程</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="enterLiveBeginT.action" style="font-size:14px;">赛事实时信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="SearchTBegin.action" style="font-size:14px;">数据搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td><a href="ShowPlayer.action" style="font-size:14px;">查看球员</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+   <td><a href="ChangePassT.action" style="font-size:14px;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     </tbody></table>
   </div>
-<hr> 
-<%String Mess=(String)session.getAttribute("IndexMessage"); %>
-<h1><span style="color:white;">近期赛事通告：</span></h1><h3><span style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<%=Mess %><br></span></h3>
-<s:form action="setNotification.action">
-<span style="color:white;">新赛事通告:</span><s:textarea name="newMess" style="font-size:12px;width:450px;height:100px;border:0px;overflow-x:hidden"></s:textarea>                  
-   	<s:submit align="right" value="提交"/>
-    </s:form>
-</body></html>
+<hr>
+
+  <body>
+  <center>       <h2 ><span style="color:white">修改密码</span> </h2 >  <s:form action="ChangeBeginT.action" style="color:white">
+            原密码：<br><Input type = "password" name = "psw0" style = "width:150"><br>
+             新密码：<br><Input type = "password" name = "psw1" style = "width:150"><br>
+              确认新密码：<br><Input type = "password" name = "psw2" style = "width:150">
+              <br>
+        
+              
+              	<s:submit align="CENTER" value="修改"/>
+
+</s:form></center >
+  	
+  </body>
+</html>
