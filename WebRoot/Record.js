@@ -334,8 +334,7 @@
 	}
 	//罚出比赛
 	function fouledout(playerID)
-	{
-	    
+	{    
 	    document.getElementById(playerID).setAttribute("style","background-color:#FF0000");
 	    document.getElementById(playerID+"playerstate").innerText="罚出";
 		document.getElementById(playerID+"changeplayerstate").value="不可用";
