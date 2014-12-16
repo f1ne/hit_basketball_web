@@ -77,16 +77,16 @@ body {
     <table border=1 align="CENTER" style=color:white>
     <tr>
     	<!-- <td>Index</td>-->
-        <td>Name</td>
-		<td>Number</td>
-		<td>StudentID</td>
-		<td>Sex</td>
-		<td>Position</td>
-		<td>Age Group</td>
-		<td>三好杯 player</td>
+        <td>姓名</td>
+		<td>号码</td>
+		<td>ID</td>
+		<td>性别</td>
+		<td>身份</td>
+		<td>年龄段</td>
+		<td>是否三好杯球员</td>
 
   	</tr>
-	<s:iterator value="A" id="players" status="stuts">
+	<s:iterator value="P" id="players" status="stuts">
   	 <tr>
   	 	<!-- <td><s:property value="#stuts.index+1" /></td>-->
         <td><s:property value="#players.Name"/></td>
