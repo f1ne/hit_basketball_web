@@ -28,38 +28,81 @@ public class SearchPlayerData extends HttpServlet{
 		String playerName=request.getParameter("playerName").toString();
 		System.out.println(playerName);
 		//<------本地数据库代码------->用于sae上的话该代码需要删去
-		//playerName=java.net.URLEncoder.encode(playerName, "ISO-8859-1");
-		//playerName=java.net.URLDecoder.decode(playerName,"UTF-8");
+		playerName=java.net.URLEncoder.encode(playerName, "ISO-8859-1");
+		playerName=java.net.URLDecoder.decode(playerName,"UTF-8");
 		//<---------------------------->
 		String raceDate=request.getParameter("raceDate").toString();
-		ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
-		list=Basketball.getPlayersDataByPlayerNameAndDate(playerName, raceDate);
-		response.setContentType("text/xml;charset=UTF-8");
-		response.setHeader("Cache-Control","no-cache");
-		PrintWriter out=response.getWriter();
-		//读取球员信息并放入response中
-		String output="";
-		output+="<response>";
-		for (int i=0;i<list.size();i++){
-			///APlayer有效的数据仅仅是得分，犯规等技术统计
-			PlayerBean APlayer=new PlayerBean();
-			APlayer=list.get(i);		
-			output+="<PlayerData>";
-			output+="<PlayerID>"+APlayer.getPlayerID()+"</PlayerID>";			
-			output+="<Score>"+APlayer.getScore()+"</Score>";
-			output+="<Foul>"+APlayer.getFouls()+"</Foul>";
-			output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
+		if (raceDate.equals("0")){
 			
-			output+="<State>"+APlayer.getState()+"</State>";
-			output+="<PlayerName>"+APlayer.getName()+"</PlayerName>";
-			//获得球队的信息
-			TeamBean team=Basketball.getTeamByTeamID(APlayer.getTeamID());
-			output+="<TeamName>"+team.getTeamName()+"</TeamName>";
-			output+="<TeamLab>"+team.getTeamLab()+"</TeamLab>";
-			output+="</PlayerData>";
+			ArrayList<PlayerBean> playerlist=DataBaseBean.queryPlayerByName(playerName);
+			if (playerlist.size()>0){
+				ArrayList<GameBean> gamelist=DataBaseBean.getGameTableByTeamID(playerlist.get(0).getTeamID());
+				response.setContentType("text/xml;charset=UTF-8");
+				response.setHeader("Cache-Control","no-cache");
+				PrintWriter out=response.getWriter();
+				//读取球员信息并放入response中
+				String output="";
+				output+="<response>";
+				for (int i=0;i<gamelist.size();i++){
+					ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+					String datestr=gamelist.get(i).getDate();
+					datestr=DataBaseBean.dateFormatTransfer(datestr, 1);
+					list=Basketball.getPlayersDataByPlayerNameAndDate(playerName, datestr);
+					///APlayer有效的数据仅仅是得分，犯规等技术统计
+					PlayerBean APlayer=new PlayerBean();
+					APlayer=list.get(0);		
+					output+="<PlayerData>";
+					output+="<PlayerID>"+APlayer.getPlayerID()+"</PlayerID>";			
+					output+="<Score>"+APlayer.getScore()+"</Score>";
+					output+="<Foul>"+APlayer.getFouls()+"</Foul>";
+					output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
+					
+					output+="<State>"+APlayer.getState()+"</State>";
+					output+="<PlayerName>"+APlayer.getName()+"</PlayerName>";
+					//获得球队的信息
+					TeamBean team=Basketball.getTeamByTeamID(APlayer.getTeamID());
+					output+="<TeamName>"+team.getTeamName()+"</TeamName>";
+					output+="<TeamLab>"+team.getTeamLab()+"</TeamLab>";
+					output+="<Date>"+datestr+"</Date>";
+					output+="</PlayerData>";
+			    }
+				output+="</response>";
+				out.println(output);
+				out.close();
+			}
+			
+		}else{
+			ArrayList<PlayerBean> list=new ArrayList<PlayerBean>();
+			list=Basketball.getPlayersDataByPlayerNameAndDate(playerName, raceDate);
+			response.setContentType("text/xml;charset=UTF-8");
+			response.setHeader("Cache-Control","no-cache");
+			PrintWriter out=response.getWriter();
+			//读取球员信息并放入response中
+			String output="";
+			output+="<response>";
+			for (int i=0;i<list.size();i++){
+				///APlayer有效的数据仅仅是得分，犯规等技术统计
+				PlayerBean APlayer=new PlayerBean();
+				APlayer=list.get(i);		
+				output+="<PlayerData>";
+				output+="<PlayerID>"+APlayer.getPlayerID()+"</PlayerID>";			
+				output+="<Score>"+APlayer.getScore()+"</Score>";
+				output+="<Foul>"+APlayer.getFouls()+"</Foul>";
+				output+="<TeamID>"+APlayer.getTeamID()+"</TeamID>";
+				
+				output+="<State>"+APlayer.getState()+"</State>";
+				output+="<PlayerName>"+APlayer.getName()+"</PlayerName>";
+				//获得球队的信息
+				TeamBean team=Basketball.getTeamByTeamID(APlayer.getTeamID());
+				output+="<TeamName>"+team.getTeamName()+"</TeamName>";
+				output+="<TeamLab>"+team.getTeamLab()+"</TeamLab>";
+				output+="<Date>"+raceDate+"</Date>";
+				output+="</PlayerData>";
+			}
+			output+="</response>";
+			out.println(output);
+			out.close();
 		}
-		output+="</response>";
-		out.println(output);
-		out.close();
+		
 	}
 }

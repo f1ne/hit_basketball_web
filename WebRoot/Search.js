@@ -25,6 +25,7 @@ function processResponse(){
 				var name=y[5].childNodes[0].nodeValue;
 				var teamName=y[6].childNodes[0].nodeValue;
 				var teamLab=y[7].childNodes[0].nodeValue;
+				var date=y[8].childNodes[0].nodeValue;
 				var x=document.getElementById("playerdatatable").insertRow();
 				var y0=x.insertCell(0);
 				var y1=x.insertCell(1);
@@ -33,6 +34,7 @@ function processResponse(){
 				var y4=x.insertCell(4);
 				var y5=x.insertCell(5);
 				var y6=x.insertCell(6);
+				var y8=x.insertCell(7);
 				y0.innerHTML=name;
 				y1.innerHTML=playerID;
 				y2.innerHTML=teamID;
@@ -40,6 +42,7 @@ function processResponse(){
 				y4.innerHTML=teamLab;
 				y5.innerHTML=score;
 				y6.innerHTML=foul;
+				y8.innerHTML=date;
 			}	
 		}
 		if (xmlHttp.status==500){
@@ -59,5 +62,13 @@ function searchPlayerData()
     var playerName=document.getElementById("PlayerName").value;
 	var raceDate=document.getElementById("RaceDate").value;
 	var url="SearchPlayerData.servlet?playerName="+playerName+"&raceDate="+raceDate;
+	sendRequest(url);
+}
+//用0来区别
+function searchAllPlayerData()
+{
+	var playerName=document.getElementById("PlayerName").value;
+	var raceDate=document.getElementById("RaceDate").value;
+	var url="SearchPlayerData.servlet?playerName="+playerName+"&raceDate=0";
 	sendRequest(url);
 }
