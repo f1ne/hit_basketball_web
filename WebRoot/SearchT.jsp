@@ -85,7 +85,8 @@ body {
 	<input type="text" id="PlayerName" name="PlayerName"  />
 	<span style="color:white;">输入比赛日期：</span>
 	<input type="text" style="color:white;" id="RaceDate" name="RaceDate" class="tcal" />
-	<input type="button" value="提交" onclick="searchPlayerData()"/>
+	<input type="button" value="以日期查询" onclick="searchPlayerData()"/>
+  <input type="button" value="查询球员全部数据" onclick="searchAllPlayerData()"/>
 </form>
 <div id="resultPanel" style="background-color:  white;">
 <h2><span style="color:black;">查询结果：</span></h2>
@@ -111,12 +112,13 @@ body {
       <table id="playerdatatable" border="1">
           <tr>
              <td><span style='color:black;'>球员姓名</span></td>
-			 <td><span style='color:black;'>球员ID</span></td>
-			 <td><span style='color:black;'>球队ID</span></td>
-			 <td><span style='color:black;'>球队名</span></td>
-			 <td><span style='color:black;'>所属实验室</span></td>
+			       <td><span style='color:black;'>球员ID</span></td>
+			       <td><span style='color:black;'>球队ID</span></td>
+			       <td><span style='color:black;'>球队名</span></td>
+			       <td><span style='color:black;'>所属实验室</span></td>
              <td><span style='color:black;'>当日得分</span></td>
              <td><span style='color:black;'>当日犯规</span></td>
+             <td><span style='color:black;'>日期</span></td>
           </tr>
           
       </table>
