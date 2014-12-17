@@ -152,6 +152,7 @@
 <package name="com.hit.cs.basketball" extends="struts-default" namespace="/">  
   <action name="enterRecording" class="com.hit.cs.basketball.Basketball" method="enterRecording">
       <result name="success">/Record.jsp</result>
+      <result name="fail">/EnterRecording.jsp</result>
   </action>
   <action name="enterRecordingBegin" class="indexNTable.IndexMessageAction" method="getReady">
   <result name="success">EnterRecording.jsp</result>

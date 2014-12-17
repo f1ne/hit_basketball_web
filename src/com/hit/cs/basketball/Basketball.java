@@ -51,6 +51,7 @@ public class Basketball extends ActionSupport{
 	 */
 	public String enterRecording(){
 		//建立request将从数据库查询到的球员信息发送到前端
+		if (TeamID1==0||TeamID2==0) return "fail";
 		HttpServletRequest request;
 		request=ServletActionContext.getRequest();
 		ArrayList<PlayerBean> listTeam1=new ArrayList<PlayerBean>();
