@@ -143,7 +143,7 @@ body {
 				<td>	<select name="tyear" id="tyear">
 					<option disabled="disabled" value="" selected>-请选择 -</option>
 						<option value="<%=aa%>"><%=aa%></option>
-									<option value="<%=aa %>" ><%aa[3]++;%><%=aa %></option>
+									<%aa[3]++;%><option value="<%=aa %>" ><%=aa %></option>
 																			</select></td>
 					
 					
